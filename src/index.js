@@ -9,6 +9,8 @@ import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneM
 const textureLoader = new THREE.TextureLoader()
 
 const marbleGroundTexture = textureLoader.load(marbleGroundSource)
+marbleGroundTexture.repeat.x = 8
+marbleGroundTexture.repeat.y = 8
 marbleGroundTexture.wrapS = THREE.RepeatWrapping
 marbleGroundTexture.wrapT = THREE.RepeatWrapping
 
@@ -48,7 +50,7 @@ scene.add(camera)
 /**
  * Lights
  */
-const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
 
 // Move
@@ -122,28 +124,93 @@ document.addEventListener ('keyup', onKeyUp)
 /**
  * Objects
  */
-const groundGroup = new THREE.Group()
-scene.add(groundGroup)
 
-const dummy = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({
-        color: 0xFF0000
-    })
-)
-groundGroup.add(dummy)
+//Group
+const museum = new THREE.Group()
+scene.add(museum)
 
+museum.position.z = - 10
+museum.position.y = - 1
 
+// const dummy = new THREE.Mesh(
+//     new THREE.BoxGeometry(1, 1, 1),
+//     new THREE.MeshBasicMaterial({
+//         color: 0xFF0000
+//     })
+// )
+// museum.add(dummy)
+
+// Ground
 const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 50, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide
     })
 )
 ground.position.y = - 0.55
-ground.rotation.x -= Math.PI * 0.5
-groundGroup.add(ground)
 
+ground.rotation.x -= Math.PI * 0.5
+museum.add(ground)
+
+// Walls
+const wallLeft = new THREE.Mesh(
+    new THREE.PlaneGeometry(50, 10, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide
+    })
+)
+wallLeft.rotation.y = Math.PI * 0.5 
+wallLeft.position.x = - 30
+wallLeft.position.y = 4.45
+museum.add(wallLeft)
+
+const wallRight = new THREE.Mesh(
+    new THREE.PlaneGeometry(50, 10, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide
+    })
+)
+wallRight.rotation.y = - Math.PI * 0.5 
+wallRight.position.x = 30
+wallRight.position.y = 4.45
+museum.add(wallRight)
+
+const wallForward = new THREE.Mesh(
+    new THREE.PlaneGeometry(60, 10, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide,
+    })
+)
+wallForward.rotation.y = Math.PI
+wallForward.position.z = - 25
+wallForward.position.y = 4.45
+museum.add(wallForward)
+
+const wallBackward = new THREE.Mesh(
+    new THREE.PlaneGeometry(60, 10, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide
+    })
+)
+wallBackward.rotation.y = Math.PI
+wallBackward.position.z = 25
+wallBackward.position.y = 4.45
+museum.add(wallBackward)
+
+//Aquarium
+const aquarium = new THREE.Mesh(
+    new THREE.SphereGeometry(8, 20, 10),
+    new THREE.MeshBasicMaterial({
+        color: 0x0000FF,
+    })
+)
+aquarium.position.y = 5
+museum.add(aquarium)
 
 /**
  * Renderer
