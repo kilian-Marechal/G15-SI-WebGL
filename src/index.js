@@ -1,6 +1,16 @@
 import './style/main.styl'
 import * as THREE from 'three'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
+import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
+
+/**
+ * Textures
+ */
+const textureLoader = new THREE.TextureLoader()
+
+const marbleGroundTexture = textureLoader.load(marbleGroundSource)
+marbleGroundTexture.wrapS = THREE.RepeatWrapping
+marbleGroundTexture.wrapT = THREE.RepeatWrapping
 
 /**
  * Sizes
@@ -30,10 +40,16 @@ const scene = new THREE.Scene()
 /**
  * Camera
  */
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 20)
+const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 250)
 camera.lookAt(scene.position)
-camera.position.z = 8
+camera.position.z = 15
 scene.add(camera)
+
+/**
+ * Lights
+ */
+const ambientLight = new THREE.AmbientLight(0xffffff, 1)
+scene.add(ambientLight)
 
 // Move
 let moveForward = false
@@ -56,21 +72,25 @@ scene.add(controls.getObject())
  * Controls KeysDown
  */
 const onKeyDown = ( _event ) => {
-    if (_event.key === 'z')
+    if (_event.key === 'z' || _event.key === 'ArrowUp')
     {
         moveForward = true
+        controls.lock()
     }
-    if (_event.key === 's')
+    if (_event.key === 's' || _event.key === 'ArrowDown')
     {
         moveBackward = true
+        controls.lock()
     }
-    if (_event.key === 'q')
+    if (_event.key === 'q' || _event.key === 'ArrowLeft')
     {
         moveLeft = true
+        controls.lock()
     }
-    if (_event.key === 'd')
+    if (_event.key === 'd' || _event.key === 'ArrowRight')
     {
         moveRight = true
+        controls.lock()
     }
 }
 
@@ -78,19 +98,19 @@ const onKeyDown = ( _event ) => {
  * Controls KeysUp
  */
 const onKeyUp = ( _event ) => {
-    if (_event.key === 'z')
+    if (_event.key === 'z' || _event.key === 'ArrowUp')
     {
         moveForward = false
     }
-    if (_event.key === 's')
+    if (_event.key === 's' || _event.key === 'ArrowDown')
     {
         moveBackward = false
     }
-    if (_event.key === 'q')
+    if (_event.key === 'q' || _event.key === 'ArrowLeft')
     {
         moveLeft = false
     }
-    if (_event.key === 'd')
+    if (_event.key === 'd' || _event.key === 'ArrowRight')
     {
         moveRight = false
     }
@@ -102,17 +122,28 @@ document.addEventListener ('keyup', onKeyUp)
 /**
  * Objects
  */
-const box = new THREE.Mesh(
-    new THREE.BoxGeometry(1, 1, 1),
-    new THREE.MeshBasicMaterial({ color: 0x0096ff })
-)
-scene.add(box)
+const groundGroup = new THREE.Group()
+scene.add(groundGroup)
 
-const plane = new THREE.Mesh(
-    new THREE.PlaneGeometry(1, 1),
-    new THREE.MeshBasicMaterial({ color: 0x0096ff, side: THREE.DoubleSide })
+const dummy = new THREE.Mesh(
+    new THREE.BoxGeometry(1, 1, 1),
+    new THREE.MeshBasicMaterial({
+        color: 0xFF0000
+    })
 )
-scene.add(plane)
+groundGroup.add(dummy)
+
+
+const ground = new THREE.Mesh(
+    new THREE.PlaneGeometry(60, 50, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture
+    })
+)
+ground.position.y = - 0.55
+ground.rotation.x -= Math.PI * 0.5
+groundGroup.add(ground)
+
 
 /**
  * Renderer
@@ -140,13 +171,6 @@ window.addEventListener('resize', () =>
     camera.updateProjectionMatrix()
 
     renderer.setSize(sizes.width, sizes.height)
-})
-
-document.addEventListener('keydown', (_event) => {
-    if(_event.key === ' ')
-    {
-        controls.lock()
-    }
 })
 
 /**
