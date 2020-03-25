@@ -83,7 +83,17 @@ let moveRight = false
 /**
  * Create Monsters
  */ 
-const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
+// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
+const kelbi1 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi1.glb',
+    /*name*/ kelbi1,
+    /*posX*/ 0,
+    /*posY*/ 10,
+    /*posZ*/ -25,
+    /*scale*/ 10,
+    /*rotation*/ Math.Pi * 0,
+    /*centerX*/ 0.5,
+    /*centerY*/ 0.5)
 scene.add(kelbi1.group)
 
 
