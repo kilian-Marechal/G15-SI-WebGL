@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
 export default class Monster
 {
-    constructor(_path, _name, _posX, _posY, _posZ, _scale, _rotation)
+    constructor(_path, _posX, _posY, _posZ, _scale, _rotation)
     {
         this.group = new THREE.Group()
 

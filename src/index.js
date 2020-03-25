@@ -98,10 +98,9 @@ let moveRight = false
 /**
  * Create Monsters
  */ 
-// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
+// To create : new Monster('_path', _posX, _posY, _posZ, _scale, _rotation)
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
-    /*name*/ kelbi1,
     /*posX*/ - 90,
     /*posY*/ 2,
     /*posZ*/ - 350,
@@ -109,6 +108,97 @@ const kelbi1 = new Monster(
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(kelbi1.group)
+
+const kelbi2 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi2.glb',
+    /*posX*/ - 90,
+    /*posY*/ 2,
+    /*posZ*/ - 320,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(kelbi2.group)
+
+const agnaktor = new Monster(
+    '/models/agnaktor/glTF-Binary/Agnaktor.glb',
+    /*posX*/ 0,
+    /*posY*/ 50,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(agnaktor.group)
+
+const baggi = new Monster(
+    '/models/baggi/glTF-Binary/Baggi.glb',
+    /*posX*/ 0,
+    /*posY*/ 40,
+    /*posZ*/ - 50,
+    /*scale*/ 20,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(baggi.group)
+
+const barroth = new Monster(
+    '/models/barroth/glTF-Binary/Barroth.glb',
+    /*posX*/ 0,
+    /*posY*/ 40,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(barroth.group)
+
+const deviljho = new Monster(
+    '/models/deviljho/glTF-Binary/Deviljho.glb',
+    /*posX*/ 0,
+    /*posY*/ 30,
+    /*posZ*/ - 50,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(deviljho.group)
+
+const diablos = new Monster(
+    '/models/diablos/glTF-Binary/Diablos.glb',
+    /*posX*/ 0,
+    /*posY*/ 60,
+    /*posZ*/ - 50,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(diablos.group)
+
+const rathalos = new Monster(
+    '/models/rathalos/glTF-Binary/Rathalos.glb',
+    /*posX*/ 0,
+    /*posY*/ 80,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(rathalos.group)
+
+const popo = new Monster(
+    '/models/popo/glTF-Binary/Popo.glb',
+    /*posX*/ 0,
+    /*posY*/ 90,
+    /*posZ*/ - 50,
+    /*scale*/ 10,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(popo.group)
+
+const uragaan = new Monster(
+    '/models/uragaan/glTF-Binary/Uragaan.glb',
+    /*posX*/ 0,
+    /*posY*/ 100,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(uragaan.group)
+
 
 
 /**
