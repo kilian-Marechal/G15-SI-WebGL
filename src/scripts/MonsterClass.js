@@ -21,7 +21,6 @@ export default class Monster
             _path,
             (_gltf) =>
             {
-                console.log(_gltf)
                 // get all meshes from the object
                 while(_gltf.scene.children.length)
                 {

@@ -3,6 +3,8 @@ import * as THREE from 'three'
 import Monster from './scripts/MonsterClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
+import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
+import plasterSource from './images/Plaster_001_SD/Plaster_001_COLOR.jpg'
 
 
 /**
@@ -17,6 +19,18 @@ marbleGroundTexture.repeat.x = 15
 marbleGroundTexture.repeat.y = 15
 marbleGroundTexture.wrapS = THREE.RepeatWrapping
 marbleGroundTexture.wrapT = THREE.RepeatWrapping
+
+const stoneBrickTexture = textureLoader.load(stoneBrickSource)
+stoneBrickTexture.repeat.x = 15
+stoneBrickTexture.repeat.y = 10
+stoneBrickTexture.wrapS = THREE.RepeatWrapping
+stoneBrickTexture.wrapT = THREE.RepeatWrapping
+
+const plasterTexture = textureLoader.load(plasterSource)
+plasterTexture.repeat.x = 10
+plasterTexture.repeat.y = 10
+plasterTexture.wrapS = THREE.RepeatWrapping
+plasterTexture.wrapT = THREE.RepeatWrapping
 
 
 /**
@@ -60,7 +74,7 @@ const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 500)
 camera.lookAt(scene.position)
-camera.position.set(0, 4, - 5)
+camera.position.set(0, 1.5, - 5)
 scene.add(camera)
 
 
@@ -71,6 +85,7 @@ scene.add(camera)
 
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
+
 
 /**
  * Move
@@ -87,10 +102,10 @@ let moveRight = false
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
     /*name*/ kelbi1,
-    /*posX*/ 0,
-    /*posY*/ 10,
-    /*posZ*/ -25,
-    /*scale*/ 10,
+    /*posX*/ - 90,
+    /*posY*/ 2,
+    /*posZ*/ - 350,
+    /*scale*/ 2,
     /*rotation*/ Math.Pi * 0,
     /*centerX*/ 0.5,
     /*centerY*/ 0.5)
@@ -138,11 +153,11 @@ const onKeyDown = ( _event ) => {
     }
     if (_event.key === ' ' || _event.code === 'space')
     {
-        camera.position.y += 3
+        camera.position.y += 1
     }
     if (_event.key === 'Control' || _event.code === 'ControlLeft')
     {
-        camera.position.y -= 3
+        camera.position.y -= 1
     }
 }
 
@@ -176,10 +191,22 @@ document.addEventListener ('keyup', onKeyUp)
 
 
 /**
+ * Create Monsters
+ */ 
+// const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
+// kelbi1.group.position.set(- 90, 2, - 350)
+// scene.add(kelbi1.group)
+
+// const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
+// diablos.group.position.set(0, 4, - 35)
+// scene.add(diablos.group)
+
+
+/**
  * Objects
  */
 
-
+ 
 //Groups
 const museum = new THREE.Group()
 scene.add(museum)
@@ -191,6 +218,9 @@ scene.add(firstRoom)
 
 const secondRoom = new THREE.Group()
 scene.add(secondRoom)
+
+const thirdRoom = new THREE.Group()
+scene.add(thirdRoom)
 
 // Ground
 const ground = new THREE.Mesh(
@@ -209,8 +239,7 @@ museum.add(ground)
 const wallLeft = new THREE.Mesh(
     new THREE.PlaneGeometry(400, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        color: 0xFF0000,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
@@ -221,8 +250,7 @@ museum.add(wallLeft)
 const wallRight = new THREE.Mesh(
     new THREE.PlaneGeometry(400, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        color: 0xFF0000,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
@@ -233,8 +261,7 @@ museum.add(wallRight)
 const wallForward = new THREE.Mesh(
     new THREE.PlaneGeometry(200, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        color: 0xFF0000,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
@@ -244,8 +271,7 @@ museum.add(wallForward)
 const wallBackward = new THREE.Mesh(
     new THREE.PlaneGeometry(200, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        color: 0xFF0000,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
@@ -258,9 +284,8 @@ museum.add(wallBackward)
 const wallLeftFirstRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(120, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide,
-        color: 0x0000FF
     })
 )
 wallLeftFirstRoom.position.set(- 40, 15, - 125)
@@ -269,36 +294,146 @@ firstRoom.add(wallLeftFirstRoom)
 const wallRightFirstRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide,
-        color: 0x0000FF
     })
 )
 wallRightFirstRoom.position.set(70, 15, - 125)
 firstRoom.add(wallRightFirstRoom)
 
+const stageMonster1 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster1.position.set(- 40, 0.51, - 94)
+firstRoom.add(stageMonster1)
+
+const stageMonster2 = new THREE.Mesh(
+    new THREE.BoxGeometry(35, 1, 100),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster2.position.set(68, 0.51, - 62),
+firstRoom.add(stageMonster2)
+
 // Room 2
 const wallLeftSecondRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(120, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide,
-        color: 0x0000FF
     })
 )
 wallLeftSecondRoom.position.set(- 40, 15, - 275)
-firstRoom.add(wallLeftSecondRoom)
+secondRoom.add(wallLeftSecondRoom)
 
 const wallRightSecondRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 30, 1, 1),
     new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
+        map: stoneBrickTexture,
         side: THREE.DoubleSide,
-        color: 0x0000FF
     })
 )
 wallRightSecondRoom.position.set(70, 15, - 275)
-firstRoom.add(wallRightSecondRoom)
+secondRoom.add(wallRightSecondRoom)
+
+const stageMonster3 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster3.position.set(- 40, 0.51, - 158)
+secondRoom.add(stageMonster3)
+
+const stageMonster4 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster4.position.set(- 40, 0.51, - 246)
+secondRoom.add(stageMonster4)
+
+const stageMonster5 = new THREE.Mesh(
+    new THREE.BoxGeometry(35, 1, 100),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster5.position.set(68, 0.51, - 202),
+secondRoom.add(stageMonster5)
+
+// Room 3
+
+const stageKelbi = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageKelbi.position.set(- 90, 0.51, - 337,5)
+thirdRoom.add(stageKelbi)
+
+const stageNiznouz = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageNiznouz.position.set(- 90, 0.51, - 306,25)
+thirdRoom.add(stageNiznouz)
+
+const stageNiznaz = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageNiznaz.position.set(- 90, 0.51, - 368,75)
+thirdRoom.add(stageNiznaz)
+
+const stagetest = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest.position.set(90, 0.51, - 337.5)
+thirdRoom.add(stagetest)
+
+const stagetest2 = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest2.position.set(90, 0.51, - 306.25)
+thirdRoom.add(stagetest2)
+
+const stagetest3 = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest3.position.set(90, 0.51, - 368.75)
+thirdRoom.add(stagetest3)
+
+const aquarium = new THREE.Mesh(
+    new THREE.CylinderGeometry(20, 20, 45, 20),
+    new THREE.MeshBasicMaterial({
+        color: 0x0000FF,
+        transparent: true,
+        opacity: 0.3,
+        side: THREE.DoubleSide
+    })
+)
+aquarium.position.set(0, 22.51, - 340)
+thirdRoom.add(aquarium)
 
 
 /**
