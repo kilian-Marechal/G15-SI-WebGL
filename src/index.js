@@ -176,7 +176,7 @@ document.addEventListener ('keyup', onKeyUp)
  * Create Monsters
  */ 
 const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
-kelbi1.group.position.set(0, 2, - 10)
+kelbi1.group.position.set(- 90, 2, - 350)
 scene.add(kelbi1.group)
 
 const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
@@ -283,14 +283,23 @@ const wallRightFirstRoom = new THREE.Mesh(
 wallRightFirstRoom.position.set(70, 15, - 125)
 firstRoom.add(wallRightFirstRoom)
 
-const stageKelbi = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+const stageMonster1 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
     new THREE.MeshStandardMaterial({
-        map: plasterTexture
+        map: plasterTexture,
     })
 )
-stageKelbi.position.set(0, 0.51, - 10)
-firstRoom.add(stageKelbi)
+stageMonster1.position.set(- 40, 0.51, - 94)
+firstRoom.add(stageMonster1)
+
+const stageMonster2 = new THREE.Mesh(
+    new THREE.BoxGeometry(35, 1, 100),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster2.position.set(68, 0.51, - 62),
+firstRoom.add(stageMonster2)
 
 // Room 2
 const wallLeftSecondRoom = new THREE.Mesh(
@@ -313,16 +322,55 @@ const wallRightSecondRoom = new THREE.Mesh(
 wallRightSecondRoom.position.set(70, 15, - 275)
 secondRoom.add(wallRightSecondRoom)
 
+const stageMonster3 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster3.position.set(- 40, 0.51, - 158)
+secondRoom.add(stageMonster3)
+
+const stageMonster4 = new THREE.Mesh(
+    new THREE.BoxGeometry(90, 1, 35),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster4.position.set(- 40, 0.51, - 246)
+secondRoom.add(stageMonster4)
+
+const stageMonster5 = new THREE.Mesh(
+    new THREE.BoxGeometry(35, 1, 100),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture,
+    })
+)
+stageMonster5.position.set(68, 0.51, - 202),
+secondRoom.add(stageMonster5)
+
 // Room 3
 
-const stageNina = new THREE.Mesh(
+const stageKelbi = new THREE.Mesh(
     new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
 )
-stageNina.position.set(0, 0.51, - 10)
-thirdRoom.add(stageNina)
+stageKelbi.position.set(- 90, 0.51, - 350)
+thirdRoom.add(stageKelbi)
+
+const aquarium = new THREE.Mesh(
+    new THREE.CylinderGeometry(20, 20, 45, 20),
+    new THREE.MeshBasicMaterial({
+        color: 0x0000FF,
+        transparent: true,
+        opacity: 0.3,
+        side: THREE.DoubleSide
+    })
+)
+aquarium.position.set(0, 22.51, - 340)
+thirdRoom.add(aquarium)
 
 
 /**
@@ -374,8 +422,8 @@ const loop = () =>
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
 
-    velocity.x -= velocity.x * 28.0 * delta
-    velocity.z -= velocity.z * 28.0 * delta
+    velocity.x -= velocity.x * 1.0 * delta
+    velocity.z -= velocity.z * 1.0 * delta
 
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
