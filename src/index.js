@@ -1,5 +1,6 @@
 import './style/main.styl'
 import * as THREE from 'three'
+import Monster from './scripts/MonsterClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 
@@ -71,11 +72,19 @@ scene.add(camera)
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
 scene.add(ambientLight)
 
-// Move
+/**
+ * Move
+ */ 
 let moveForward = false
 let moveBackward = false
 let moveLeft = false
 let moveRight = false
+
+/**
+ * Create Monsters
+ */ 
+const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
+scene.add(kelbi1.group)
 
 
 /**
