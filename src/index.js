@@ -106,9 +106,8 @@ const kelbi1 = new Monster(
     /*posY*/ 2,
     /*posZ*/ - 350,
     /*scale*/ 2,
-    /*rotation*/ Math.Pi * 0,
-    /*centerX*/ 0.5,
-    /*centerY*/ 0.5)
+    /*rotation*/ (Math.PI * 0.5),
+)
 scene.add(kelbi1.group)
 
 
