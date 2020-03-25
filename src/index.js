@@ -99,6 +99,21 @@ let moveBackward = false
 let moveLeft = false
 let moveRight = false
 
+/**
+ * Create Monsters
+ */ 
+// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
+const kelbi1 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi1.glb',
+    /*name*/ kelbi1,
+    /*posX*/ - 90,
+    /*posY*/ 2,
+    /*posZ*/ - 337,5,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(kelbi1.group)
+
 
 /**
  * Controls
@@ -181,13 +196,13 @@ document.addEventListener ('keyup', onKeyUp)
 /**
  * Create Monsters
  */ 
-const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
-kelbi1.group.position.set(- 90, 2, - 337,5)
-scene.add(kelbi1.group)
+// const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
+// kelbi1.group.position.set(- 90, 2, - 350)
+// scene.add(kelbi1.group)
 
-const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
-diablos.group.position.set(0, 4, - 35)
-scene.add(diablos.group)
+// const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
+// diablos.group.position.set(0, 4, - 35)
+// scene.add(diablos.group)
 
 
 /**

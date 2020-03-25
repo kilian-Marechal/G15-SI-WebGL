@@ -4,7 +4,7 @@ import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
 export default class Monster
 {
-    constructor(_path,)
+    constructor(_path, _name, _posX, _posY, _posZ, _scale, _rotation)
     {
         this.group = new THREE.Group()
 
@@ -24,8 +24,11 @@ export default class Monster
                 // get all meshes from the object
                 while(_gltf.scene.children.length)
                 {
-                    const child = _gltf.scene.children[0]
-                    this.group.add(child)
+                    this.child = _gltf.scene.children[0]
+                    this.child.position.set(_posX, _posY, _posZ)
+                    this.child.scale.set(_scale, _scale, _scale)
+                    this.child.rotation.y = _rotation
+                    this.group.add(this.child)
                 }
             }
         )
