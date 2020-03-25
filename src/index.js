@@ -83,8 +83,12 @@ scene.add(camera)
  */
 
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.8)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
 scene.add(ambientLight)
+
+const pointLightFirstRoom = new THREE.PointLight(0xffffff, 1, 150)
+pointLightFirstRoom.position.set(5, 50, - 50)
+scene.add(pointLightFirstRoom)
 
 
 /**
@@ -178,7 +182,7 @@ document.addEventListener ('keyup', onKeyUp)
  * Create Monsters
  */ 
 const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
-kelbi1.group.position.set(- 90, 2, - 350)
+kelbi1.group.position.set(- 90, 2, - 337,5)
 scene.add(kelbi1.group)
 
 const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
@@ -218,71 +222,82 @@ ground.position.set(0, 0, - 200)
 ground.rotation.x -= Math.PI * 0.5
 museum.add(ground)
 
+// Roof
+const roof = new THREE.Mesh(
+    new THREE.PlaneGeometry(200, 400, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: marbleGroundTexture,
+        side: THREE.DoubleSide
+    })
+)
+roof.position.set(0, 60, - 200)
+roof.rotation.x -= Math.PI * 0.5
+museum.add(roof)
 
 // Walls
 const wallLeft = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 30, 1, 1),
+    new THREE.PlaneGeometry(400, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
 wallLeft.rotation.y = Math.PI * 0.5 
-wallLeft.position.set(- 100, 15, - 200)
+wallLeft.position.set(- 100, 30, - 200)
 museum.add(wallLeft)
 
 const wallRight = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 30, 1, 1),
+    new THREE.PlaneGeometry(400, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
 wallRight.rotation.y = - Math.PI * 0.5 
-wallRight.position.set(100, 15, - 200)
+wallRight.position.set(100, 30, - 200)
 museum.add(wallRight)
 
 const wallForward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 30, 1, 1),
+    new THREE.PlaneGeometry(200, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
-wallForward.position.set(0, 15, - 400)
+wallForward.position.set(0, 30, - 400)
 museum.add(wallForward)
 
 const wallBackward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 30, 1, 1),
+    new THREE.PlaneGeometry(200, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide
     })
 )
-wallBackward.position.set(0, 15, 0)
+wallBackward.position.set(0, 30, 0)
 
 museum.add(wallBackward)
 
 
 // Room 1
 const wallLeftFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 30, 1, 1),
+    new THREE.PlaneGeometry(120, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
-wallLeftFirstRoom.position.set(- 40, 15, - 125)
+wallLeftFirstRoom.position.set(- 40, 30, - 125)
 firstRoom.add(wallLeftFirstRoom)
 
 const wallRightFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 30, 1, 1),
+    new THREE.PlaneGeometry(60, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
-wallRightFirstRoom.position.set(70, 15, - 125)
+wallRightFirstRoom.position.set(70, 30, - 125)
 firstRoom.add(wallRightFirstRoom)
 
 const stageMonster1 = new THREE.Mesh(
@@ -305,23 +320,23 @@ firstRoom.add(stageMonster2)
 
 // Room 2
 const wallLeftSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 30, 1, 1),
+    new THREE.PlaneGeometry(120, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
-wallLeftSecondRoom.position.set(- 40, 15, - 275)
+wallLeftSecondRoom.position.set(- 40, 30, - 275)
 secondRoom.add(wallLeftSecondRoom)
 
 const wallRightSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 30, 1, 1),
+    new THREE.PlaneGeometry(60, 60, 1, 1),
     new THREE.MeshStandardMaterial({
         map: stoneBrickTexture,
         side: THREE.DoubleSide,
     })
 )
-wallRightSecondRoom.position.set(70, 15, - 275)
+wallRightSecondRoom.position.set(70, 30, - 275)
 secondRoom.add(wallRightSecondRoom)
 
 const stageMonster3 = new THREE.Mesh(
@@ -429,6 +444,8 @@ const renderer = new THREE.WebGLRenderer()
 renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
+renderer.outputEncoding = THREE.sRGBEncoding
+renderer.gammaFactor = 2.2
 
 
 /**
