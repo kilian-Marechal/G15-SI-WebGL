@@ -79,19 +79,6 @@ scene.add(camera)
 
 
 /**
- * Lights
- */
-
-
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.6)
-scene.add(ambientLight)
-
-const pointLightFirstRoom = new THREE.PointLight(0xffffff, 1, 150)
-pointLightFirstRoom.position.set(5, 50, - 50)
-scene.add(pointLightFirstRoom)
-
-
-/**
  * Move
  */ 
 let moveForward = false
@@ -228,7 +215,7 @@ scene.add(thirdRoom)
 // Ground
 const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(200, 400, 1, 1),
-    new THREE.MeshStandardMaterial({
+    new THREE.MeshPhongMaterial({
         map: marbleGroundTexture,
         side: THREE.DoubleSide
     })
@@ -317,7 +304,7 @@ firstRoom.add(wallRightFirstRoom)
 
 const stageMonster1 = new THREE.Mesh(
     new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshStandardMaterial({
+    new THREE.MeshLambertMaterial({
         map: plasterTexture,
     })
 )
@@ -384,7 +371,7 @@ secondRoom.add(stageMonster5)
 // Room 3
 
 const stageKelbi = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
@@ -393,7 +380,7 @@ stageKelbi.position.set(- 90, 0.51, - 337,5)
 thirdRoom.add(stageKelbi)
 
 const stageNiznouz = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
@@ -402,7 +389,7 @@ stageNiznouz.position.set(- 90, 0.51, - 306,25)
 thirdRoom.add(stageNiznouz)
 
 const stageNiznaz = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
@@ -411,7 +398,7 @@ stageNiznaz.position.set(- 90, 0.51, - 368,75)
 thirdRoom.add(stageNiznaz)
 
 const stagetest = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
@@ -420,7 +407,7 @@ stagetest.position.set(90, 0.51, - 337.5)
 thirdRoom.add(stagetest)
 
 const stagetest2 = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
@@ -429,10 +416,10 @@ stagetest2.position.set(90, 0.51, - 306.25)
 thirdRoom.add(stagetest2)
 
 const stagetest3 = new THREE.Mesh(
-    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
-    })
+    })&
 )
 stagetest3.position.set(90, 0.51, - 368.75)
 thirdRoom.add(stagetest3)
@@ -448,6 +435,26 @@ const aquarium = new THREE.Mesh(
 )
 aquarium.position.set(0, 22.51, - 340)
 thirdRoom.add(aquarium)
+
+/**
+ * Lights
+ */
+
+
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
+scene.add(ambientLight)
+
+const pointLightFirstRoom = new THREE.PointLight(0xffffff, 0.7, 150)
+pointLightFirstRoom.position.set(5, 50, - 65)
+firstRoom.add(pointLightFirstRoom)
+
+const pointLightSecondRoom = new THREE.PointLight(0xffffff, 0.7, 150)
+pointLightSecondRoom.position.set(5, 50, - 200)
+secondRoom.add(pointLightSecondRoom)
+
+const pointLightThirdRoom = new THREE.PointLight(0xffffff, 0.7, 150)
+pointLightThirdRoom.position.set(5, 50, - 335)
+thirdRoom.add(pointLightThirdRoom)
 
 
 /**
