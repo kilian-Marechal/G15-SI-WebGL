@@ -93,99 +93,99 @@ let moveRight = false
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
     /*posX*/ - 90,
-    /*posY*/ 2,
-    /*posZ*/ - 350,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posY*/ 4.8,
+    /*posZ*/ - 368,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 2),
 )
 scene.add(kelbi1.group)
 
 const kelbi2 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi2.glb',
     /*posX*/ - 90,
-    /*posY*/ 2,
-    /*posZ*/ - 320,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posY*/ 4.8,
+    /*posZ*/ - 306,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 2),
 )
 scene.add(kelbi2.group)
 
 const agnaktor = new Monster(
     '/models/agnaktor/glTF-Binary/Agnaktor.glb',
-    /*posX*/ 0,
-    /*posY*/ 50,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 5,
+    /*posY*/ 20,
+    /*posZ*/ - 333,
+    /*scale*/ 2.8,
+    /*rotation*/ (Math.PI * 1.75),
 )
 scene.add(agnaktor.group)
 
 const baggi = new Monster(
     '/models/baggi/glTF-Binary/Baggi.glb',
-    /*posX*/ 0,
-    /*posY*/ 40,
-    /*posZ*/ - 50,
-    /*scale*/ 20,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ - 90,
+    /*posY*/ 7,
+    /*posZ*/ - 337,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 2),
 )
 scene.add(baggi.group)
 
 const barroth = new Monster(
     '/models/barroth/glTF-Binary/Barroth.glb',
-    /*posX*/ 0,
-    /*posY*/ 40,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ - 33,
+    /*posY*/ 28,
+    /*posZ*/ - 245,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 2),
 )
 scene.add(barroth.group)
 
 const deviljho = new Monster(
     '/models/deviljho/glTF-Binary/Deviljho.glb',
-    /*posX*/ 0,
-    /*posY*/ 30,
-    /*posZ*/ - 50,
-    /*scale*/ 5,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ - 27,
+    /*posY*/ 40,
+    /*posZ*/ - 157,
+    /*scale*/ 7,
+    /*rotation*/ (Math.PI * 2),
 )
 scene.add(deviljho.group)
 
 const diablos = new Monster(
     '/models/diablos/glTF-Binary/Diablos.glb',
-    /*posX*/ 0,
-    /*posY*/ 60,
-    /*posZ*/ - 50,
-    /*scale*/ 5,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ - 40,
+    /*posY*/ 20,
+    /*posZ*/ - 85,
+    /*scale*/ 3.9,
+    /*rotation*/ (Math.PI * 1.5),
 )
 scene.add(diablos.group)
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
-    /*posX*/ 0,
-    /*posY*/ 80,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 57,
+    /*posY*/ 20,
+    /*posZ*/ - 60,
+    /*scale*/ 3.9,
+    /*rotation*/ (Math.PI * 1),
 )
 scene.add(rathalos.group)
 
 const popo = new Monster(
     '/models/popo/glTF-Binary/Popo.glb',
-    /*posX*/ 0,
-    /*posY*/ 90,
-    /*posZ*/ - 50,
-    /*scale*/ 10,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 87,
+    /*posY*/ 12,
+    /*posZ*/ - 306,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 1),
 )
 scene.add(popo.group)
 
 const uragaan = new Monster(
     '/models/uragaan/glTF-Binary/Uragaan.glb',
-    /*posX*/ 0,
-    /*posY*/ 100,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
+    /*posX*/ 70,
+    /*posY*/ 28,
+    /*posZ*/ - 210,
+    /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(uragaan.group)
@@ -268,22 +268,6 @@ const onKeyUp = ( _event ) => {
 
 document.addEventListener ('keydown', onKeyDown)
 document.addEventListener ('keyup', onKeyUp)
-
-
-/**
- * Create Monsters
- */ 
-// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
-const kelbi1 = new Monster(
-    '/models/kelbi/glTF-Binary/Kelbi1.glb',
-    /*name*/ kelbi1,
-    /*posX*/ - 90,
-    /*posY*/ 5.7,
-    /*posZ*/ - 337,5,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.1),
-)
-scene.add(kelbi1.group)
 
 
 /**
@@ -462,32 +446,42 @@ secondRoom.add(stageMonster5)
 
 // Room 3
 
+
+const stageKelbil2 = new THREE.Mesh(
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageKelbil2.position.set(- 90, 0.51, - 306,25)
+thirdRoom.add(stageKelbil2)
+
+const stagebaggi = new THREE.Mesh(
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagebaggi.position.set(- 90, 0.51, - 337,5)
+thirdRoom.add(stagebaggi)
+
 const stageKelbi = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
 )
-stageKelbi.position.set(- 90, 0.51, - 337,5)
+stageKelbi.position.set(- 90, 0.51, - 368,75)
 thirdRoom.add(stageKelbi)
 
-const stageNiznouz = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+const stagePopo = new THREE.Mesh(
+    new THREE.BoxGeometry(14, 1, 15, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
 )
-stageNiznouz.position.set(- 90, 0.51, - 306,25)
-thirdRoom.add(stageNiznouz)
-
-const stageNiznaz = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
-)
-stageNiznaz.position.set(- 90, 0.51, - 368,75)
-thirdRoom.add(stageNiznaz)
+stagePopo.position.set(88, 0.51, - 306.25)
+thirdRoom.add(stagePopo)
 
 const stagetest = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
@@ -497,15 +491,6 @@ const stagetest = new THREE.Mesh(
 )
 stagetest.position.set(90, 0.51, - 337.5)
 thirdRoom.add(stagetest)
-
-const stagetest2 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
-)
-stagetest2.position.set(90, 0.51, - 306.25)
-thirdRoom.add(stagetest2)
 
 const stagetest3 = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
@@ -517,11 +502,12 @@ stagetest3.position.set(90, 0.51, - 368.75)
 thirdRoom.add(stagetest3)
 
 const aquarium = new THREE.Mesh(
-    new THREE.CylinderGeometry(20, 20, 45, 20),
-    new THREE.MeshBasicMaterial({
-        color: 0x0000FF,
+    new THREE.CylinderGeometry(40, 40, 50, 20),
+    new THREE.MeshPhongMaterial({
+        color: 0x4a69bd,
         transparent: true,
-        opacity: 0.3,
+        opacity: 0.7,
+        shininess: 70,
         side: THREE.DoubleSide
     })
 )
