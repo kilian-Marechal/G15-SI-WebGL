@@ -86,21 +86,6 @@ let moveBackward = false
 let moveLeft = false
 let moveRight = false
 
-/**
- * Create Monsters
- */ 
-// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
-const kelbi1 = new Monster(
-    '/models/kelbi/glTF-Binary/Kelbi1.glb',
-    /*name*/ kelbi1,
-    /*posX*/ - 90,
-    /*posY*/ 2,
-    /*posZ*/ - 337,5,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(kelbi1.group)
-
 
 /**
  * Controls
@@ -183,13 +168,17 @@ document.addEventListener ('keyup', onKeyUp)
 /**
  * Create Monsters
  */ 
-// const kelbi1 = new Monster('/models/kelbi/glTF-Binary/Kelbi1.glb')
-// kelbi1.group.position.set(- 90, 2, - 350)
-// scene.add(kelbi1.group)
-
-// const diablos = new Monster('/models/diablos/glTF-Binary/Diablos.glb')
-// diablos.group.position.set(0, 4, - 35)
-// scene.add(diablos.group)
+// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
+const kelbi1 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi1.glb',
+    /*name*/ kelbi1,
+    /*posX*/ - 90,
+    /*posY*/ 5.7,
+    /*posZ*/ - 337,5,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.1),
+)
+scene.add(kelbi1.group)
 
 
 /**
@@ -200,8 +189,6 @@ document.addEventListener ('keyup', onKeyUp)
 //Groups
 const museum = new THREE.Group()
 scene.add(museum)
-
-museum.position.set(0, 0, 0)
 
 const firstRoom = new THREE.Group()
 scene.add(firstRoom)
@@ -419,7 +406,7 @@ const stagetest3 = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
-    })&
+    })
 )
 stagetest3.position.set(90, 0.51, - 368.75)
 thirdRoom.add(stagetest3)
