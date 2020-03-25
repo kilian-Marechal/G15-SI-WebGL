@@ -27,6 +27,8 @@ stoneBrickTexture.wrapS = THREE.RepeatWrapping
 stoneBrickTexture.wrapT = THREE.RepeatWrapping
 
 const plasterTexture = textureLoader.load(plasterSource)
+plasterTexture.repeat.x = 10
+plasterTexture.repeat.y = 10
 plasterTexture.wrapS = THREE.RepeatWrapping
 plasterTexture.wrapT = THREE.RepeatWrapping
 
@@ -357,8 +359,53 @@ const stageKelbi = new THREE.Mesh(
         map: plasterTexture
     })
 )
-stageKelbi.position.set(- 90, 0.51, - 350)
+stageKelbi.position.set(- 90, 0.51, - 337,5)
 thirdRoom.add(stageKelbi)
+
+const stageNiznouz = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageNiznouz.position.set(- 90, 0.51, - 306,25)
+thirdRoom.add(stageNiznouz)
+
+const stageNiznaz = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageNiznaz.position.set(- 90, 0.51, - 368,75)
+thirdRoom.add(stageNiznaz)
+
+const stagetest = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest.position.set(90, 0.51, - 337.5)
+thirdRoom.add(stagetest)
+
+const stagetest2 = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest2.position.set(90, 0.51, - 306.25)
+thirdRoom.add(stagetest2)
+
+const stagetest3 = new THREE.Mesh(
+    new THREE.BoxGeometry(2, 1, 2, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagetest3.position.set(90, 0.51, - 368.75)
+thirdRoom.add(stagetest3)
 
 const aquarium = new THREE.Mesh(
     new THREE.CylinderGeometry(20, 20, 45, 20),
