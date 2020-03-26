@@ -79,7 +79,17 @@ module.exports = {
                         options: { outputPath: 'audio/' }
                     }
                 ]
-            }
+            },
+            {
+                test: /\.(otf|ttf)$/,
+                use:
+                [
+                    {
+                        loader: 'file-loader',
+                        options: { outputPath: 'fonts/' }
+                    }
+                ]
+            },
         ]
     }
 }
