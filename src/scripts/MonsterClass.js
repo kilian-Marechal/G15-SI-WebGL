@@ -25,10 +25,13 @@ export default class Monster
                 while(_gltf.scene.children.length)
                 {
                     this.child = _gltf.scene.children[0]
-                    this.child.position.set(_posX, _posY, _posZ)
-                    this.child.scale.set(_scale, _scale, _scale)
-                    this.child.rotation.y = _rotation
-                    this.group.add(this.child)
+                    this.child.position.set(_posX, _posY, _posZ)// Model's position
+                    this.child.scale.set(_scale, _scale, _scale)// Model 's scale
+                    this.child.rotation.y = _rotation// Model's rotation
+                    this.child.material = new THREE.MeshLambertMaterial({
+                        map: this.child.material.map
+                    })
+                    this.group.add(this.child)// Add the created model to the group
                 }
             }
         )
