@@ -90,9 +90,8 @@ let moveRight = false
 /**
  * Create Monsters
  */ 
-// To create : new Monster('_path', _posX, _posY, _posZ, _scale, _rotation)
 const diablos = new Monster(
-    '/models/diablos/glTF-Binary/Diablos.glb',
+    /*Path*/'/models/diablos/glTF-Binary/Diablos.glb',
     /*posX*/ - 40,
     /*posY*/ 20,
     /*posZ*/ - 85,
