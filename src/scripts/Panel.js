@@ -46,6 +46,6 @@ export default class Panel
                 this.group.add(baseElementPanel)
                 this.group.add(mainElementPanel)
                 this.group.add(boardElementPanel)
-            }
+        }
     }
 }

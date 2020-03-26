@@ -10,6 +10,7 @@ import audioMonsterHunter from './audio/MH-ost-min.mp3'
 import imageMap from './images/map.jpg'
 import importFelyne from './images/felyne.gif'
 import importLogo from './images/logo.png'
+import { MeshNormalMaterial } from 'three'
 
 const placeholderLogo = document.querySelector('.emblem')
 const imageLogo = new Image()
@@ -325,28 +326,33 @@ scene.add(controls.getObject())
 /**
  * Controls KeysDown
  */
-
+let cameraPositionX = camera.position.x
+let cameraPositionZ = camera.position.z
 
 const onKeyDown = ( _event ) => {
     if (_event.key === 'z' || _event.code === 'ArrowUp')
     {
         moveForward = true
-        // controls.lock()
+        cameraPositionX = camera.position.x
+        cameraPositionZ = camera.position.z
     }
     if (_event.key === 's' || _event.code === 'ArrowDown')
     {
         moveBackward = true
-        // controls.lock()
+        cameraPositionX = camera.position.x
+        cameraPositionZ = camera.position.z
     }
     if (_event.key === 'q' || _event.code === 'ArrowLeft')
     {
         moveLeft = true
-        // controls.lock()
+        cameraPositionX = camera.position.x
+        cameraPositionZ = camera.position.z
     }
     if (_event.key === 'd' || _event.code === 'ArrowRight')
     {
         moveRight = true
-        // controls.lock()
+        cameraPositionX = camera.position.x
+        cameraPositionZ = camera.position.z
     }
     if (_event.key === ' ' || _event.code === 'space')
     {
@@ -635,7 +641,7 @@ const aquarium = new THREE.Mesh(
     new THREE.MeshPhongMaterial({
         color: 0x4a69bd,
         transparent: true,
-        opacity: 0.7,
+        opacity: 0.45,
         shininess: 70,
         side: THREE.DoubleSide
     })
@@ -706,7 +712,7 @@ const audioFirstRoom = new THREE.Mesh(
     })
 )
 audioFirstRoom.position.set(0, 55, - 25)
-// audioFirstRoom.visible = false
+audioFirstRoom.visible = false
 scene.add(audioFirstRoom)
 
 audioFirstRoom.add(sound)
@@ -731,7 +737,7 @@ const audioSecondRoom = new THREE.Mesh(
     })
 )
 audioSecondRoom.position.set(0, 55, - 200)
-// audioSecondRoom.visible = false
+audioSecondRoom.visible = false
 scene.add(audioSecondRoom)
 
 audioSecondRoom.add(soundSecond)
@@ -758,7 +764,7 @@ const audioThirdRoom = new THREE.Mesh(
     })
 )
 audioThirdRoom.position.set(0, 55, - 350)
-// audioThirdRoom.visible = false
+audioThirdRoom.visible = false
 scene.add(audioThirdRoom)
 
 audioThirdRoom.add(soundThird)
@@ -783,14 +789,28 @@ renderer.gammaFactor = 2.2
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.12)
 scene.add(ambientLight)
 
+// First Room
 const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
+const firstLampFirstRoom = new THREE.SpotLight(0xc2822f, 1, 100, 100, 0)
+// firstLampFirstRoom.rotation.y = Math.PI * 1
+// firstLampFirstRoom.target = diablos
+firstLampFirstRoom.position.set(- 92, 6, - 70)
+scene.add(firstLampFirstRoom)
+
+const spotLightHelper = new THREE.SpotLightHelper( firstLampFirstRoom )
+scene.add(spotLightHelper)
+
+
+// Second Room
 const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightSecondRoom.position.set(5, 60, - 200)
 scene.add(pointLightSecondRoom)
 
+
+// Third Room
 const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightThirdRoom.position.set(5, 60, - 335)
 scene.add(pointLightThirdRoom)
@@ -818,6 +838,14 @@ document.addEventListener('click', () => {
 /**
  * Intercations
  */
+const hitbox = new THREE.Mesh(
+    new THREE.BoxGeometry(4, 1, 8),
+    new THREE.MeshNormalMaterial
+)
+hitbox.position.set(- 40, 0.5, - 48)
+scene.add(hitbox)
+
+console.log(hitbox.position.z)
 
 
 /**
