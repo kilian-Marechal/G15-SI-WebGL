@@ -271,6 +271,25 @@ const delex = new Monster(
 )
 scene.add(delex.group)
 
+const altaroth = new Monster(
+    '/models/altaroth/glTF-Binary/Altaroth.glb',
+    /*posX*/ 89,
+    /*posY*/ 4.8,
+    /*posZ*/ - 337.5,
+    /*scale*/ 3,
+    /*rotation*/ (Math.PI),
+)
+scene.add(altaroth.group)
+
+const bnahabra = new Monster(
+    '/models/bnahabra/glTF-Binary/Bnahabra.glb',
+    /*posX*/ 89,
+    /*posY*/ 5,
+    /*posZ*/ - 368.5,
+    /*scale*/ 2.5,
+    /*rotation*/ (Math.PI),
+)
+scene.add(bnahabra.group)
 
 /**
  * Controls
