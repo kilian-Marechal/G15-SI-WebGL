@@ -9,6 +9,24 @@ import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneM
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
 import plasterSource from './images/Plaster_001_SD/Plaster_001_COLOR.jpg'
 import audioMonsterHunter from './audio/MH-ost-min.mp3'
+import imageMap from './images/map.jpg'
+import importFelyne from './images/felyne.gif'
+import importLogo from './images/logo.png'
+
+const placeholderLogo = document.querySelector('.emblem')
+const imageLogo = new Image()
+imageLogo.src = importLogo
+placeholderLogo.appendChild(imageLogo)
+
+const placeholderFelyne = document.querySelector('.felyne')
+const imageFelyne = new Image()
+imageFelyne.src = importFelyne
+placeholderFelyne.appendChild(imageFelyne)
+
+const placeholderImage = document.querySelector('.background')
+const $image = new Image()
+$image.src = imageMap
+placeholderImage.appendChild($image)
 
 
 /**
@@ -23,6 +41,7 @@ marbleGroundTexture.repeat.x = 15
 marbleGroundTexture.repeat.y = 15
 marbleGroundTexture.wrapS = THREE.RepeatWrapping
 marbleGroundTexture.wrapT = THREE.RepeatWrapping
+marbleGroundTexture.magFilter = THREE.NearestFilter
 
 const stoneBrickTexture = textureLoader.load(stoneBrickSource)
 stoneBrickTexture.repeat.x = 15
@@ -281,7 +300,7 @@ const delex = new Monster(
 const altaroth = new Monster(
     '/models/altaroth/glTF-Binary/Altaroth.glb',
     /*posX*/ 89,
-    /*posY*/ 4.8,
+    /*posY*/ 4.7,
     /*posZ*/ - 337.5,
     /*scale*/ 3,
     /*rotation*/ (Math.PI),
@@ -291,7 +310,7 @@ const altaroth = new Monster(
 const bnahabra = new Monster(
     '/models/bnahabra/glTF-Binary/Bnahabra.glb',
     /*posX*/ 89,
-    /*posY*/ 5,
+    /*posY*/ 4,
     /*posZ*/ - 368.5,
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI),
@@ -303,7 +322,7 @@ const bnahabra = new Monster(
  */
 
 
-controls = new PointerLockControls (camera, document.body)
+let controls = new PointerLockControls (camera, document.body)
 let prevTime = performance.now()
 let velocity = new THREE.Vector3()
 let clock = new THREE.Clock()
@@ -320,22 +339,22 @@ const onKeyDown = ( _event ) => {
     if (_event.key === 'z' || _event.code === 'ArrowUp')
     {
         moveForward = true
-        controls.lock()
+        // controls.lock()
     }
     if (_event.key === 's' || _event.code === 'ArrowDown')
     {
         moveBackward = true
-        controls.lock()
+        // controls.lock()
     }
     if (_event.key === 'q' || _event.code === 'ArrowLeft')
     {
         moveLeft = true
-        controls.lock()
+        // controls.lock()
     }
     if (_event.key === 'd' || _event.code === 'ArrowRight')
     {
         moveRight = true
-        controls.lock()
+        // controls.lock()
     }
     if (_event.key === ' ' || _event.code === 'space')
     {
@@ -754,6 +773,7 @@ scene.add(audioFirstRoom)
 
 audioFirstRoom.add(sound)
 
+// Second
 
 const soundSecond = new THREE.PositionalAudio(listener)
 
@@ -775,6 +795,9 @@ audioSecondRoom.position.set(0, 55, - 200)
 scene.add(audioSecondRoom)
 
 audioSecondRoom.add(soundSecond)
+
+
+// Third
 
 
 const soundThird = new THREE.PositionalAudio(listener)
@@ -832,12 +855,27 @@ scene.add(pointLightThirdRoom)
 
 
 /**
- * Control Camera
+ * HTML Page
  */
+const blocker = document.querySelector('.blocker')
+const instructions = document.querySelector('.instructions')
 
+controls.addEventListener('lock', () => {
+    blocker.style.display = 'block'
+})
 
-let controls = new PointerLockControls(camera, document.body)
-scene.add(controls.getObject())
+controls.addEventListener('unlock', () => {
+    instructions.style.display = 'none'
+})
+
+document.addEventListener('click', () => {
+    controls.lock()
+    instructions.style.display = 'none'
+})
+
+/**
+ * Intercations
+ */
 
 
 /**

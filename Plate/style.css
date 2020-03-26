@@ -1,0 +1,279 @@
+html,
+body
+{
+    height: 100%;
+    margin: 0;
+}
+
+body
+{
+    background-color: #fff;
+    font-family: 'LazyMorning';
+    font-weight: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+@font-face
+{
+    font-family: 'LazyMorning';
+    src:
+      url('fonts/LazyMorning.otf')
+      format('opentype');
+}
+  
+  @font-face
+  {
+    font-family: 'WOODCUTTER';
+    src:
+      url('fonts/WOODCUTTER.ttf')
+      format('truetype');
+}
+
+.container
+{
+    position: absolute;
+    width: 70%;
+    height: 80%;
+    background: rgba(0, 0, 0, 0.75);
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.content
+{
+    margin-left: 2%;
+    margin-top: 4%;
+    font-family: LazyMorning;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 30px;
+    line-height: 49px;
+    text-align: center;
+    color: #FFFFFF;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.logo img
+{
+    width: 70px;
+    height: auto;
+    margin-left: -20px;
+}
+
+.logo
+{
+    width: 100%;
+    left: 45px;
+    top: 20px;
+    position: absolute ;
+}
+
+h1
+{
+    font-family: WOODCUTTER;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 35px;
+    color: #FFFFFF;
+    margin-top: -78px;
+    margin-left: 60px;
+
+}
+
+h2
+{
+    font-family: WOODCUTTER;
+    font-style: normal;
+    font-size: 43px;
+    color: #FFFFFF;
+}
+
+h3
+{
+    font-weight: normal;
+    font-size: 40px;
+    margin-left: 20px;
+}
+
+.felyne img
+{
+    width:130px;
+    height: auto;
+    right: 50px;
+    bottom: 50px;
+    position: absolute ;
+}
+
+.map
+{
+    width:10%;
+    height: 35px;
+    font-size: 25px;
+    font-family: WOODCUTTER;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px #fff;
+    display: flex;
+    justify-content: center;
+    line-height: 38px;
+    left: 50px;
+    bottom: 50px;
+    position: absolute ;
+    color: #FFFFFF;
+    margin-left: 0.7%;
+    cursor: pointer;
+}
+
+
+.description, .visual
+{
+    width: 45%;
+    height: 100%;
+}
+
+.name
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10%;
+}
+
+.name img
+{
+    width: 85px;
+    height: 81px;
+}
+
+.categories
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;
+}
+
+.physiology, .capacities, .behavior, .habitat
+{
+    width:22%;
+    height: 35px;
+    font-size: 25px;
+    font-family: WOODCUTTER;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px #fff;
+    display: flex;
+    justify-content: center;
+    line-height: 38px;
+    cursor: pointer;
+}
+
+.physiology:hover,
+.capacities:hover,
+.behavior:hover,
+.habitat:hover,
+.map:hover,
+.more:hover
+{
+    transition: 0.3s cubic-bezier(0, 1.2, .2, 1.5);
+    transform: scale(1.05, 1.05);
+}
+
+.physiology:active,
+.capacities:active,
+.behavior:active,
+.habitat:active,
+.map:active,
+.more:active
+{
+    transition: 0.3s cubic-bezier(0, 1.2, .2, 1.5);
+    transform: scale(0.95, 0.95);
+    background-color: #fff;
+    color: #000;
+}
+
+.physiology
+{
+    background-color: #fff;
+    color: #000;
+}
+
+p
+{
+    text-align: left;
+    letter-spacing: 1px;
+}
+
+
+.visual img
+{
+    width: 100%;
+    height: auto;
+    right: 0;
+}
+
+.visual
+{
+    display: flex;
+    align-items: center;
+}
+
+.more
+{
+    width:22%;
+    height: 35px;
+    font-size: 25px;
+    font-family: WOODCUTTER;
+    text-align: center;
+    border-radius: 50px;
+    box-shadow: 0 0 0 3px #fff;
+    display: flex;
+    justify-content: center;
+    line-height: 38px;
+}
+
+.mapImage
+{
+    width: 100%;
+    height: 100%;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    position: absolute;
+    transform: translateX(100%);
+    display: none;
+}
+
+.mapImage.show
+{
+    display: block;
+    animation: mapSlideIn 1s forwards ease-in-out;
+}
+
+.mapImage.hide
+{
+    display: block;
+    animation: mapSlideOut 1s forwards ease-in-out;
+}
+
+@keyframes mapSlideIn
+{
+    0% {transform:translateX(100%);}
+
+    100% {transform:translateX(0%);}
+}
+
+@keyframes mapSlideOut
+{
+    0% {transform:translateX(0%);}
+
+    100% {transform:translateX(100%);}
+}
