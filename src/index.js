@@ -75,7 +75,7 @@ const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 500)
 camera.lookAt(scene.position)
-camera.position.set(0, 4, - 5)
+camera.position.set(- 40, 5, - 5)
 scene.add(camera)
 
 
@@ -96,17 +96,17 @@ const diablos = new Monster(
     /*posX*/ - 40,
     /*posY*/ 20,
     /*posZ*/ - 85,
-    /*scale*/ 3.9,
+    /*scale*/ 4,
     /*rotation*/ (Math.PI * 1.5),
 )
 scene.add(diablos.group)
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
-    /*posX*/ 57,
+    /*posX*/ 56.5,
     /*posY*/ 20,
     /*posZ*/ - 60,
-    /*scale*/ 3.9,
+    /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
 scene.add(rathalos.group)
@@ -180,26 +180,6 @@ const agnaktor = new Monster(
     /*rotation*/ (Math.PI * 1.75),
 )
 scene.add(agnaktor.group)
-
-const popo = new Monster(
-    '/models/popo/glTF-Binary/Popo.glb',
-    /*posX*/ 87,
-    /*posY*/ 12,
-    /*posZ*/ - 306,
-    /*scale*/ 4,
-    /*rotation*/ (Math.PI * 1),
-)
-scene.add(popo.group)
-
-const uragaan = new Monster(
-    '/models/uragaan/glTF-Binary/Uragaan.glb',
-    /*posX*/ 0,
-    /*posY*/ 100,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(uragaan.group)
 
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
@@ -711,19 +691,19 @@ audioSecondRoom.add(soundSecond)
  */
 
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.1)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.12)
 scene.add(ambientLight)
 
-const pointLightFirstRoom = new THREE.PointLight(0xffffff, 0.7, 150)
-pointLightFirstRoom.position.set(5, 50, - 65)
+const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
-const pointLightSecondRoom = new THREE.PointLight(0xffffff, 0.7, 150)
-pointLightSecondRoom.position.set(5, 50, - 200)
+const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+pointLightSecondRoom.position.set(5, 60, - 200)
 scene.add(pointLightSecondRoom)
 
-const pointLightThirdRoom = new THREE.PointLight(0xffffff, 0.7, 150)
-pointLightThirdRoom.position.set(5, 50, - 335)
+const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+pointLightThirdRoom.position.set(5, 60, - 335)
 scene.add(pointLightThirdRoom)
 
 
