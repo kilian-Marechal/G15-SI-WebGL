@@ -190,6 +190,85 @@ const uragaan = new Monster(
 )
 scene.add(uragaan.group)
 
+const fish1 = new Monster(
+    '/models/fish/glTF-Binary/Fish1.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish1.group)
+
+const fish2 = new Monster(
+    '/models/fish/glTF-Binary/Fish2.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish2.group)
+
+const fish3 = new Monster(
+    '/models/fish/glTF-Binary/Fish3.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish3.group)
+
+const fish4 = new Monster(
+    '/models/fish/glTF-Binary/Fish4.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish4.group)
+
+const fish5 = new Monster(
+    '/models/fish/glTF-Binary/Fish5.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish5.group)
+
+const fish6 = new Monster(
+    '/models/fish/glTF-Binary/Fish6.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish6.group)
+
+const giggi = new Monster(
+    '/models/giggi/glTF-Binary/Giggi.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(giggi.group)
+
+const delex = new Monster(
+    '/models/delex/glTF-Binary/Delex.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(delex.group)
 
 
 /**
@@ -268,22 +347,6 @@ const onKeyUp = ( _event ) => {
 
 document.addEventListener ('keydown', onKeyDown)
 document.addEventListener ('keyup', onKeyUp)
-
-
-/**
- * Create Monsters
- */ 
-// To create : new Monster('_path', _name, _posX, _posY, _posZ, _scale, _rotation, _centerX, _centerY)
-const kelbi1 = new Monster(
-    '/models/kelbi/glTF-Binary/Kelbi1.glb',
-    /*name*/ kelbi1,
-    /*posX*/ - 90,
-    /*posY*/ 5.7,
-    /*posZ*/ - 337,5,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.1),
-)
-scene.add(kelbi1.group)
 
 
 /**
