@@ -1,6 +1,7 @@
 import './style/main.styl'
 import * as THREE from 'three'
 import Monster from './scripts/MonsterClass.js'
+import Panel from './scripts/Panel.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
@@ -31,7 +32,6 @@ plasterTexture.repeat.x = 10
 plasterTexture.repeat.y = 10
 plasterTexture.wrapS = THREE.RepeatWrapping
 plasterTexture.wrapT = THREE.RepeatWrapping
-
 
 /**
  * Sizes
@@ -90,93 +90,103 @@ let moveRight = false
  * Create Monsters
  */ 
 // To create : new Monster('_path', _posX, _posY, _posZ, _scale, _rotation)
-const kelbi1 = new Monster(
-    '/models/kelbi/glTF-Binary/Kelbi1.glb',
-    /*posX*/ - 90,
-    /*posY*/ 2,
-    /*posZ*/ - 350,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(kelbi1.group)
-
-const kelbi2 = new Monster(
-    '/models/kelbi/glTF-Binary/Kelbi2.glb',
-    /*posX*/ - 90,
-    /*posY*/ 2,
-    /*posZ*/ - 320,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(kelbi2.group)
-
-const agnaktor = new Monster(
-    '/models/agnaktor/glTF-Binary/Agnaktor.glb',
-    /*posX*/ 0,
-    /*posY*/ 50,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(agnaktor.group)
-
-const baggi = new Monster(
-    '/models/baggi/glTF-Binary/Baggi.glb',
-    /*posX*/ 0,
-    /*posY*/ 40,
-    /*posZ*/ - 50,
-    /*scale*/ 20,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(baggi.group)
-
-const barroth = new Monster(
-    '/models/barroth/glTF-Binary/Barroth.glb',
-    /*posX*/ 0,
-    /*posY*/ 40,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(barroth.group)
-
-const deviljho = new Monster(
-    '/models/deviljho/glTF-Binary/Deviljho.glb',
-    /*posX*/ 0,
-    /*posY*/ 30,
-    /*posZ*/ - 50,
-    /*scale*/ 5,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(deviljho.group)
-
 const diablos = new Monster(
     '/models/diablos/glTF-Binary/Diablos.glb',
-    /*posX*/ 0,
-    /*posY*/ 60,
-    /*posZ*/ - 50,
-    /*scale*/ 5,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ - 40,
+    /*posY*/ 20,
+    /*posZ*/ - 85,
+    /*scale*/ 3.9,
+    /*rotation*/ (Math.PI * 1.5),
 )
 scene.add(diablos.group)
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
-    /*posX*/ 0,
-    /*posY*/ 80,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 57,
+    /*posY*/ 20,
+    /*posZ*/ - 60,
+    /*scale*/ 3.9,
+    /*rotation*/ (Math.PI * 1),
 )
 scene.add(rathalos.group)
 
+const deviljho = new Monster(
+    '/models/deviljho/glTF-Binary/Deviljho.glb',
+    /*posX*/ - 27,
+    /*posY*/ 40,
+    /*posZ*/ - 157,
+    /*scale*/ 7,
+    /*rotation*/ (Math.PI * 2),
+)
+scene.add(deviljho.group)
+
+const barroth = new Monster(
+    '/models/barroth/glTF-Binary/Barroth.glb',
+    /*posX*/ - 33,
+    /*posY*/ 28,
+    /*posZ*/ - 245,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 2),
+)
+scene.add(barroth.group)
+
+const uragaan = new Monster(
+    '/models/uragaan/glTF-Binary/Uragaan.glb',
+    /*posX*/ 70,
+    /*posY*/ 28,
+    /*posZ*/ - 210,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(uragaan.group)
+
+const kelbi2 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi2.glb',
+    /*posX*/ - 90,
+    /*posY*/ 4.8,
+    /*posZ*/ - 306,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 2),
+)
+scene.add(kelbi2.group)
+
+const baggi = new Monster(
+    '/models/baggi/glTF-Binary/Baggi.glb',
+    /*posX*/ - 90,
+    /*posY*/ 7,
+    /*posZ*/ - 337,
+    /*scale*/ 5,
+    /*rotation*/ (Math.PI * 2),
+)
+scene.add(baggi.group)
+
+const kelbi1 = new Monster(
+    '/models/kelbi/glTF-Binary/Kelbi1.glb',
+    /*posX*/ - 90,
+    /*posY*/ 4.8,
+    /*posZ*/ - 368,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 2),
+)
+scene.add(kelbi1.group)
+
+const agnaktor = new Monster(
+    '/models/agnaktor/glTF-Binary/Agnaktor.glb',
+    /*posX*/ 5,
+    /*posY*/ 20,
+    /*posZ*/ - 343,
+    /*scale*/ 2.8,
+    /*rotation*/ (Math.PI * 1.75),
+)
+scene.add(agnaktor.group)
+
 const popo = new Monster(
     '/models/popo/glTF-Binary/Popo.glb',
-    /*posX*/ 0,
-    /*posY*/ 90,
-    /*posZ*/ - 50,
-    /*scale*/ 10,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 87,
+    /*posY*/ 12,
+    /*posZ*/ - 306,
+    /*scale*/ 4,
+    /*rotation*/ (Math.PI * 1),
 )
 scene.add(popo.group)
 
@@ -358,15 +368,6 @@ document.addEventListener ('keyup', onKeyUp)
 const museum = new THREE.Group()
 scene.add(museum)
 
-const firstRoom = new THREE.Group()
-scene.add(firstRoom)
-
-const secondRoom = new THREE.Group()
-scene.add(secondRoom)
-
-const thirdRoom = new THREE.Group()
-scene.add(thirdRoom)
-
 // Ground
 const ground = new THREE.Mesh(
     new THREE.PlaneGeometry(200, 400, 1, 1),
@@ -435,7 +436,6 @@ wallBackward.position.set(0, 30, 0)
 
 museum.add(wallBackward)
 
-
 // Room 1
 const wallLeftFirstRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(120, 60, 1, 1),
@@ -445,7 +445,7 @@ const wallLeftFirstRoom = new THREE.Mesh(
     })
 )
 wallLeftFirstRoom.position.set(- 40, 30, - 125)
-firstRoom.add(wallLeftFirstRoom)
+scene.add(wallLeftFirstRoom)
 
 const wallRightFirstRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 60, 1, 1),
@@ -455,25 +455,33 @@ const wallRightFirstRoom = new THREE.Mesh(
     })
 )
 wallRightFirstRoom.position.set(70, 30, - 125)
-firstRoom.add(wallRightFirstRoom)
+scene.add(wallRightFirstRoom)
 
-const stageMonster1 = new THREE.Mesh(
+const stageDiablo = new THREE.Mesh(
     new THREE.BoxGeometry(90, 1, 35),
     new THREE.MeshLambertMaterial({
         map: plasterTexture,
     })
 )
-stageMonster1.position.set(- 40, 0.51, - 94)
-firstRoom.add(stageMonster1)
+stageDiablo.position.set(- 40, 0.51, - 94)
+scene.add(stageDiablo)
 
-const stageMonster2 = new THREE.Mesh(
+const stageRathalos = new THREE.Mesh(
     new THREE.BoxGeometry(35, 1, 100),
     new THREE.MeshStandardMaterial({
         map: plasterTexture,
     })
 )
-stageMonster2.position.set(68, 0.51, - 62),
-firstRoom.add(stageMonster2)
+stageRathalos.position.set(68, 0.51, - 62),
+scene.add(stageRathalos)
+
+const panelDiablo = new Panel()
+scene.add(panelDiablo.group)
+
+const panelRathalos = new Panel()
+panelRathalos.group.position.set(- 20, 0, - 20)
+panelRathalos.group.rotation.y = Math.PI * 1.5
+scene.add(panelRathalos.group)
 
 // Room 2
 const wallLeftSecondRoom = new THREE.Mesh(
@@ -484,7 +492,7 @@ const wallLeftSecondRoom = new THREE.Mesh(
     })
 )
 wallLeftSecondRoom.position.set(- 40, 30, - 275)
-secondRoom.add(wallLeftSecondRoom)
+scene.add(wallLeftSecondRoom)
 
 const wallRightSecondRoom = new THREE.Mesh(
     new THREE.PlaneGeometry(60, 60, 1, 1),
@@ -494,36 +502,69 @@ const wallRightSecondRoom = new THREE.Mesh(
     })
 )
 wallRightSecondRoom.position.set(70, 30, - 275)
-secondRoom.add(wallRightSecondRoom)
+scene.add(wallRightSecondRoom)
 
-const stageMonster3 = new THREE.Mesh(
+const stageUragaan = new THREE.Mesh(
     new THREE.BoxGeometry(90, 1, 35),
     new THREE.MeshStandardMaterial({
         map: plasterTexture,
     })
 )
-stageMonster3.position.set(- 40, 0.51, - 158)
-secondRoom.add(stageMonster3)
+stageUragaan.position.set(- 40, 0.51, - 158)
+scene.add(stageUragaan)
 
-const stageMonster4 = new THREE.Mesh(
+const stageBarroth = new THREE.Mesh(
     new THREE.BoxGeometry(90, 1, 35),
     new THREE.MeshStandardMaterial({
         map: plasterTexture,
     })
 )
-stageMonster4.position.set(- 40, 0.51, - 246)
-secondRoom.add(stageMonster4)
+stageBarroth.position.set(- 40, 0.51, - 246)
+scene.add(stageBarroth)
 
-const stageMonster5 = new THREE.Mesh(
+const stageDeviljho = new THREE.Mesh(
     new THREE.BoxGeometry(35, 1, 100),
     new THREE.MeshStandardMaterial({
         map: plasterTexture,
     })
 )
-stageMonster5.position.set(68, 0.51, - 202),
-secondRoom.add(stageMonster5)
+stageDeviljho.position.set(68, 0.51, - 202),
+scene.add(stageDeviljho)
+
+const panelUgaraan = new Panel()
+panelUgaraan.group.position.set(- 20, 0, - 160)
+panelUgaraan.group.rotation.y = Math.PI * 1.5
+scene.add(panelUgaraan.group)
+
+const panelDeviljho = new Panel()
+panelDeviljho.group.position.set(- 75, 0, - 240)
+panelDeviljho.group.rotation.y = Math.PI * 1
+scene.add(panelDeviljho.group)
+
+const panelBarroth = new Panel()
+panelBarroth.group.position.set(5, 0, - 160)
+panelBarroth.group.rotation.y = Math.PI * 2
+scene.add(panelBarroth.group)
+
 
 // Room 3
+const stageKelbil2 = new THREE.Mesh(
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stageKelbil2.position.set(- 90, 0.51, - 306,25)
+scene.add(stageKelbil2)
+
+const stagebaggi = new THREE.Mesh(
+    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+    new THREE.MeshStandardMaterial({
+        map: plasterTexture
+    })
+)
+stagebaggi.position.set(- 90, 0.51, - 337,5)
+scene.add(stagebaggi)
 
 const stageKelbi = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
@@ -531,26 +572,17 @@ const stageKelbi = new THREE.Mesh(
         map: plasterTexture
     })
 )
-stageKelbi.position.set(- 90, 0.51, - 337,5)
-thirdRoom.add(stageKelbi)
+stageKelbi.position.set(- 90, 0.51, - 368,75)
+scene.add(stageKelbi)
 
-const stageNiznouz = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
+const stagePopo = new THREE.Mesh(
+    new THREE.BoxGeometry(14, 1, 15, 1, 1, 1),
     new THREE.MeshStandardMaterial({
         map: plasterTexture
     })
 )
-stageNiznouz.position.set(- 90, 0.51, - 306,25)
-thirdRoom.add(stageNiznouz)
-
-const stageNiznaz = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
-)
-stageNiznaz.position.set(- 90, 0.51, - 368,75)
-thirdRoom.add(stageNiznaz)
+stagePopo.position.set(88, 0.51, - 306.25)
+scene.add(stagePopo)
 
 const stagetest = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
@@ -559,7 +591,7 @@ const stagetest = new THREE.Mesh(
     })
 )
 stagetest.position.set(90, 0.51, - 337.5)
-thirdRoom.add(stagetest)
+scene.add(stagetest)
 
 const stagetest2 = new THREE.Mesh(
     new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
@@ -567,29 +599,85 @@ const stagetest2 = new THREE.Mesh(
         map: plasterTexture
     })
 )
-stagetest2.position.set(90, 0.51, - 306.25)
-thirdRoom.add(stagetest2)
-
-const stagetest3 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
-)
-stagetest3.position.set(90, 0.51, - 368.75)
-thirdRoom.add(stagetest3)
+stagetest2.position.set(90, 0.51, - 368.75)
+scene.add(stagetest2)
 
 const aquarium = new THREE.Mesh(
-    new THREE.CylinderGeometry(20, 20, 45, 20),
-    new THREE.MeshBasicMaterial({
-        color: 0x0000FF,
+    new THREE.CylinderGeometry(40, 40, 50, 20),
+    new THREE.MeshPhongMaterial({
+        color: 0x4a69bd,
         transparent: true,
-        opacity: 0.3,
+        opacity: 0.7,
+        shininess: 70,
         side: THREE.DoubleSide
     })
 )
-aquarium.position.set(0, 22.51, - 340)
-thirdRoom.add(aquarium)
+aquarium.position.set(0, 25.01, - 350)
+scene.add(aquarium)
+
+const panelAgnaktor = new Panel()
+panelAgnaktor.group.position.set(40, 0, - 245)
+panelAgnaktor.group.rotation.y = Math.PI * 2
+scene.add(panelAgnaktor.group)
+
+const panelPopo = new Panel()
+panelPopo.group.position.set(10, 0, - 266)
+panelPopo.group.rotation.y = Math.PI * 1.5
+scene.add(panelPopo.group)
+
+const panelTest = new Panel()
+panelTest.group.position.set(10, 0, - 297)
+panelTest.group.rotation.y = Math.PI * 1.5
+scene.add(panelTest.group)
+
+const panelTest2 = new Panel()
+panelTest2.group.position.set(10, 0, - 329)
+panelTest2.group.rotation.y = Math.PI * 1.5
+scene.add(panelTest2.group)
+
+const panelKelbi = new Panel()
+panelKelbi.group.position.set(- 18, 0, - 408)
+panelKelbi.group.rotation.y = Math.PI * 0.5
+scene.add(panelKelbi.group)
+
+const panelBaggi = new Panel()
+panelBaggi.group.position.set(- 18, 0, - 377)
+panelBaggi.group.rotation.y = Math.PI * 0.5
+scene.add(panelBaggi.group)
+
+const panelKelbi2 = new Panel()
+panelKelbi2.group.position.set(- 18, 0, - 346)
+panelKelbi2.group.rotation.y = Math.PI * 0.5
+scene.add(panelKelbi2.group)
+
+/**
+ * Audio
+ */
+
+// const audioSound = new Audio('./audio/MH-ost-min.mp3')
+
+// const listener = new THREE.AudioListener()
+// scene.add(listener)
+
+// const sound = new THREE.PositionalAudio(listener)
+
+// const audioLoader = new THREE.AudioLoader()
+// audioLoader.load(audioSound, (buffer) => {
+//     sound.setBuffer(buffer),
+//     sound.setRefDistance(10),
+//     sound.play()
+// })
+
+// const audioObject = new THREE.Mesh(
+//     new THREE.SphereBufferGeometry(20, 32, 16),
+//     new THREE.MeshNormalMaterial({
+//         color: 0xFF0000
+//     })
+// )
+// audioObject.position.y = 10
+// scene.add(audioObject)
+
+// audioObject.add(sound)
 
 /**
  * Lights
@@ -601,15 +689,15 @@ scene.add(ambientLight)
 
 const pointLightFirstRoom = new THREE.PointLight(0xffffff, 0.7, 150)
 pointLightFirstRoom.position.set(5, 50, - 65)
-firstRoom.add(pointLightFirstRoom)
+scene.add(pointLightFirstRoom)
 
 const pointLightSecondRoom = new THREE.PointLight(0xffffff, 0.7, 150)
 pointLightSecondRoom.position.set(5, 50, - 200)
-secondRoom.add(pointLightSecondRoom)
+scene.add(pointLightSecondRoom)
 
 const pointLightThirdRoom = new THREE.PointLight(0xffffff, 0.7, 150)
 pointLightThirdRoom.position.set(5, 50, - 335)
-thirdRoom.add(pointLightThirdRoom)
+scene.add(pointLightThirdRoom)
 
 
 /**
