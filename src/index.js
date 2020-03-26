@@ -190,16 +190,6 @@ const popo = new Monster(
 )
 scene.add(popo.group)
 
-const uragaan = new Monster(
-    '/models/uragaan/glTF-Binary/Uragaan.glb',
-    /*posX*/ 0,
-    /*posY*/ 100,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
-)
-scene.add(uragaan.group)
-
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
     /*posX*/ 0,
