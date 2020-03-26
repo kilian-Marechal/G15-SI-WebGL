@@ -133,7 +133,7 @@ scene.add(barroth.group)
 const uragaan = new Monster(
     '/models/uragaan/glTF-Binary/Uragaan.glb',
     /*posX*/ 70,
-    /*posY*/ 32,
+    /*posY*/ 30,
     /*posZ*/ - 210,
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
@@ -676,6 +676,7 @@ audioLoader.load(audioMonsterHunter, (buffer) => {
     sound.setBuffer(buffer),
     sound.setRefDistance(1),
     sound.setMaxDistance(0.10),
+    sound.loop = true
     sound.play()
 })
 
@@ -685,8 +686,8 @@ const audioFirstRoom = new THREE.Mesh(
         color: 0xFF0000
     })
 )
-audioFirstRoom.position.set(0, 55, - 15)
-audioFirstRoom.visible = false
+audioFirstRoom.position.set(0, 55, - 25)
+// audioFirstRoom.visible = false
 scene.add(audioFirstRoom)
 
 audioFirstRoom.add(sound)
@@ -699,6 +700,7 @@ audioLoaderSecond.load(audioMonsterHunter, (buffer) => {
     soundSecond.setBuffer(buffer),
     soundSecond.setRefDistance(1),
     soundSecond.setMaxDistance(0.10),
+    soundSecond.loop = true
     soundSecond.play()
 })
 
@@ -708,11 +710,47 @@ const audioSecondRoom = new THREE.Mesh(
         color: 0xFF0000
     })
 )
-audioSecondRoom.position.set(0, 55, - 250)
-audioSecondRoom.visible = false
+audioSecondRoom.position.set(0, 55, - 200)
+// audioSecondRoom.visible = false
 scene.add(audioSecondRoom)
 
 audioSecondRoom.add(soundSecond)
+
+
+const soundThird = new THREE.PositionalAudio(listener)
+
+const audioLoaderThird = new THREE.AudioLoader()
+audioLoaderThird.load(audioMonsterHunter, (buffer) => {
+    soundThird.setBuffer(buffer),
+    soundThird.setRefDistance(1),
+    soundThird.setMaxDistance(0.10),
+    soundThird.loop = true
+    soundThird.play()
+})
+
+const audioThirdRoom = new THREE.Mesh(
+    new THREE.SphereBufferGeometry(5, 8, 4),
+    new THREE.MeshNormalMaterial({
+        color: 0xFF0000
+    })
+)
+audioThirdRoom.position.set(0, 55, - 350)
+// audioThirdRoom.visible = false
+scene.add(audioThirdRoom)
+
+audioThirdRoom.add(soundThird)
+
+/**
+ * Renderer
+ */
+
+
+const renderer = new THREE.WebGLRenderer()
+renderer.setSize(sizes.width, sizes.height)
+renderer.setPixelRatio(window.devicePixelRatio)
+document.body.appendChild(renderer.domElement)
+renderer.outputEncoding = THREE.sRGBEncoding
+renderer.gammaFactor = 2.2
 
 /**
  * Lights
@@ -733,19 +771,6 @@ scene.add(pointLightSecondRoom)
 const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightThirdRoom.position.set(5, 60, - 335)
 scene.add(pointLightThirdRoom)
-
-
-/**
- * Renderer
- */
-
-
-const renderer = new THREE.WebGLRenderer()
-renderer.setSize(sizes.width, sizes.height)
-renderer.setPixelRatio(window.devicePixelRatio)
-document.body.appendChild(renderer.domElement)
-renderer.outputEncoding = THREE.sRGBEncoding
-renderer.gammaFactor = 2.2
 
 
 /**
