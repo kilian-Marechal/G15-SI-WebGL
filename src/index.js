@@ -809,6 +809,10 @@ document.addEventListener('click', () => {
     instructions.style.display = 'none'
 })
 
+/**
+ * Intercations
+ */
+
 
 /**
  * Resize
