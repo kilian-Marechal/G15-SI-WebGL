@@ -191,6 +191,95 @@ const popo = new Monster(
 )
 scene.add(popo.group)
 
+const uragaan = new Monster(
+    '/models/uragaan/glTF-Binary/Uragaan.glb',
+    /*posX*/ 0,
+    /*posY*/ 100,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(uragaan.group)
+
+const fish1 = new Monster(
+    '/models/fish/glTF-Binary/Fish1.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish1.group)
+
+const fish2 = new Monster(
+    '/models/fish/glTF-Binary/Fish2.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish2.group)
+
+const fish3 = new Monster(
+    '/models/fish/glTF-Binary/Fish3.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish3.group)
+
+const fish4 = new Monster(
+    '/models/fish/glTF-Binary/Fish4.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish4.group)
+
+const fish5 = new Monster(
+    '/models/fish/glTF-Binary/Fish5.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish5.group)
+
+const fish6 = new Monster(
+    '/models/fish/glTF-Binary/Fish6.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(fish6.group)
+
+const giggi = new Monster(
+    '/models/giggi/glTF-Binary/Giggi.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(giggi.group)
+
+const delex = new Monster(
+    '/models/delex/glTF-Binary/Delex.glb',
+    /*posX*/ 0,
+    /*posY*/ 15,
+    /*posZ*/ - 50,
+    /*scale*/ 2,
+    /*rotation*/ (Math.PI * 0.5),
+)
+scene.add(delex.group)
 
 
 /**
