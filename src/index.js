@@ -1,7 +1,9 @@
 import './style/main.styl'
 import * as THREE from 'three'
-import Monster from './scripts/MonsterClass.js'
-import Panel from './scripts/Panel.js'
+import Monster, { monsterGroup } from './scripts/MonsterClass.js'
+import Panel, { panelGroup } from './scripts/Panel.js'
+import Wall, { wallGroup } from './scripts/WallsClass.js'
+import Pedestal, { pedestalGroup } from './scripts/PedestalsClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
@@ -81,15 +83,21 @@ scene.add(camera)
 
 /**
  * Move
- */ 
+ */
+
+
 let moveForward = false
 let moveBackward = false
 let moveLeft = false
 let moveRight = false
 
+
 /**
  * Create Monsters
- */ 
+ */
+
+
+scene.add(monsterGroup)
 const diablos = new Monster(
     /*Path*/'/models/diablos/glTF-Binary/Diablos.glb',
     /*posX*/ - 40,
@@ -98,7 +106,7 @@ const diablos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1.5),
 )
-scene.add(diablos.group)
+
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
@@ -108,7 +116,7 @@ const rathalos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-scene.add(rathalos.group)
+
 
 const deviljho = new Monster(
     '/models/deviljho/glTF-Binary/Deviljho.glb',
@@ -118,7 +126,7 @@ const deviljho = new Monster(
     /*scale*/ 7,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(deviljho.group)
+
 
 const barroth = new Monster(
     '/models/barroth/glTF-Binary/Barroth.glb',
@@ -128,7 +136,7 @@ const barroth = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(barroth.group)
+
 
 const uragaan = new Monster(
     '/models/uragaan/glTF-Binary/Uragaan.glb',
@@ -138,7 +146,7 @@ const uragaan = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(uragaan.group)
+
 
 const kelbi2 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi2.glb',
@@ -148,7 +156,7 @@ const kelbi2 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(kelbi2.group)
+
 
 const baggi = new Monster(
     '/models/baggi/glTF-Binary/Baggi.glb',
@@ -158,7 +166,7 @@ const baggi = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(baggi.group)
+
 
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
@@ -168,7 +176,7 @@ const kelbi1 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(kelbi1.group)
+
 
 const agnaktor = new Monster(
     '/models/agnaktor/glTF-Binary/Agnaktor.glb',
@@ -178,7 +186,7 @@ const agnaktor = new Monster(
     /*scale*/ 2.8,
     /*rotation*/ (Math.PI * 1.75),
 )
-scene.add(agnaktor.group)
+
 
 const popo = new Monster(
     '/models/popo/glTF-Binary/Popo.glb',
@@ -188,7 +196,7 @@ const popo = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-scene.add(popo.group)
+
 
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
@@ -198,7 +206,7 @@ const fish1 = new Monster(
     /*scale*/ 2,
     /*rotation*/ (Math.PI * 0.2),
 )
-scene.add(fish1.group)
+
 
 const fish2 = new Monster(
     '/models/fish/glTF-Binary/Fish2.glb',
@@ -208,7 +216,7 @@ const fish2 = new Monster(
     /*scale*/ 1,
     /*rotation*/ (Math.PI * 0.8),
 )
-scene.add(fish2.group)
+
 
 const fish3 = new Monster(
     '/models/fish/glTF-Binary/Fish3.glb',
@@ -218,7 +226,7 @@ const fish3 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.8),
 )
-scene.add(fish3.group)
+
 
 const fish4 = new Monster(
     '/models/fish/glTF-Binary/Fish4.glb',
@@ -228,7 +236,7 @@ const fish4 = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI * 1.5),
 )
-scene.add(fish4.group)
+
 
 const fish5 = new Monster(
     '/models/fish/glTF-Binary/Fish5.glb',
@@ -238,7 +246,7 @@ const fish5 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(fish5.group)
+
 
 const fish6 = new Monster(
     '/models/fish/glTF-Binary/Fish6.glb',
@@ -248,7 +256,7 @@ const fish6 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(fish6.group)
+
 
 const giggi = new Monster(
     '/models/giggi/glTF-Binary/Giggi.glb',
@@ -258,7 +266,7 @@ const giggi = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(giggi.group)
+
 
 const delex = new Monster(
     '/models/delex/glTF-Binary/Delex.glb',
@@ -268,7 +276,7 @@ const delex = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(delex.group)
+
 
 const altaroth = new Monster(
     '/models/altaroth/glTF-Binary/Altaroth.glb',
@@ -278,7 +286,7 @@ const altaroth = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI),
 )
-scene.add(altaroth.group)
+
 
 const bnahabra = new Monster(
     '/models/bnahabra/glTF-Binary/Bnahabra.glb',
@@ -288,7 +296,7 @@ const bnahabra = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI),
 )
-scene.add(bnahabra.group)
+
 
 /**
  * Controls
@@ -369,121 +377,151 @@ document.addEventListener ('keyup', onKeyUp)
 
 
 /**
- * Objects
+ * Walls, Pedestals and Pannels
  */
 
  
 //Groups
 const museum = new THREE.Group()
 scene.add(museum)
+museum.add(wallGroup)
+museum.add(pedestalGroup)
 
 // Ground
-const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 400, 1, 1),
-    new THREE.MeshPhongMaterial({
-        map: marbleGroundTexture,
-        side: THREE.DoubleSide
-    })
+const ground = new Wall(
+    /*width*/ 200,
+    /*height*/ 400,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ marbleGroundTexture,
+    /*posX*/ 0,
+    /*posY*/ 0,
+    /*posZ*/ - 200,
+    /*rotationX*/ Math.PI * 0.5,
+    /*rotationY*/ 0
 )
-ground.position.set(0, 0, - 200)
-ground.rotation.x -= Math.PI * 0.5
-museum.add(ground)
 
 // Roof
-const roof = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 400, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        side: THREE.DoubleSide
-    })
+const roof = new Wall(
+    /*width*/ 200,
+    /*height*/ 400,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ marbleGroundTexture,
+    /*posX*/ 0,
+    /*posY*/ 60,
+    /*posZ*/ - 200,
+    /*rotationX*/ Math.PI * 0.5,
+    /*rotationY*/ 0
 )
-roof.position.set(0, 60, - 200)
-roof.rotation.x -= Math.PI * 0.5
-museum.add(roof)
 
-// Walls
-const wallLeft = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+// Global Walls
+const wallLeft = new Wall(
+    /*width*/ 400,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 100,
+    /*posY*/ 30,
+    /*posZ*/ - 200,
+    /*rotationX*/ 0,
+    /*rotationY*/ Math.PI * 0.5
 )
-wallLeft.rotation.y = Math.PI * 0.5 
-wallLeft.position.set(- 100, 30, - 200)
-museum.add(wallLeft)
 
-const wallRight = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+const wallRight = new Wall(
+    /*width*/ 400,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 100,
+    /*posY*/ 30,
+    /*posZ*/ - 200,
+    /*rotationX*/ 0,
+    /*rotationY*/ Math.PI * 0.5
 )
-wallRight.rotation.y = - Math.PI * 0.5 
-wallRight.position.set(100, 30, - 200)
-museum.add(wallRight)
 
-const wallForward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+const wallForward = new Wall(
+    /*width*/ 200,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 0,
+    /*posY*/ 30,
+    /*posZ*/ - 400,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallForward.position.set(0, 30, - 400)
-museum.add(wallForward)
 
-const wallBackward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+const wallBackward = new Wall(
+    /*width*/ 200,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 0,
+    /*posY*/ 30,
+    /*posZ*/ 0,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallBackward.position.set(0, 30, 0)
 
-museum.add(wallBackward)
+/**
+ * Room 1
+ */
 
-// Room 1
-const wallLeftFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+// Room 1 - Walls
+
+const wallLeftFirstRoom = new Wall(
+    /*width*/ 120,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 40,
+    /*posY*/ 30,
+    /*posZ*/ - 125,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallLeftFirstRoom.position.set(- 40, 30, - 125)
-scene.add(wallLeftFirstRoom)
 
-const wallRightFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+const wallRightFirstRoom = new Wall(
+    /*width*/ 60,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 70,
+    /*posY*/ 30,
+    /*posZ*/ - 125,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallRightFirstRoom.position.set(70, 30, - 125)
-scene.add(wallRightFirstRoom)
 
-const stageDiablo = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshLambertMaterial({
-        map: plasterTexture,
-    })
+// Room 1 - Pedestals
+const pedestalDiablo = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 94,
 )
-stageDiablo.position.set(- 40, 0.51, - 94)
-scene.add(stageDiablo)
 
-const stageRathalos = new THREE.Mesh(
-    new THREE.BoxGeometry(35, 1, 100),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const pedestalRathalos = new Pedestal(
+    /*width*/ 35,
+    /*height*/ 1,
+    /*depth*/ 100,
+    /*map*/ plasterTexture,
+    /*posX*/ 68,
+    /*posY*/ 0.51,
+    /*posZ*/ - 62,
 )
-stageRathalos.position.set(68, 0.51, - 62),
-scene.add(stageRathalos)
 
+// Room 1 - Panels
 const panelDiablo = new Panel()
 scene.add(panelDiablo.group)
 
@@ -492,54 +530,69 @@ panelRathalos.group.position.set(- 20, 0, - 20)
 panelRathalos.group.rotation.y = Math.PI * 1.5
 scene.add(panelRathalos.group)
 
-// Room 2
-const wallLeftSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
-)
-wallLeftSecondRoom.position.set(- 40, 30, - 275)
-scene.add(wallLeftSecondRoom)
+/**
+ * Room 2
+ */ 
 
-const wallRightSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+// Room 2 - Walls
+const wallLeftSecondRoom = new Wall(
+    /*width*/ 120,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 40,
+    /*posY*/ 30,
+    /*posZ*/ - 275,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallRightSecondRoom.position.set(70, 30, - 275)
-scene.add(wallRightSecondRoom)
 
-const stageUragaan = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const wallRightSecondRoom = new Wall(
+    /*width*/ 60,
+    /*height*/ 60,
+    /*widthSegments*/ 1,
+    /*heigthSegments*/ 1,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 70,
+    /*posY*/ 30,
+    /*posZ*/ - 275,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-stageUragaan.position.set(- 40, 0.51, - 158)
-scene.add(stageUragaan)
 
-const stageBarroth = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+// Room 2 - Pedestals
+const pedestalUragaan = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 158,
 )
-stageBarroth.position.set(- 40, 0.51, - 246)
-scene.add(stageBarroth)
 
-const stageDeviljho = new THREE.Mesh(
-    new THREE.BoxGeometry(35, 1, 100),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const pedestalBarroth = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 246,
 )
-stageDeviljho.position.set(68, 0.51, - 202),
-scene.add(stageDeviljho)
 
+const pedestalDeviljho = new Pedestal(
+    /*width*/ 35,
+    /*height*/ 1,
+    /*depth*/ 100,
+    /*map*/ plasterTexture,
+    /*posX*/ 68,
+    /*posY*/ 0.51,
+    /*posZ*/ - 202,
+)
+
+// Room 2 - Panels
 const panelUgaraan = new Panel()
 panelUgaraan.group.position.set(- 20, 0, - 160)
 panelUgaraan.group.rotation.y = Math.PI * 1.5
@@ -555,75 +608,72 @@ panelBarroth.group.position.set(5, 0, - 160)
 panelBarroth.group.rotation.y = Math.PI * 2
 scene.add(panelBarroth.group)
 
+/**
+ * Room 3
+ */ 
 
-// Room 3
-const stageKelbil2 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+// Room 3 - Pedestals
+const pedestalKelbi1 = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 368,
 )
-stageKelbil2.position.set(- 90, 0.51, - 306,25)
-scene.add(stageKelbil2)
 
-const stagebaggi = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const pedestalKelbi2 = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 306,
 )
-stagebaggi.position.set(- 90, 0.51, - 337,5)
-scene.add(stagebaggi)
 
-const stageKelbi = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const pedestalBaggi = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 337,
 )
-stageKelbi.position.set(- 90, 0.51, - 368,75)
-scene.add(stageKelbi)
 
-const stagePopo = new THREE.Mesh(
-    new THREE.BoxGeometry(14, 1, 15, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const pedestalPopo = new Pedestal(
+    /*width*/ 14,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*map*/ plasterTexture,
+    /*posX*/ 88,
+    /*posY*/ 0.51,
+    /*posZ*/ - 306,
 )
-stagePopo.position.set(88, 0.51, - 306.25)
-scene.add(stagePopo)
 
-const stagetest = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const pedestalAltaroth = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 337,
 )
-stagetest.position.set(90, 0.51, - 337.5)
-scene.add(stagetest)
 
-const stagetest2 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const pedestalBnahabra = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 368,
 )
-stagetest2.position.set(90, 0.51, - 368.75)
-scene.add(stagetest2)
 
-const aquarium = new THREE.Mesh(
-    new THREE.CylinderGeometry(40, 40, 50,50),
-    new THREE.MeshPhongMaterial({
-        color: 0x4a69bd,
-        transparent: true,
-        opacity: 0.7,
-        shininess: 70,
-        side: THREE.DoubleSide
-    })
-)
-aquarium.position.set(0, 25.01, - 350)
-scene.add(aquarium)
-
+// Room 3 - Panel
 const panelAgnaktor = new Panel()
 panelAgnaktor.group.position.set(40, 0, - 245)
 panelAgnaktor.group.rotation.y = Math.PI * 2
@@ -659,6 +709,20 @@ panelKelbi2.group.position.set(- 18, 0, - 346)
 panelKelbi2.group.rotation.y = Math.PI * 0.5
 scene.add(panelKelbi2.group)
 
+// Room 3 - Aquarium
+const aquarium = new THREE.Mesh(
+    new THREE.CylinderGeometry(40, 40, 50,50),
+    new THREE.MeshPhongMaterial({
+        color: 0x4a69bd,
+        transparent: true,
+        opacity: 0.7,
+        shininess: 70,
+        side: THREE.DoubleSide
+    })
+)
+aquarium.position.set(0, 25.01, - 350)
+scene.add(aquarium)
+
 /**
  * Audio
  */
@@ -682,9 +746,7 @@ audioLoader.load(audioMonsterHunter, (buffer) => {
 
 const audioFirstRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(10, 16, 8),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioFirstRoom.position.set(0, 55, - 25)
 // audioFirstRoom.visible = false
@@ -706,9 +768,7 @@ audioLoaderSecond.load(audioMonsterHunter, (buffer) => {
 
 const audioSecondRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(5, 8, 4),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioSecondRoom.position.set(0, 55, - 200)
 // audioSecondRoom.visible = false
@@ -730,9 +790,7 @@ audioLoaderThird.load(audioMonsterHunter, (buffer) => {
 
 const audioThirdRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(5, 8, 4),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioThirdRoom.position.set(0, 55, - 350)
 // audioThirdRoom.visible = false

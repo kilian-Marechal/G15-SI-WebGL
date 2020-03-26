@@ -1,20 +1,16 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
-import { DRACOLoader } from 'three/examples/jsm/loaders/DRACOLoader.js'
 
+// create and export a group to add to the scene in index.js
+export const monsterGroup = new THREE.Group()
+
+// class to create monsters
 export default class Monster
 {
     constructor(_path, _posX, _posY, _posZ, _scale, _rotation)
     {
-        this.group = new THREE.Group()
-
-        // instantiate the Draco loader
-        const dracoLoader = new DRACOLoader()
-        dracoLoader.setDecoderPath('/draco/')
-
         // instantiate the .gtlf loader
         const gltfLoader = new GLTFLoader()
-        gltfLoader.setDRACOLoader(dracoLoader)
 
         // load the glb file
         gltfLoader.load(
@@ -31,7 +27,7 @@ export default class Monster
                     this.child.material = new THREE.MeshLambertMaterial({
                         map: this.child.material.map
                     })
-                    this.group.add(this.child)// Add the created model to the group
+                    monsterGroup.add(this.child)// Add the created model to the group
                 }
             }
         )
