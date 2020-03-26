@@ -26,12 +26,12 @@ export default class Panel
                 baseElementPanel.position.set(- 40, 0.26, - 55)
 
                 const mainElementPanel = new THREE.Mesh(
-                    new THREE.BoxGeometry(2, 4, 2),
+                    new THREE.BoxGeometry(2, 3.5, 2),
                     new THREE.MeshLambertMaterial({
                         map: woodFineDarkTexture
                     })
                 )
-                mainElementPanel.position.set(- 40, 2, - 55)
+                mainElementPanel.position.set(- 40, 1.75, - 55)
 
                 const boardElementPanel = new THREE.Mesh(
                     new THREE.BoxGeometry(4, 0.1, 4),
@@ -40,7 +40,7 @@ export default class Panel
                     })
                 )
                 boardElementPanel.rotation.x = Math.PI * 0.10
-                boardElementPanel.position.set(- 40, 4.3, - 55)
+                boardElementPanel.position.set(- 40, 3.8, - 55)
 
 
                 this.group.add(baseElementPanel)
