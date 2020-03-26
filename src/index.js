@@ -8,11 +8,17 @@ import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksB
 import plasterSource from './images/Plaster_001_SD/Plaster_001_COLOR.jpg'
 import audioMonsterHunter from './audio/MH-ost-min.mp3'
 import imageMap from './images/map.jpg'
-import importfelyne from './images/felyne.png'
+import importFelyne from './images/felyne.gif'
+import importLogo from './images/logo.png'
+
+const placeholderLogo = document.querySelector('.emblem')
+const imageLogo = new Image()
+imageLogo.src = importLogo
+placeholderLogo.appendChild(imageLogo)
 
 const placeholderFelyne = document.querySelector('.felyne')
 const imageFelyne = new Image()
-imageFelyne.src = importfelyne
+imageFelyne.src = importFelyne
 placeholderFelyne.appendChild(imageFelyne)
 
 const placeholderImage = document.querySelector('.background')
