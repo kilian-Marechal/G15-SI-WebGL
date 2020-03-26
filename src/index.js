@@ -6,6 +6,7 @@ import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockContro
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
 import plasterSource from './images/Plaster_001_SD/Plaster_001_COLOR.jpg'
+import audioMonsterHunter from './audio/MH-ost-min.mp3'
 
 
 /**
@@ -74,7 +75,7 @@ const scene = new THREE.Scene()
 
 const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 500)
 camera.lookAt(scene.position)
-camera.position.set(0, 1.5, - 5)
+camera.position.set(0, 4, - 5)
 scene.add(camera)
 
 
@@ -123,7 +124,7 @@ scene.add(deviljho.group)
 const barroth = new Monster(
     '/models/barroth/glTF-Binary/Barroth.glb',
     /*posX*/ - 33,
-    /*posY*/ 28,
+    /*posY*/ 32,
     /*posZ*/ - 245,
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
@@ -133,7 +134,7 @@ scene.add(barroth.group)
 const uragaan = new Monster(
     '/models/uragaan/glTF-Binary/Uragaan.glb',
     /*posX*/ 70,
-    /*posY*/ 28,
+    /*posY*/ 32,
     /*posZ*/ - 210,
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
@@ -514,7 +515,7 @@ stagetest2.position.set(90, 0.51, - 368.75)
 scene.add(stagetest2)
 
 const aquarium = new THREE.Mesh(
-    new THREE.CylinderGeometry(40, 40, 50, 20),
+    new THREE.CylinderGeometry(40, 40, 50,50),
     new THREE.MeshPhongMaterial({
         color: 0x4a69bd,
         transparent: true,
@@ -565,30 +566,56 @@ scene.add(panelKelbi2.group)
  * Audio
  */
 
-// const audioSound = new Audio('./audio/MH-ost-min.mp3')
+const audioSound = new Audio()
+audioSound.src = audioMonsterHunter
 
-// const listener = new THREE.AudioListener()
-// scene.add(listener)
+const listener = new THREE.AudioListener()
+camera.add(listener)
 
-// const sound = new THREE.PositionalAudio(listener)
+const sound = new THREE.PositionalAudio(listener)
 
-// const audioLoader = new THREE.AudioLoader()
-// audioLoader.load(audioSound, (buffer) => {
-//     sound.setBuffer(buffer),
-//     sound.setRefDistance(10),
-//     sound.play()
-// })
+const audioLoader = new THREE.AudioLoader()
+audioLoader.load(audioMonsterHunter, (buffer) => {
+    sound.setBuffer(buffer),
+    sound.setRefDistance(1),
+    sound.setMaxDistance(0.10),
+    sound.play()
+})
 
-// const audioObject = new THREE.Mesh(
-//     new THREE.SphereBufferGeometry(20, 32, 16),
-//     new THREE.MeshNormalMaterial({
-//         color: 0xFF0000
-//     })
-// )
-// audioObject.position.y = 10
-// scene.add(audioObject)
+const audioFirstRoom = new THREE.Mesh(
+    new THREE.SphereBufferGeometry(10, 16, 8),
+    new THREE.MeshNormalMaterial({
+        color: 0xFF0000
+    })
+)
+audioFirstRoom.position.set(0, 55, - 15)
+audioFirstRoom.visible = false
+scene.add(audioFirstRoom)
 
-// audioObject.add(sound)
+audioFirstRoom.add(sound)
+
+
+const soundSecond = new THREE.PositionalAudio(listener)
+
+const audioLoaderSecond = new THREE.AudioLoader()
+audioLoaderSecond.load(audioMonsterHunter, (buffer) => {
+    soundSecond.setBuffer(buffer),
+    soundSecond.setRefDistance(1),
+    soundSecond.setMaxDistance(0.10),
+    soundSecond.play()
+})
+
+const audioSecondRoom = new THREE.Mesh(
+    new THREE.SphereBufferGeometry(5, 8, 4),
+    new THREE.MeshNormalMaterial({
+        color: 0xFF0000
+    })
+)
+audioSecondRoom.position.set(0, 55, - 250)
+audioSecondRoom.visible = false
+scene.add(audioSecondRoom)
+
+audioSecondRoom.add(soundSecond)
 
 /**
  * Lights
