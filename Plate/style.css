@@ -13,6 +13,7 @@ body
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 }
 
 @font-face
@@ -129,6 +130,7 @@ h3
     position: absolute ;
     color: #FFFFFF;
     margin-left: 0.7%;
+    cursor: pointer;
 }
 
 
@@ -177,7 +179,8 @@ h3
 .capacities:hover,
 .behavior:hover,
 .habitat:hover,
-.map:hover
+.map:hover,
+.more:hover
 {
     transition: 0.3s cubic-bezier(0, 1.2, .2, 1.5);
     transform: scale(1.05, 1.05);
@@ -187,7 +190,8 @@ h3
 .capacities:active,
 .behavior:active,
 .habitat:active,
-.map:active
+.map:active,
+.more:active
 {
     transition: 0.3s cubic-bezier(0, 1.2, .2, 1.5);
     transform: scale(0.95, 0.95);
@@ -204,6 +208,7 @@ h3
 p
 {
     text-align: left;
+    letter-spacing: 1px;
 }
 
 
