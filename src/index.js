@@ -192,50 +192,50 @@ scene.add(popo.group)
 
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
-    /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
+    /*posX*/ 15,
+    /*posY*/ 40,
+    /*posZ*/ - 355,
     /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*rotation*/ (Math.PI * 0.2),
 )
 scene.add(fish1.group)
 
 const fish2 = new Monster(
     '/models/fish/glTF-Binary/Fish2.glb',
-    /*posX*/ 0,
+    /*posX*/ -20,
     /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posZ*/ - 330,
+    /*scale*/ 1,
+    /*rotation*/ (Math.PI * 0.8),
 )
 scene.add(fish2.group)
 
 const fish3 = new Monster(
     '/models/fish/glTF-Binary/Fish3.glb',
-    /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posX*/ 25,
+    /*posY*/ 10,
+    /*posZ*/ - 360,
+    /*scale*/ 1.5,
+    /*rotation*/ (Math.PI * 0.8),
 )
 scene.add(fish3.group)
 
 const fish4 = new Monster(
     '/models/fish/glTF-Binary/Fish4.glb',
     /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
-    /*rotation*/ (Math.PI * 0.5),
+    /*posY*/ 4,
+    /*posZ*/ - 340,
+    /*scale*/ 3,
+    /*rotation*/ (Math.PI * 1.5),
 )
 scene.add(fish4.group)
 
 const fish5 = new Monster(
     '/models/fish/glTF-Binary/Fish5.glb',
-    /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
+    /*posX*/ - 20,
+    /*posY*/ 40,
+    /*posZ*/ - 350,
+    /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(fish5.group)
@@ -243,29 +243,29 @@ scene.add(fish5.group)
 const fish6 = new Monster(
     '/models/fish/glTF-Binary/Fish6.glb',
     /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
+    /*posY*/ 30,
+    /*posZ*/ - 343,
+    /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(fish6.group)
 
 const giggi = new Monster(
     '/models/giggi/glTF-Binary/Giggi.glb',
-    /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
+    /*posX*/ 10,
+    /*posY*/ 10,
+    /*posZ*/ - 385,
+    /*scale*/ 2.5,
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(giggi.group)
 
 const delex = new Monster(
     '/models/delex/glTF-Binary/Delex.glb',
-    /*posX*/ 0,
-    /*posY*/ 15,
-    /*posZ*/ - 50,
-    /*scale*/ 2,
+    /*posX*/ -30,
+    /*posY*/ 5,
+    /*posZ*/ - 355,
+    /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
 scene.add(delex.group)
