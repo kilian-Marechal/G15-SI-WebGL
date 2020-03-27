@@ -1088,9 +1088,9 @@ window.addEventListener('resize', () =>
 
 const mouse = new THREE.Vector2();
 
-let onMouseMove= (event) => {
-  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
-  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+let onMouseMove = (_event) => {
+  mouse.x = (_event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(_event.clientY / window.innerHeight) * 2 + 1;
 }
 
 window.addEventListener("mousemove", onMouseMove, false)
@@ -1134,8 +1134,9 @@ const loop = () =>
 
     const intersects = raycaster.intersectObjects(targetList)
     if (intersects.length > 0) {
-        console.log("ima fucking collapse")
+        console.log("pute")
     }
+    // console.log(targetList)
     
     // Render
     renderer.render(scene, camera)
