@@ -56,6 +56,7 @@ plasterTexture.repeat.y = 10
 plasterTexture.wrapS = THREE.RepeatWrapping
 plasterTexture.wrapT = THREE.RepeatWrapping
 
+
 /**
  * Sizes
  */
@@ -326,7 +327,6 @@ const bnahabra = new Monster(
 let controls = new PointerLockControls (camera, document.body)
 let prevTime = performance.now()
 let velocity = new THREE.Vector3()
-let clock = new THREE.Clock()
 let direction = new THREE.Vector3
 scene.add(controls.getObject())
 
@@ -334,33 +334,24 @@ scene.add(controls.getObject())
 /**
  * Controls KeysDown
  */
-let cameraPositionX = camera.position.x
-let cameraPositionZ = camera.position.z
+
 
 const onKeyDown = ( _event ) => {
     if (_event.key === 'z' || _event.code === 'ArrowUp')
     {
         moveForward = true
-        cameraPositionX = camera.position.x
-        cameraPositionZ = camera.position.z
     }
     if (_event.key === 's' || _event.code === 'ArrowDown')
     {
         moveBackward = true
-        cameraPositionX = camera.position.x
-        cameraPositionZ = camera.position.z
     }
     if (_event.key === 'q' || _event.code === 'ArrowLeft')
     {
         moveLeft = true
-        cameraPositionX = camera.position.x
-        cameraPositionZ = camera.position.z
     }
     if (_event.key === 'd' || _event.code === 'ArrowRight')
     {
         moveRight = true
-        cameraPositionX = camera.position.x
-        cameraPositionZ = camera.position.z
     }
     if (_event.key === ' ' || _event.code === 'space')
     {
@@ -493,9 +484,11 @@ const wallBackward = new Wall(
     /*rotationY*/ 0
 )
 
+
 /**
  * Room 1
  */
+
 
 // Room 1 - Walls
 
@@ -555,9 +548,11 @@ panelRathalos.group.position.set(- 20, 0, - 20)
 panelRathalos.group.rotation.y = Math.PI * 1.5
 scene.add(panelRathalos.group)
 
+
 /**
  * Room 2
  */ 
+
 
 // Room 2 - Walls
 const wallLeftSecondRoom = new Wall(
@@ -633,9 +628,11 @@ panelBarroth.group.position.set(5, 0, - 160)
 panelBarroth.group.rotation.y = Math.PI * 2
 scene.add(panelBarroth.group)
 
+
 /**
  * Room 3
  */ 
+
 
 // Room 3 - Pedestals
 const pedestalKelbi1 = new Pedestal(
@@ -748,9 +745,11 @@ const aquarium = new THREE.Mesh(
 aquarium.position.set(0, 25.01, - 350)
 scene.add(aquarium)
 
+
 /**
  * Audio
  */
+
 
 const audioSound = new Audio()
 audioSound.src = audioMonsterHunter
@@ -779,7 +778,9 @@ scene.add(audioFirstRoom)
 
 audioFirstRoom.add(sound)
 
+
 // Second
+
 
 const soundSecond = new THREE.PositionalAudio(listener)
 
@@ -827,6 +828,7 @@ scene.add(audioThirdRoom)
 
 audioThirdRoom.add(soundThird)
 
+
 /**
  * Renderer
  */
@@ -838,6 +840,7 @@ renderer.setPixelRatio(window.devicePixelRatio)
 document.body.appendChild(renderer.domElement)
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.gammaFactor = 2.2
+
 
 /**
  * Lights
@@ -853,14 +856,11 @@ pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
 const firstLampFirstRoom = new THREE.SpotLight(0xc2822f, 1, 100, 100, 0)
-// firstLampFirstRoom.rotation.y = Math.PI * 1
-// firstLampFirstRoom.target = diablos
 firstLampFirstRoom.position.set(- 92, 6, - 70)
 scene.add(firstLampFirstRoom)
 
-const spotLightHelper = new THREE.SpotLightHelper( firstLampFirstRoom )
+const spotLightHelper = new THREE.SpotLightHelper(firstLampFirstRoom)
 scene.add(spotLightHelper)
-
 
 // Second Room
 const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
@@ -877,6 +877,8 @@ scene.add(pointLightThirdRoom)
 /**
  * HTML Page
  */
+
+
 const blocker = document.querySelector('.blocker')
 const instructions = document.querySelector('.instructions')
 
@@ -893,17 +895,18 @@ document.addEventListener('click', () => {
     instructions.style.display = 'none'
 })
 
+
 /**
  * Intercations
  */
+
+
 const hitbox = new THREE.Mesh(
     new THREE.BoxGeometry(4, 1, 8),
     new THREE.MeshNormalMaterial
 )
 hitbox.position.set(- 40, 0.5, - 48)
 scene.add(hitbox)
-
-console.log(hitbox.position.z)
 
 
 /**
@@ -928,10 +931,17 @@ window.addEventListener('resize', () =>
  */
 
 
+let cameraPositionX = camera.position.x
+let cameraPositionZ = camera.position.z
+
+cameraPositionX = camera.position.x
+cameraPositionZ = camera.position.z
+
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
 
+    // Camera control
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
 
