@@ -1403,8 +1403,8 @@ const loop = () =>
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
     
-    velocity.x -= velocity.x * 1.0 * delta
-    velocity.z -= velocity.z * 1.0 * delta
+    velocity.x -= velocity.x * 14.0 * delta
+    velocity.z -= velocity.z * 14.0 * delta
     
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
@@ -1434,6 +1434,10 @@ const loop = () =>
     let intersects = raycaster.intersectObjects(targetList, true)
     if (intersects.length > 0) {
         console.log("Appuyez sur E pour interagir")
+
+        hitboxDiablo.addEventListener('click', () => {
+            console.log('pute')
+        })
     }
     
     document.addEventListener('keydown', (event) => {
