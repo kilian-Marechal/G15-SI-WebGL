@@ -1391,6 +1391,9 @@ let onMouseMove = (_event) => {
 
 window.addEventListener("mousemove", onMouseMove, false)
 
+const infosDeviljho = document.querySelector('.infosDeviljho')
+console.log(infosDeviljho)
+
 const raycaster = new THREE.Raycaster()
 const loop = () =>
 {
@@ -1436,11 +1439,19 @@ const loop = () =>
     document.addEventListener('keydown', (event) => {
         if (intersects.length > 0 && event.keyCode === 69) {
             // keys[69] = E key
-            const instructions = document.querySelector('.instructions')
-
-            instructions.style.display = 'block'
-            console.log(intersects)
-            intersects = []
+            if(infosDeviljho.classList.contains('infosDeviljho'))
+            {
+                infosDeviljho.classList.remove('infosDeviljho')
+                infosDeviljho.classList.add('infosDeviljhoVisible')
+                console.log(intersects)
+                intersects = []
+            }
+            else{
+                infosDeviljho.classList.remove('infosDeviljhoVisible')
+                infosDeviljho.classList.add('infosDeviljho')
+                console.log(intersects)
+                intersects = []
+            }
         }
     })
 
