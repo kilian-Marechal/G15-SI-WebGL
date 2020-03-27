@@ -2,6 +2,10 @@ import './style/main.styl'
 import * as THREE from 'three'
 import Monster from './scripts/MonsterClass.js'
 import Panel from './scripts/Panel.js'
+import Hitbox from './scripts/Hitbox.js'
+import Wall from './scripts/WallsClass.js'
+import Pedestal from './scripts/PedestalsClass.js'
+import Spot from './scripts/SpotsClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
@@ -214,6 +218,7 @@ plasterTexture.repeat.y = 10
 plasterTexture.wrapS = THREE.RepeatWrapping
 plasterTexture.wrapT = THREE.RepeatWrapping
 
+
 /**
  * Sizes
  */
@@ -261,15 +266,22 @@ scene.add(camera)
 
 /**
  * Move
- */ 
+ */
+
+
 let moveForward = false
 let moveBackward = false
 let moveLeft = false
 let moveRight = false
 
+
 /**
  * Create Monsters
- */ 
+ */
+
+
+const monsterGroup = new THREE.Group()
+scene.add(monsterGroup)
 const diablos = new Monster(
     /*Path*/'/models/diablos/glTF-Binary/Diablos.glb',
     /*posX*/ - 40,
@@ -278,7 +290,7 @@ const diablos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1.5),
 )
-scene.add(diablos.group)
+monsterGroup.add(diablos.group)
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
@@ -288,7 +300,7 @@ const rathalos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-scene.add(rathalos.group)
+monsterGroup.add(rathalos.group)
 
 const deviljho = new Monster(
     '/models/deviljho/glTF-Binary/Deviljho.glb',
@@ -298,7 +310,8 @@ const deviljho = new Monster(
     /*scale*/ 7,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(deviljho.group)
+monsterGroup.add(deviljho.group)
+
 
 const barroth = new Monster(
     '/models/barroth/glTF-Binary/Barroth.glb',
@@ -308,7 +321,8 @@ const barroth = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(barroth.group)
+monsterGroup.add(barroth.group)
+
 
 const uragaan = new Monster(
     '/models/uragaan/glTF-Binary/Uragaan.glb',
@@ -318,7 +332,8 @@ const uragaan = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(uragaan.group)
+monsterGroup.add(uragaan.group)
+
 
 const kelbi2 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi2.glb',
@@ -328,7 +343,8 @@ const kelbi2 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(kelbi2.group)
+monsterGroup.add(kelbi2.group)
+
 
 const baggi = new Monster(
     '/models/baggi/glTF-Binary/Baggi.glb',
@@ -338,7 +354,7 @@ const baggi = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(baggi.group)
+monsterGroup.add(baggi.group)
 
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
@@ -348,7 +364,7 @@ const kelbi1 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
-scene.add(kelbi1.group)
+monsterGroup.add(kelbi1.group)
 
 const agnaktor = new Monster(
     '/models/agnaktor/glTF-Binary/Agnaktor.glb',
@@ -358,7 +374,7 @@ const agnaktor = new Monster(
     /*scale*/ 2.8,
     /*rotation*/ (Math.PI * 1.75),
 )
-scene.add(agnaktor.group)
+monsterGroup.add(agnaktor.group)
 
 const popo = new Monster(
     '/models/popo/glTF-Binary/Popo.glb',
@@ -368,7 +384,7 @@ const popo = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-scene.add(popo.group)
+monsterGroup.add(popo.group)
 
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
@@ -378,7 +394,7 @@ const fish1 = new Monster(
     /*scale*/ 2,
     /*rotation*/ (Math.PI * 0.2),
 )
-scene.add(fish1.group)
+monsterGroup.add(fish1.group)
 
 const fish2 = new Monster(
     '/models/fish/glTF-Binary/Fish2.glb',
@@ -388,7 +404,7 @@ const fish2 = new Monster(
     /*scale*/ 1,
     /*rotation*/ (Math.PI * 0.8),
 )
-scene.add(fish2.group)
+monsterGroup.add(fish2.group)
 
 const fish3 = new Monster(
     '/models/fish/glTF-Binary/Fish3.glb',
@@ -398,7 +414,8 @@ const fish3 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.8),
 )
-scene.add(fish3.group)
+monsterGroup.add(fish3.group)
+
 
 const fish4 = new Monster(
     '/models/fish/glTF-Binary/Fish4.glb',
@@ -408,7 +425,7 @@ const fish4 = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI * 1.5),
 )
-scene.add(fish4.group)
+monsterGroup.add(fish4.group)
 
 const fish5 = new Monster(
     '/models/fish/glTF-Binary/Fish5.glb',
@@ -418,7 +435,7 @@ const fish5 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(fish5.group)
+monsterGroup.add(fish5.group)
 
 const fish6 = new Monster(
     '/models/fish/glTF-Binary/Fish6.glb',
@@ -428,7 +445,7 @@ const fish6 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(fish6.group)
+monsterGroup.add(fish6.group)
 
 const giggi = new Monster(
     '/models/giggi/glTF-Binary/Giggi.glb',
@@ -438,7 +455,7 @@ const giggi = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(giggi.group)
+monsterGroup.add(giggi.group)
 
 const delex = new Monster(
     '/models/delex/glTF-Binary/Delex.glb',
@@ -448,7 +465,8 @@ const delex = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-scene.add(delex.group)
+monsterGroup.add(delex.group)
+
 
 const altaroth = new Monster(
     '/models/altaroth/glTF-Binary/Altaroth.glb',
@@ -458,7 +476,7 @@ const altaroth = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI),
 )
-scene.add(altaroth.group)
+monsterGroup.add(altaroth.group)
 
 const bnahabra = new Monster(
     '/models/bnahabra/glTF-Binary/Bnahabra.glb',
@@ -468,7 +486,7 @@ const bnahabra = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI),
 )
-scene.add(bnahabra.group)
+monsterGroup.add(bnahabra.group)
 
 /**
  * Controls
@@ -478,7 +496,6 @@ scene.add(bnahabra.group)
 let controls = new PointerLockControls (camera, document.body)
 let prevTime = performance.now()
 let velocity = new THREE.Vector3()
-let clock = new THREE.Clock()
 let direction = new THREE.Vector3
 scene.add(controls.getObject())
 
@@ -492,22 +509,18 @@ const onKeyDown = ( _event ) => {
     if (_event.key === 'z' || _event.code === 'ArrowUp')
     {
         moveForward = true
-        // controls.lock()
     }
     if (_event.key === 's' || _event.code === 'ArrowDown')
     {
         moveBackward = true
-        // controls.lock()
     }
     if (_event.key === 'q' || _event.code === 'ArrowLeft')
     {
         moveLeft = true
-        // controls.lock()
     }
     if (_event.key === 'd' || _event.code === 'ArrowRight')
     {
         moveRight = true
-        // controls.lock()
     }
     if (_event.key === ' ' || _event.code === 'space')
     {
@@ -549,177 +562,261 @@ document.addEventListener ('keyup', onKeyUp)
 
 
 /**
- * Objects
+ * Walls, Pedestals and Pannels
  */
 
  
 //Groups
-const museum = new THREE.Group()
-scene.add(museum)
+const wallGroup = new THREE.Group()
+scene.add(wallGroup)
+
+const pedestalGroup = new THREE.Group()
+scene.add(pedestalGroup)
 
 // Ground
-const ground = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 400, 1, 1),
-    new THREE.MeshPhongMaterial({
-        map: marbleGroundTexture,
-        side: THREE.DoubleSide
-    })
+const ground = new Wall(
+    /*width*/ 200,
+    /*height*/ 400,
+    /*depth*/ 2,
+    /*map*/ marbleGroundTexture,
+    /*posX*/ 0,
+    /*posY*/ -1,
+    /*posZ*/ - 200,
+    /*rotationX*/ Math.PI * 0.5,
+    /*rotationY*/ 0
 )
-ground.position.set(0, 0, - 200)
-ground.rotation.x -= Math.PI * 0.5
-museum.add(ground)
+wallGroup.add(ground.group)
+
 
 // Roof
-const roof = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 400, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: marbleGroundTexture,
-        side: THREE.DoubleSide
-    })
+const roof = new Wall(
+    /*width*/ 200,
+    /*height*/ 400,
+    /*depth*/ 3,
+    /*map*/ marbleGroundTexture,
+    /*posX*/ 0,
+    /*posY*/ 60,
+    /*posZ*/ - 200,
+    /*rotationX*/ Math.PI * 0.5,
+    /*rotationY*/ 0
 )
-roof.position.set(0, 60, - 200)
-roof.rotation.x -= Math.PI * 0.5
-museum.add(roof)
+wallGroup.add(roof.group)
 
-// Walls
-const wallLeft = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+// Global Walls
+const wallLeft = new Wall(
+    /*width*/ 400,
+    /*height*/ 60,
+    /*depth*/ 3,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 100,
+    /*posY*/ 30,
+    /*posZ*/ - 200,
+    /*rotationX*/ 0,
+    /*rotationY*/ Math.PI * 0.5
 )
-wallLeft.rotation.y = Math.PI * 0.5 
-wallLeft.position.set(- 100, 30, - 200)
-museum.add(wallLeft)
+wallGroup.add(wallLeft.group)
 
-const wallRight = new THREE.Mesh(
-    new THREE.PlaneGeometry(400, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+const wallRight = new Wall(
+    /*width*/ 400,
+    /*height*/ 60,
+    /*depth*/ 3,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 100,
+    /*posY*/ 30,
+    /*posZ*/ - 200,
+    /*rotationX*/ 0,
+    /*rotationY*/ Math.PI * 0.5
 )
-wallRight.rotation.y = - Math.PI * 0.5 
-wallRight.position.set(100, 30, - 200)
-museum.add(wallRight)
+wallGroup.add(wallRight.group)
 
-const wallForward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+const wallForward = new Wall(
+    /*width*/ 200,
+    /*height*/ 60,
+    /*depth*/ 3,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 0,
+    /*posY*/ 30,
+    /*posZ*/ - 400,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallForward.position.set(0, 30, - 400)
-museum.add(wallForward)
+wallGroup.add(wallForward.group)
 
-const wallBackward = new THREE.Mesh(
-    new THREE.PlaneGeometry(200, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide
-    })
+const wallBackward = new Wall(
+    /*width*/ 200,
+    /*height*/ 60,
+    /*depth*/ 3,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 0,
+    /*posY*/ 30,
+    /*posZ*/ 0,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallBackward.position.set(0, 30, 0)
+wallGroup.add(wallBackward.group)
 
-museum.add(wallBackward)
 
-// Room 1
-const wallLeftFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+/**
+ * Room 1
+ */
+
+
+// Room 1 - Walls
+
+const wallLeftFirstRoom = new Wall(
+    /*width*/ 120,
+    /*height*/ 60,
+    /*height*/ 2,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 40,
+    /*posY*/ 30,
+    /*posZ*/ - 125,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallLeftFirstRoom.position.set(- 40, 30, - 125)
-scene.add(wallLeftFirstRoom)
+wallGroup.add(wallLeftFirstRoom.group)
 
-const wallRightFirstRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+const wallRightFirstRoom = new Wall(
+    /*width*/ 60,
+    /*height*/ 60,
+    /*height*/ 2,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 70,
+    /*posY*/ 30,
+    /*posZ*/ - 125,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-wallRightFirstRoom.position.set(70, 30, - 125)
-scene.add(wallRightFirstRoom)
+wallGroup.add(wallRightFirstRoom.group)
 
-const stageDiablo = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshLambertMaterial({
-        map: plasterTexture,
-    })
+// Room 1 - Pedestals
+const pedestalDiablo = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 94,
 )
-stageDiablo.position.set(- 40, 0.51, - 94)
-scene.add(stageDiablo)
+pedestalGroup.add(pedestalDiablo.group)
 
-const stageRathalos = new THREE.Mesh(
-    new THREE.BoxGeometry(35, 1, 100),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const pedestalRathalos = new Pedestal(
+    /*width*/ 35,
+    /*height*/ 1,
+    /*depth*/ 100,
+    /*map*/ plasterTexture,
+    /*posX*/ 68,
+    /*posY*/ 0.51,
+    /*posZ*/ - 62,
 )
-stageRathalos.position.set(68, 0.51, - 62),
-scene.add(stageRathalos)
+pedestalGroup.add(pedestalRathalos.group)
 
-const panelDiablo = new Panel()
-scene.add(panelDiablo.group)
+// Room 1 - Panels
+const panelDiablos = new Panel()
+scene.add(panelDiablos.group)
 
 const panelRathalos = new Panel()
 panelRathalos.group.position.set(- 20, 0, - 20)
 panelRathalos.group.rotation.y = Math.PI * 1.5
 scene.add(panelRathalos.group)
 
-// Room 2
-const wallLeftSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(120, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+// Room 1 - Spots
+const spot1Diablos = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 65,
+    /*rotationY*/ Math.PI * 1.7
 )
-wallLeftSecondRoom.position.set(- 40, 30, - 275)
-scene.add(wallLeftSecondRoom)
+scene.add(spot1Diablos.group)
 
-const wallRightSecondRoom = new THREE.Mesh(
-    new THREE.PlaneGeometry(60, 60, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: stoneBrickTexture,
-        side: THREE.DoubleSide,
-    })
+const spot2Diablos = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 65,
+    /*rotationY*/ Math.PI * 0.35
 )
-wallRightSecondRoom.position.set(70, 30, - 275)
-scene.add(wallRightSecondRoom)
+scene.add(spot2Diablos.group)
 
-const stageUragaan = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const spot1Rathalos = new Spot(
+    /*posX*/ 40,
+    /*posZ*/ - 100,
+    /*rotationY*/ Math.PI * 1.15
 )
-stageUragaan.position.set(- 40, 0.51, - 158)
-scene.add(stageUragaan)
+scene.add(spot1Rathalos.group)
 
-const stageBarroth = new THREE.Mesh(
-    new THREE.BoxGeometry(90, 1, 35),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+const spot2Rathalos = new Spot(
+    /*posX*/ 40,
+    /*posZ*/ - 20,
+    /*rotationY*/ Math.PI * 1.9
 )
-stageBarroth.position.set(- 40, 0.51, - 246)
-scene.add(stageBarroth)
+scene.add(spot2Rathalos.group)
 
-const stageDeviljho = new THREE.Mesh(
-    new THREE.BoxGeometry(35, 1, 100),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture,
-    })
+/**
+ * Room 2
+ */ 
+
+
+// Room 2 - Walls
+const wallLeftSecondRoom = new Wall(
+    /*width*/ 120,
+    /*height*/ 60,
+    /*height*/ 2,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ - 40,
+    /*posY*/ 30,
+    /*posZ*/ - 275,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
 )
-stageDeviljho.position.set(68, 0.51, - 202),
-scene.add(stageDeviljho)
+wallGroup.add(wallLeftSecondRoom.group)
 
+const wallRightSecondRoom = new Wall(
+    /*width*/ 60,
+    /*height*/ 60,
+    /*height*/ 2,
+    /*map*/ stoneBrickTexture,
+    /*posX*/ 70,
+    /*posY*/ 30,
+    /*posZ*/ - 275,
+    /*rotationX*/ 0,
+    /*rotationY*/ 0
+)
+wallGroup.add(wallRightSecondRoom.group)
+
+// Room 2 - Pedestals
+const pedestalUragaan = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 158,
+)
+pedestalGroup.add(pedestalUragaan.group)
+
+const pedestalBarroth = new Pedestal(
+    /*width*/ 90,
+    /*height*/ 1,
+    /*depth*/ 35,
+    /*map*/ plasterTexture,
+    /*posX*/ - 40,
+    /*posY*/ 0.51,
+    /*posZ*/ - 246,
+)
+pedestalGroup.add(pedestalBarroth.group)
+
+const pedestalDeviljho = new Pedestal(
+    /*width*/ 35,
+    /*height*/ 1,
+    /*depth*/ 100,
+    /*map*/ plasterTexture,
+    /*posX*/ 68,
+    /*posY*/ 0.51,
+    /*posZ*/ - 202,
+)
+pedestalGroup.add(pedestalDeviljho.group)
+
+// Room 2 - Panels
 const panelUgaraan = new Panel()
 panelUgaraan.group.position.set(- 20, 0, - 160)
 panelUgaraan.group.rotation.y = Math.PI * 1.5
@@ -735,75 +832,122 @@ panelBarroth.group.position.set(5, 0, - 160)
 panelBarroth.group.rotation.y = Math.PI * 2
 scene.add(panelBarroth.group)
 
-
-// Room 3
-const stageKelbil2 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+// Room 2 - Spots
+const spot1Uragaan = new Spot(
+    /*posX*/ 45,
+    /*posZ*/ - 160,
+    /*rotationY*/ Math.PI * 1.85
 )
-stageKelbil2.position.set(- 90, 0.51, - 306,25)
-scene.add(stageKelbil2)
+scene.add(spot1Uragaan.group)
 
-const stagebaggi = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const spot2Uragaan = new Spot(
+    /*posX*/ 45,
+    /*posZ*/ - 245,
+    /*rotationY*/ Math.PI * 1.15
 )
-stagebaggi.position.set(- 90, 0.51, - 337,5)
-scene.add(stagebaggi)
+scene.add(spot2Uragaan.group)
 
-const stageKelbi = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const spot1Deviljho = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 180,
+    /*rotationY*/ Math.PI * 1.25
 )
-stageKelbi.position.set(- 90, 0.51, - 368,75)
-scene.add(stageKelbi)
+scene.add(spot1Deviljho.group)
 
-const stagePopo = new THREE.Mesh(
-    new THREE.BoxGeometry(14, 1, 15, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const spot2Deviljho = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 180,
+    /*rotationY*/ Math.PI * 0.75
 )
-stagePopo.position.set(88, 0.51, - 306.25)
-scene.add(stagePopo)
+scene.add(spot2Deviljho.group)
 
-const stagetest = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const spot1Barroth = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 225,
+    /*rotationY*/ Math.PI * 1.65
 )
-stagetest.position.set(90, 0.51, - 337.5)
-scene.add(stagetest)
+scene.add(spot1Barroth.group)
 
-const stagetest2 = new THREE.Mesh(
-    new THREE.BoxGeometry(7, 1, 8, 1, 1, 1),
-    new THREE.MeshStandardMaterial({
-        map: plasterTexture
-    })
+const spot2Barroth = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 225,
+    /*rotationY*/ Math.PI * 0.25
 )
-stagetest2.position.set(90, 0.51, - 368.75)
-scene.add(stagetest2)
+scene.add(spot2Barroth.group)
 
-const aquarium = new THREE.Mesh(
-    new THREE.CylinderGeometry(40, 40, 50,50),
-    new THREE.MeshPhongMaterial({
-        color: 0x4a69bd,
-        transparent: true,
-        opacity: 0.7,
-        shininess: 70,
-        side: THREE.DoubleSide
-    })
+/**
+ * Room 3
+ */ 
+
+
+// Room 3 - Pedestals
+const pedestalKelbi1 = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 368,
 )
-aquarium.position.set(0, 25.01, - 350)
-scene.add(aquarium)
+pedestalGroup.add(pedestalKelbi1.group)
 
+const pedestalKelbi2 = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 306,
+)
+pedestalGroup.add(pedestalKelbi2.group)
+
+const pedestalBaggi = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ - 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 337,
+)
+pedestalGroup.add(pedestalBaggi.group)
+
+const pedestalPopo = new Pedestal(
+    /*width*/ 14,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*map*/ plasterTexture,
+    /*posX*/ 88,
+    /*posY*/ 0.51,
+    /*posZ*/ - 306,
+)
+pedestalGroup.add(pedestalPopo.group)
+
+const pedestalAltaroth = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 337,
+)
+pedestalGroup.add(pedestalAltaroth.group)
+
+const pedestalBnahabra = new Pedestal(
+    /*width*/ 7,
+    /*height*/ 1,
+    /*depth*/ 8,
+    /*map*/ plasterTexture,
+    /*posX*/ 90,
+    /*posY*/ 0.51,
+    /*posZ*/ - 368,
+)
+pedestalGroup.add(pedestalBnahabra.group)
+
+// Room 3 - Panel
 const panelAgnaktor = new Panel()
 panelAgnaktor.group.position.set(40, 0, - 245)
 panelAgnaktor.group.rotation.y = Math.PI * 2
@@ -839,9 +983,53 @@ panelKelbi2.group.position.set(- 18, 0, - 346)
 panelKelbi2.group.rotation.y = Math.PI * 0.5
 scene.add(panelKelbi2.group)
 
+// Room 3 - Aquarium
+const aquarium = new THREE.Mesh(
+    new THREE.CylinderGeometry(40, 40, 50,50),
+    new THREE.MeshPhongMaterial({
+        color: 0x4a69bd,
+        transparent: true,
+        opacity: 0.7,
+        shininess: 70,
+        side: THREE.DoubleSide
+    })
+)
+aquarium.position.set(0, 25.01, - 350)
+scene.add(aquarium)
+
+// Room 3 - Spots
+const spot1Aquarium = new Spot(
+    /*posX*/ - 35,
+    /*posZ*/ - 305,
+    /*rotationY*/ Math.PI * 1.75
+)
+scene.add(spot1Aquarium.group)
+
+const spot2Aquarium = new Spot(
+    /*posX*/ 35,
+    /*posZ*/ - 305,
+    /*rotationY*/ Math.PI * 0.2
+)
+scene.add(spot2Aquarium.group)
+
+const spot3Aquarium = new Spot(
+    /*posX*/ - 35,
+    /*posZ*/ - 395,
+    /*rotationY*/ Math.PI * 1.25
+)
+scene.add(spot3Aquarium.group)
+
+const spot4Aquarium = new Spot(
+    /*posX*/ 35,
+    /*posZ*/ - 395,
+    /*rotationY*/ Math.PI * 0.75
+)
+scene.add(spot4Aquarium.group)
+
 /**
  * Audio
  */
+
 
 const audioSound = new Audio()
 audioSound.src = audioMonsterHunter
@@ -862,17 +1050,17 @@ audioLoader.load(audioMonsterHunter, (buffer) => {
 
 const audioFirstRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(10, 16, 8),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioFirstRoom.position.set(0, 55, - 25)
-// audioFirstRoom.visible = false
+audioFirstRoom.visible = false
 scene.add(audioFirstRoom)
 
 audioFirstRoom.add(sound)
 
+
 // Second
+
 
 const soundSecond = new THREE.PositionalAudio(listener)
 
@@ -887,12 +1075,10 @@ audioLoaderSecond.load(audioMonsterHunter, (buffer) => {
 
 const audioSecondRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(5, 8, 4),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioSecondRoom.position.set(0, 55, - 200)
-// audioSecondRoom.visible = false
+audioSecondRoom.visible = false
 scene.add(audioSecondRoom)
 
 audioSecondRoom.add(soundSecond)
@@ -914,15 +1100,14 @@ audioLoaderThird.load(audioMonsterHunter, (buffer) => {
 
 const audioThirdRoom = new THREE.Mesh(
     new THREE.SphereBufferGeometry(5, 8, 4),
-    new THREE.MeshNormalMaterial({
-        color: 0xFF0000
-    })
+    new THREE.MeshNormalMaterial()
 )
 audioThirdRoom.position.set(0, 55, - 350)
-// audioThirdRoom.visible = false
+audioThirdRoom.visible = false
 scene.add(audioThirdRoom)
 
 audioThirdRoom.add(soundThird)
+
 
 /**
  * Renderer
@@ -936,6 +1121,7 @@ document.body.appendChild(renderer.domElement)
 renderer.outputEncoding = THREE.sRGBEncoding
 renderer.gammaFactor = 2.2
 
+
 /**
  * Lights
  */
@@ -944,22 +1130,104 @@ renderer.gammaFactor = 2.2
 const ambientLight = new THREE.AmbientLight(0xffffff, 0.12)
 scene.add(ambientLight)
 
+// First Room
 const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
+// Diablo Lights
+const spot1DiabloLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1DiabloLamp.target = diablos.group
+spot1DiabloLamp.position.set(- 75, 1.2, - 65)
+scene.add(spot1DiabloLamp)
+
+const spot2DiabloLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2DiabloLamp.target = diablos.group
+spot2DiabloLamp.position.set(- 5, 1.2, - 65)
+scene.add(spot2DiabloLamp)
+
+// Rathalos Lights
+const spot1RathalosLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1RathalosLamp.target = rathalos.group
+spot1RathalosLamp.position.set(40, 1.2, - 100)
+scene.add(spot1RathalosLamp)
+
+const spot2RathalosLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2RathalosLamp.target = rathalos.group
+spot2RathalosLamp.position.set(40, 1.2, - 20)
+scene.add(spot2RathalosLamp)
+
+
+// Second Room
 const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightSecondRoom.position.set(5, 60, - 200)
 scene.add(pointLightSecondRoom)
 
+// Uragaan
+const spot1UragaanLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1UragaanLamp.target = uragaan.group
+spot1UragaanLamp.position.set(45, 1.2, - 160)
+scene.add(spot1UragaanLamp)
+
+const spot2UragaanLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2UragaanLamp.target = uragaan.group
+spot2UragaanLamp.position.set(45, 1.2, - 245)
+scene.add(spot2UragaanLamp)
+
+// Deviljho
+const spot1DeviljhoLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1DeviljhoLamp.target = deviljho.group
+spot1DeviljhoLamp.position.set(- 75, 1.2, - 180)
+scene.add(spot1DeviljhoLamp)
+
+const spot2DeviljhoLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2DeviljhoLamp.target = deviljho.group
+spot2DeviljhoLamp.position.set(- 5, 1.2, - 180)
+scene.add(spot2DeviljhoLamp)
+
+// Barroth
+const spot1BarrothLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1BarrothLamp.target = barroth.group
+spot1BarrothLamp.position.set(- 75, 1.2, - 225)
+scene.add(spot1BarrothLamp)
+
+const spot2BarrothLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2BarrothLamp.target = barroth.group
+spot2BarrothLamp.position.set(- 5, 1.2, - 225)
+scene.add(spot2BarrothLamp)
+
+
+// Third Room
 const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightThirdRoom.position.set(5, 60, - 335)
 scene.add(pointLightThirdRoom)
+
+const spot1AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1AquariumLamp.target = agnaktor.group
+spot1AquariumLamp.position.set(- 35, 0.8, - 305)
+scene.add(spot1AquariumLamp)
+
+const spot2AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2AquariumLamp.target = agnaktor.group
+spot2AquariumLamp.position.set(35, 0.8, - 305)
+scene.add(spot2AquariumLamp)
+
+const spot3AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot3AquariumLamp.target = agnaktor.group
+spot3AquariumLamp.position.set(- 35, 0.8, - 395)
+scene.add(spot3AquariumLamp)
+
+const spot4AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot4AquariumLamp.target = agnaktor.group
+spot4AquariumLamp.position.set(35, 0.8, - 395)
+scene.add(spot4AquariumLamp)
 
 
 /**
  * HTML Page
  */
+
+
 const blocker = document.querySelector('.blocker')
 const instructions = document.querySelector('.instructions')
 
@@ -976,6 +1244,217 @@ document.addEventListener('click', () => {
     instructions.style.display = 'none'
 })
 
+
+/**
+ * Intercations
+ */
+
+
+// const hitboxGroup = new THREE.Group()
+// scene.add(hitboxGroup)
+
+// const hitboxDiablo = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 40,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 55,
+// )
+// hitboxGroup.add(hitboxDiablo.group)
+
+const hitboxDiablo = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxDiablo.position.set(- 40, 0.5, - 55)
+scene.add(hitboxDiablo)
+
+// const hitboxRathaloss = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 60,
+// )
+// hitboxGroup.add(hitboxRathaloss.group)
+
+const hitboxRathaloss = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxRathaloss.position.set(35, 0.5, - 60)
+scene.add(hitboxRathaloss)
+
+// const hitboxUragaan = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 200,
+// )
+// hitboxGroup.add(hitboxUragaan.group)
+const hitboxUragaan = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxUragaan.position.set(35, 0.5, - 200)
+scene.add(hitboxUragaan)
+
+// const hitboxDeviljho = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 185,
+// )
+// hitboxGroup.add(hitboxDeviljho.group)
+
+const hitboxDeviljho = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxDeviljho.position.set(- 35, 0.5, - 185)
+scene.add(hitboxDeviljho)
+
+// const hitboxBarroth = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 215,
+// )
+// hitboxGroup.add(hitboxBarroth.group)
+
+const hitboxBarroth = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxBarroth.position.set(- 35, 0.5, - 215)
+scene.add(hitboxBarroth)
+
+// const hitboxKelbi2 = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 306,
+// )
+// hitboxGroup.add(hitboxKelbi2.group)
+
+const hitboxKebil2 = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxKebil2.position.set(- 73, 0.5, - 306)
+scene.add(hitboxKebil2)
+
+// const hitboxBaggi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 337,
+// )
+// hitboxGroup.add(hitboxBaggi.group)
+
+const hitboxBaggi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxBaggi.position.set(- 73, 0.5, - 337)
+scene.add(hitboxBaggi)
+
+// const hitboxKelbi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 368,
+// )
+// hitboxGroup.add(hitboxKelbi.group)
+
+const hitboxKelbi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxKelbi.position.set(- 73, 0.5, - 368)
+scene.add(hitboxKelbi)
+
+// const hitboxPopo = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 306,
+// )
+// hitboxGroup.add(hitboxPopo.group)
+
+const hitboxPopo = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxPopo.position.set(65, 0.5, - 305)
+scene.add(hitboxPopo)
+
+// const hitboxDelex = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 337,
+// )
+// hitboxGroup.add(hitboxDelex.group)
+
+const hitboxDelex = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxDelex.position.set(65, 0.5, - 337)
+scene.add(hitboxDelex)
+
+// const hitboxGiggi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 368,
+// )
+// hitboxGroup.add(hitboxGiggi.group)
+
+const hitboxGiggi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxGiggi.position.set(65, 0.5, - 368)
+scene.add(hitboxGiggi)
+
+// const hitboxAgnaktor = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ 0,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 300,
+// )
+// hitboxGroup.add(hitboxAgnaktor.group)
+
+const hitboxAgnaktor = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxAgnaktor.position.set(0, 0.5, - 300)
+scene.add(hitboxAgnaktor)
 
 /**
  * Resize
@@ -999,20 +1478,34 @@ window.addEventListener('resize', () =>
  */
 
 
+const mouse = new THREE.Vector2();
+
+let onMouseMove = (_event) => {
+  mouse.x = (_event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(_event.clientY / window.innerHeight) * 2 + 1;
+}
+
+window.addEventListener("mousemove", onMouseMove, false)
+
+hitboxDiablo.addEventListener('mousemove', () => {
+    console.log('pute')
+})
+
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
-
+    
+    // Camera control
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
-
+    
     velocity.x -= velocity.x * 1.0 * delta
     velocity.z -= velocity.z * 1.0 * delta
-
+    
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
     direction.normalize()
-
+    
     if( moveForward || moveBackward )
     {
         velocity.z -= direction.z * 100.0 * delta
@@ -1021,15 +1514,27 @@ const loop = () =>
     {
         velocity.x -= direction.x * 100.0 * delta
     }
-
+    
     controls.moveRight( - velocity.x * delta )
     controls.moveForward( - velocity.z * delta )
     controls.moveRight( - velocity.x * delta )
     controls.moveForward( - velocity.z * delta )
-
+    
     prevTime = time
 
+    let targetList = []
+
+    const raycaster = new THREE.Raycaster()
+    targetList.push(hitboxDiablo, hitboxRathaloss, hitboxUragaan, hitboxDeviljho, hitboxBarroth, hitboxKebil2, hitboxBaggi, hitboxKelbi, hitboxPopo, hitboxGiggi, hitboxDelex, hitboxAgnaktor)
+    raycaster.setFromCamera(mouse, camera)
+
+    const intersects = raycaster.intersectObjects(targetList)
+    if (intersects.length > 0) {
+        console.log("Appuyez sur E pour interagir")
+    }
+    // console.log(targetList)
+    
     // Render
     renderer.render(scene, camera)
-}
+}    
 loop()
