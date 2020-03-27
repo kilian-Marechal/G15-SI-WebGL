@@ -1326,10 +1326,6 @@ let onMouseMove = (_event) => {
 
 window.addEventListener("mousemove", onMouseMove, false)
 
-hitboxDiablo.addEventListener('mousemove', () => {
-    console.log('pute')
-})
-
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
@@ -1338,8 +1334,8 @@ const loop = () =>
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
     
-    velocity.x -= velocity.x * 1.0 * delta
-    velocity.z -= velocity.z * 1.0 * delta
+    velocity.x -= velocity.x * 14.0 * delta
+    velocity.z -= velocity.z * 14.0 * delta
     
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
@@ -1370,6 +1366,10 @@ const loop = () =>
     const intersects = raycaster.intersectObjects(targetList)
     if (intersects.length > 0) {
         console.log("Appuyez sur E pour interagir")
+
+        hitboxDiablo.addEventListener('click', () => {
+            console.log('pute')
+        })
     }
     // console.log(targetList)
     
