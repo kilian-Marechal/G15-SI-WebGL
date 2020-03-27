@@ -1118,13 +1118,13 @@ renderer.gammaFactor = 2.2
  */
 
 
-const ambientLight = new THREE.AmbientLight(0xffffff, 0.12)
+const ambientLight = new THREE.AmbientLight(0xffffff, 0.10)
 scene.add(ambientLight)
 
 // First Room
-const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
-pointLightFirstRoom.position.set(5, 60, - 65)
-scene.add(pointLightFirstRoom)
+// const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+// pointLightFirstRoom.position.set(5, 60, - 65)
+// scene.add(pointLightFirstRoom)
 
 // Diablo Lights
 const spot1DiabloLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
@@ -1150,9 +1150,9 @@ scene.add(spot2RathalosLamp)
 
 
 // Second Room
-const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
-pointLightSecondRoom.position.set(5, 60, - 200)
-scene.add(pointLightSecondRoom)
+// const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+// pointLightSecondRoom.position.set(5, 60, - 200)
+// scene.add(pointLightSecondRoom)
 
 // Uragaan
 const spot1UragaanLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
@@ -1189,9 +1189,9 @@ scene.add(spot2BarrothLamp)
 
 
 // Third Room
-const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
-pointLightThirdRoom.position.set(5, 60, - 335)
-scene.add(pointLightThirdRoom)
+// const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
+// pointLightThirdRoom.position.set(5, 60, - 335)
+// scene.add(pointLightThirdRoom)
 
 const spot1AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
 spot1AquariumLamp.target = agnaktor.group
