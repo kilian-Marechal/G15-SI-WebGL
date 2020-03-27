@@ -1,14 +1,16 @@
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js'
 
-// create and export a group to add to the scene in index.js
-export const monsterGroup = new THREE.Group()
-
 // class to create monsters
 export default class Monster
 {
     constructor(_path, _posX, _posY, _posZ, _scale, _rotation)
     {
+        this.group = new THREE.Group()
+        this.group.position.set(_posX, _posY, _posZ)// Model's position
+        this.group.scale.set(_scale, _scale, _scale)// Model 's scale
+        this.group.rotation.y = _rotation// Model's rotation
+
         // instantiate the .gtlf loader
         const gltfLoader = new GLTFLoader()
 
@@ -20,14 +22,12 @@ export default class Monster
                 // get all meshes from the object
                 while(_gltf.scene.children.length)
                 {
-                    this.child = _gltf.scene.children[0]
-                    this.child.position.set(_posX, _posY, _posZ)// Model's position
-                    this.child.scale.set(_scale, _scale, _scale)// Model 's scale
-                    this.child.rotation.y = _rotation// Model's rotation
-                    this.child.material = new THREE.MeshLambertMaterial({
-                        map: this.child.material.map
+                    const child = _gltf.scene.children[0]
+                    child.geometry.computeVertexNormals()
+                    child.material = new THREE.MeshStandardMaterial({
+                        map: child.material.map
                     })
-                    monsterGroup.add(this.child)// Add the created model to the group
+                    this.group.add(child)// Add the created model to the group
                 }
             }
         )

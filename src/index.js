@@ -1,9 +1,9 @@
 import './style/main.styl'
 import * as THREE from 'three'
-import Monster, { monsterGroup } from './scripts/MonsterClass.js'
-import Panel, { panelGroup } from './scripts/Panel.js'
-import Wall, { wallGroup } from './scripts/WallsClass.js'
-import Pedestal, { pedestalGroup } from './scripts/PedestalsClass.js'
+import Monster from './scripts/MonsterClass.js'
+import Panel from './scripts/Panel.js'
+import Wall from './scripts/WallsClass.js'
+import Pedestal from './scripts/PedestalsClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
@@ -117,6 +117,7 @@ let moveRight = false
  */
 
 
+const monsterGroup = new THREE.Group()
 scene.add(monsterGroup)
 const diablos = new Monster(
     /*Path*/'/models/diablos/glTF-Binary/Diablos.glb',
@@ -126,7 +127,7 @@ const diablos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1.5),
 )
-
+monsterGroup.add(diablos.group)
 
 const rathalos = new Monster(
     '/models/rathalos/glTF-Binary/Rathalos.glb',
@@ -136,7 +137,7 @@ const rathalos = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-
+monsterGroup.add(rathalos.group)
 
 const deviljho = new Monster(
     '/models/deviljho/glTF-Binary/Deviljho.glb',
@@ -146,6 +147,7 @@ const deviljho = new Monster(
     /*scale*/ 7,
     /*rotation*/ (Math.PI * 2),
 )
+monsterGroup.add(deviljho.group)
 
 
 const barroth = new Monster(
@@ -156,6 +158,7 @@ const barroth = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
+monsterGroup.add(barroth.group)
 
 
 const uragaan = new Monster(
@@ -166,6 +169,7 @@ const uragaan = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 0.5),
 )
+monsterGroup.add(uragaan.group)
 
 
 const kelbi2 = new Monster(
@@ -176,6 +180,7 @@ const kelbi2 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
+monsterGroup.add(kelbi2.group)
 
 
 const baggi = new Monster(
@@ -186,7 +191,7 @@ const baggi = new Monster(
     /*scale*/ 5,
     /*rotation*/ (Math.PI * 2),
 )
-
+monsterGroup.add(baggi.group)
 
 const kelbi1 = new Monster(
     '/models/kelbi/glTF-Binary/Kelbi1.glb',
@@ -196,7 +201,7 @@ const kelbi1 = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 2),
 )
-
+monsterGroup.add(kelbi1.group)
 
 const agnaktor = new Monster(
     '/models/agnaktor/glTF-Binary/Agnaktor.glb',
@@ -206,7 +211,7 @@ const agnaktor = new Monster(
     /*scale*/ 2.8,
     /*rotation*/ (Math.PI * 1.75),
 )
-
+monsterGroup.add(agnaktor.group)
 
 const popo = new Monster(
     '/models/popo/glTF-Binary/Popo.glb',
@@ -216,7 +221,7 @@ const popo = new Monster(
     /*scale*/ 4,
     /*rotation*/ (Math.PI * 1),
 )
-
+monsterGroup.add(popo.group)
 
 const fish1 = new Monster(
     '/models/fish/glTF-Binary/Fish1.glb',
@@ -226,7 +231,7 @@ const fish1 = new Monster(
     /*scale*/ 2,
     /*rotation*/ (Math.PI * 0.2),
 )
-
+monsterGroup.add(fish1.group)
 
 const fish2 = new Monster(
     '/models/fish/glTF-Binary/Fish2.glb',
@@ -236,7 +241,7 @@ const fish2 = new Monster(
     /*scale*/ 1,
     /*rotation*/ (Math.PI * 0.8),
 )
-
+monsterGroup.add(fish2.group)
 
 const fish3 = new Monster(
     '/models/fish/glTF-Binary/Fish3.glb',
@@ -246,6 +251,7 @@ const fish3 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.8),
 )
+monsterGroup.add(fish3.group)
 
 
 const fish4 = new Monster(
@@ -256,7 +262,7 @@ const fish4 = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI * 1.5),
 )
-
+monsterGroup.add(fish4.group)
 
 const fish5 = new Monster(
     '/models/fish/glTF-Binary/Fish5.glb',
@@ -266,7 +272,7 @@ const fish5 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-
+monsterGroup.add(fish5.group)
 
 const fish6 = new Monster(
     '/models/fish/glTF-Binary/Fish6.glb',
@@ -276,7 +282,7 @@ const fish6 = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-
+monsterGroup.add(fish6.group)
 
 const giggi = new Monster(
     '/models/giggi/glTF-Binary/Giggi.glb',
@@ -286,7 +292,7 @@ const giggi = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI * 0.5),
 )
-
+monsterGroup.add(giggi.group)
 
 const delex = new Monster(
     '/models/delex/glTF-Binary/Delex.glb',
@@ -296,6 +302,7 @@ const delex = new Monster(
     /*scale*/ 1.5,
     /*rotation*/ (Math.PI * 0.5),
 )
+monsterGroup.add(delex.group)
 
 
 const altaroth = new Monster(
@@ -306,7 +313,7 @@ const altaroth = new Monster(
     /*scale*/ 3,
     /*rotation*/ (Math.PI),
 )
-
+monsterGroup.add(altaroth.group)
 
 const bnahabra = new Monster(
     '/models/bnahabra/glTF-Binary/Bnahabra.glb',
@@ -316,7 +323,7 @@ const bnahabra = new Monster(
     /*scale*/ 2.5,
     /*rotation*/ (Math.PI),
 )
-
+monsterGroup.add(bnahabra.group)
 
 /**
  * Controls
@@ -407,10 +414,11 @@ document.addEventListener ('keyup', onKeyUp)
 
  
 //Groups
-const museum = new THREE.Group()
-scene.add(museum)
-museum.add(wallGroup)
-museum.add(pedestalGroup)
+const wallGroup = new THREE.Group()
+scene.add(wallGroup)
+
+const pedestalGroup = new THREE.Group()
+scene.add(pedestalGroup)
 
 // Ground
 const ground = new Wall(
@@ -425,6 +433,8 @@ const ground = new Wall(
     /*rotationX*/ Math.PI * 0.5,
     /*rotationY*/ 0
 )
+wallGroup.add(ground.group)
+
 
 // Roof
 const roof = new Wall(
@@ -439,6 +449,7 @@ const roof = new Wall(
     /*rotationX*/ Math.PI * 0.5,
     /*rotationY*/ 0
 )
+wallGroup.add(roof.group)
 
 // Global Walls
 const wallLeft = new Wall(
@@ -453,6 +464,7 @@ const wallLeft = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ Math.PI * 0.5
 )
+wallGroup.add(wallLeft.group)
 
 const wallRight = new Wall(
     /*width*/ 400,
@@ -466,6 +478,7 @@ const wallRight = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ Math.PI * 0.5
 )
+wallGroup.add(wallRight.group)
 
 const wallForward = new Wall(
     /*width*/ 200,
@@ -479,6 +492,7 @@ const wallForward = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallForward.group)
 
 const wallBackward = new Wall(
     /*width*/ 200,
@@ -492,6 +506,7 @@ const wallBackward = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallBackward.group)
 
 /**
  * Room 1
@@ -511,6 +526,7 @@ const wallLeftFirstRoom = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallLeftFirstRoom.group)
 
 const wallRightFirstRoom = new Wall(
     /*width*/ 60,
@@ -524,6 +540,7 @@ const wallRightFirstRoom = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallRightFirstRoom.group)
 
 // Room 1 - Pedestals
 const pedestalDiablo = new Pedestal(
@@ -535,6 +552,7 @@ const pedestalDiablo = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 94,
 )
+pedestalGroup.add(pedestalDiablo.group)
 
 const pedestalRathalos = new Pedestal(
     /*width*/ 35,
@@ -545,6 +563,7 @@ const pedestalRathalos = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 62,
 )
+pedestalGroup.add(pedestalRathalos.group)
 
 // Room 1 - Panels
 const panelDiablo = new Panel()
@@ -572,6 +591,7 @@ const wallLeftSecondRoom = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallLeftSecondRoom.group)
 
 const wallRightSecondRoom = new Wall(
     /*width*/ 60,
@@ -585,6 +605,7 @@ const wallRightSecondRoom = new Wall(
     /*rotationX*/ 0,
     /*rotationY*/ 0
 )
+wallGroup.add(wallRightSecondRoom.group)
 
 // Room 2 - Pedestals
 const pedestalUragaan = new Pedestal(
@@ -596,6 +617,7 @@ const pedestalUragaan = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 158,
 )
+pedestalGroup.add(pedestalUragaan.group)
 
 const pedestalBarroth = new Pedestal(
     /*width*/ 90,
@@ -606,6 +628,7 @@ const pedestalBarroth = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 246,
 )
+pedestalGroup.add(pedestalBarroth.group)
 
 const pedestalDeviljho = new Pedestal(
     /*width*/ 35,
@@ -616,6 +639,7 @@ const pedestalDeviljho = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 202,
 )
+pedestalGroup.add(pedestalDeviljho.group)
 
 // Room 2 - Panels
 const panelUgaraan = new Panel()
@@ -647,6 +671,7 @@ const pedestalKelbi1 = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 368,
 )
+pedestalGroup.add(pedestalKelbi1.group)
 
 const pedestalKelbi2 = new Pedestal(
     /*width*/ 7,
@@ -657,6 +682,7 @@ const pedestalKelbi2 = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 306,
 )
+pedestalGroup.add(pedestalKelbi2.group)
 
 const pedestalBaggi = new Pedestal(
     /*width*/ 7,
@@ -667,6 +693,7 @@ const pedestalBaggi = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 337,
 )
+pedestalGroup.add(pedestalBaggi.group)
 
 const pedestalPopo = new Pedestal(
     /*width*/ 14,
@@ -677,6 +704,7 @@ const pedestalPopo = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 306,
 )
+pedestalGroup.add(pedestalPopo.group)
 
 const pedestalAltaroth = new Pedestal(
     /*width*/ 7,
@@ -687,6 +715,7 @@ const pedestalAltaroth = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 337,
 )
+pedestalGroup.add(pedestalAltaroth.group)
 
 const pedestalBnahabra = new Pedestal(
     /*width*/ 7,
@@ -697,6 +726,7 @@ const pedestalBnahabra = new Pedestal(
     /*posY*/ 0.51,
     /*posZ*/ - 368,
 )
+pedestalGroup.add(pedestalBnahabra.group)
 
 // Room 3 - Panel
 const panelAgnaktor = new Panel()
@@ -853,8 +883,8 @@ pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
 const firstLampFirstRoom = new THREE.SpotLight(0xc2822f, 1, 100, 100, 0)
-// firstLampFirstRoom.rotation.y = Math.PI * 1
-// firstLampFirstRoom.target = diablos
+firstLampFirstRoom.target = diablos.group
+// firstLampFirstRoom.castShadow = true
 firstLampFirstRoom.position.set(- 92, 6, - 70)
 scene.add(firstLampFirstRoom)
 
