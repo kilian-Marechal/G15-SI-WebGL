@@ -2,7 +2,6 @@ import './style/main.styl'
 import * as THREE from 'three'
 import Monster from './scripts/MonsterClass.js'
 import Panel from './scripts/Panel.js'
-import Hitbox from './scripts/Hitbox.js'
 import Wall from './scripts/WallsClass.js'
 import Pedestal from './scripts/PedestalsClass.js'
 import Spot from './scripts/SpotsClass.js'
@@ -14,22 +13,183 @@ import audioMonsterHunter from './audio/MH-ost-min.mp3'
 import imageMap from './images/map.jpg'
 import importFelyne from './images/felyne.gif'
 import importLogo from './images/logo.png'
+import importMapDeviljho from './images/mapdeviljho.jpg'
+import importMapRathalos from './images/maprathalos.jpg'
+import importDeviljho from './images/deviljho.png'
+import importDeviljhoIcon from './images/deviljhoicon.png'
+import importRathalosIcon from './images/rathalosicon.png'
+import importRathalos from './images/rathalos.png'
+
+const placeholderRathalos = document.querySelector('.rathalos')
+const imageRathalos = new Image()
+imageRathalos.src = importRathalos
+placeholderRathalos.appendChild(imageRathalos)
+
+const placeholderRathalosIcon = document.querySelector('.rathalosIcon')
+const imageRathalosIcon = new Image()
+imageRathalosIcon.src = importRathalosIcon
+placeholderRathalosIcon.appendChild(imageRathalosIcon)
+
+const placeholderDeviljhoIcon = document.querySelector('.deviljhoIcon')
+const imageDeviljhoIcon = new Image()
+imageDeviljhoIcon.src = importDeviljhoIcon
+placeholderDeviljhoIcon.appendChild(imageDeviljhoIcon)
+
+const placeholderDeviljho = document.querySelector('.deviljho')
+const imageDeviljho = new Image()
+imageDeviljho.src = importDeviljho
+placeholderDeviljho.appendChild(imageDeviljho)
+
+const placeholderMapDeviljho = document.querySelector('.js-mapImageDeviljho')
+const placeholderMapRathalos = document.querySelector('.js-mapImageRathalos')
+const imageMapDeviljho = new Image()
+const imageMapRathalos = new Image()
+imageMapDeviljho.src = importMapDeviljho
+imageMapRathalos.src = importMapRathalos
+placeholderMapDeviljho.appendChild(imageMapDeviljho)
+placeholderMapRathalos.appendChild(imageMapRathalos)
+
+
 
 const placeholderLogo = document.querySelector('.emblem')
+const placeholderLogo2 = document.querySelector('.emblem2')
+const placeholderLogo3 = document.querySelector('.emblem3')
 const imageLogo = new Image()
+const imageLogo2 = new Image()
+const imageLogo3 = new Image()
 imageLogo.src = importLogo
+imageLogo2.src = importLogo
+imageLogo3.src = importLogo
 placeholderLogo.appendChild(imageLogo)
+placeholderLogo2.appendChild(imageLogo2)
+placeholderLogo3.appendChild(imageLogo3)
 
 const placeholderFelyne = document.querySelector('.felyne')
+const placeholderFelyne2 = document.querySelector('.felyne2')
+const placeholderFelyne3 = document.querySelector('.felyne3')
 const imageFelyne = new Image()
+const imageFelyne2 = new Image()
+const imageFelyne3 = new Image()
 imageFelyne.src = importFelyne
+imageFelyne2.src = importFelyne
+imageFelyne3.src = importFelyne
 placeholderFelyne.appendChild(imageFelyne)
+placeholderFelyne2.appendChild(imageFelyne2)
+placeholderFelyne3.appendChild(imageFelyne3)
 
 const placeholderImage = document.querySelector('.background')
 const $image = new Image()
 $image.src = imageMap
 placeholderImage.appendChild($image)
 
+/**
+ * Info Page
+ */
+
+var name = document.querySelector('.js-name'),
+    physiology = document.querySelector('.js-physiologyDeviljho'),
+    physiology = document.querySelector('.js-physiologyRathalos'),
+    capacities = document.querySelector('.js-capacitiesDeviljho'),
+    capacities = document.querySelector('.js-capacitiesRathalos'),
+    behavior = document.querySelector('.js-behaviorDeviljho'),
+    behavior = document.querySelector('.js-behaviorRathalos'),
+    habitat = document.querySelector('.js-habitatDeviljho'),
+    habitat = document.querySelector('.js-habitatRathalos'),
+    textDeviljho = document.querySelector('.js-textDeviljho'),
+    textRathalos = document.querySelector('.js-textRathalos'),
+    mapButton = document.querySelector('.js-map'),
+    mapButton2 = document.querySelector('.js-map2'),
+    mapImage = document.querySelector('.js-mapImageDeviljho'),
+    mapImage2 = document.querySelector('.js-mapImageRathalos'),
+    currentCat = 0
+
+    physiology.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#000"
+        physiology.style.backgroundColor = "#fff"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho est un très grand bipède, de la famille des Wyvernes de terre, caractérisé par sa coloration verte uniforme, couleur forêt, et par un haut de corps musclé."
+        textRathalos.innerHTML = "De taille moyenne, ils sont reconnaissables par leur couleur rouge cramoisie et leurs ailes comportant des motifs de flammes. Au delà de son apparence de Wyverne, le Rathalos évoque aussi l'aigle, autant par son museau crochu que par son statut de roi des cieux."
+        currentCat = 1
+
+    })
+
+    capacities.addEventListener('click', () => {
+
+        capacities.style.color ="#000"
+        capacities.style.backgroundColor ="#fff"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho attaque principalement à l'aide de sa mâchoire et sa queue. De par sa grande chaleur corporelle et son métabolisme le Deviljho est toujours affamé, et est en recherche permanente de nourriture."
+        textRathalos.innerHTML = "Le Rathalos passe la plupart de son temps à se battre en vol. Sa capacité à vivre dans les environnements les plus étranges et rudes participe à sa renommée de Roi des Wyvernes. Tout comme la Rathian il peut immobiliser un chasseur et le déchiqueter."
+        currentCat = 2
+
+    })
+
+    behavior.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#000"
+        behavior.style.backgroundColor = "#fff"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho est un monstre nomade. Il a tendance à errer sur de longues distances à la recherche de proies. Son statut de super-prédateur lui permet de traverser le territoire de n'importe quel monstre qui se dresse sur son chemin, ce qui n'empêche pas d'entrer en conflit régulièrement avec d'autres monstres. "
+        textRathalos.innerHTML = "Il existe deux sous-espèce de Rathalos, le Rathalos azur habitant aux mêmes endroits que son cousin rouge, et une sous-espèce plus solitaire, le Rathalos d'argent, vivant dans des zones plus recluses : l'Ancienne Tour ou les Marais. "
+        currentCat = 3
+    })
+
+    habitat.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#000"
+        habitat.style.backgroundColor = "#fff"
+        textDeviljho.innerHTML = "En raison de son caractère nomade, le Deviljho est connu pour habiter une grande variété d'environnements, tels que la Toundra, l'Île déserte et le Volcan. Sa présence perturbe un peu souvent l'écosystème naturel, qui est cependant adapté aux allers et venues de ce monstres. Deviljho attaque principalement à l'aide de sa mâchoire et sa queue. De par sa grande chaleur corporelle et son métabolisme le Deviljho est toujours affamé, et est en recherche permanente de nourriture."
+        textRathalos.innerHTML = "Du fait de sa suprématie dans les airs, le Rathalos vit souvent au sommet des terrains, ce qui lui permet de surveiller rapidement toute l'activité de son territoire. Cela s'illustre par le fait qu'il vit au sommet de la falaise de l'Île déserte, ou encore au sommet de l'arbre de de la forêt ancienne. "
+        currentCat = 4
+    })
+
+    mapButton.addEventListener('click', () => {
+
+        mapImage.classList.add('show')
+        mapImage.classList.remove('hide')
+        console.log("worked")
+    })
+
+    mapButton2.addEventListener('click', () => {
+
+        mapImage2.classList.add('show')
+        mapImage2.classList.remove('hide')
+        console.log("worked")
+    })
+
+    document.addEventListener('keydown', (e) => 
+{
+    if (e.code == 'Escape') 
+    {
+        mapImage.classList.remove('show')
+        mapImage.classList.add('hide')
+        mapImage2.classList.remove('show')
+        mapImage2.classList.add('hide')
+    
+    }
+})
 
 /**
  * Textures
@@ -1085,215 +1245,120 @@ document.addEventListener('click', () => {
 
 
 /**
- * Intercations
+ * Interactions
  */
 
 
-// const hitboxGroup = new THREE.Group()
-// scene.add(hitboxGroup)
-
-// const hitboxDiablo = new Hitbox(
-//     /*width*/ 10,
-//     /*height*/ 1,
-//     /*depth*/ 15,
-//     /*posX*/ - 40,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 55,
-// )
-// hitboxGroup.add(hitboxDiablo.group)
-
 const hitboxDiablo = new THREE.Mesh(
-    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.BoxGeometry(10, 1.5, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxDiablo.position.set(- 40, 0.5, - 55)
+hitboxDiablo.name = 'diablo'
+hitboxDiablo.visible = false
 scene.add(hitboxDiablo)
 
-// const hitboxRathaloss = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ 35,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 60,
-// )
-// hitboxGroup.add(hitboxRathaloss.group)
 
 const hitboxRathaloss = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxRathaloss.position.set(35, 0.5, - 60)
+hitboxRathaloss.visible = false
 scene.add(hitboxRathaloss)
 
-// const hitboxUragaan = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ 35,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 200,
-// )
-// hitboxGroup.add(hitboxUragaan.group)
+
 const hitboxUragaan = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxUragaan.position.set(35, 0.5, - 200)
+hitboxUragaan.visible = false
 scene.add(hitboxUragaan)
 
-// const hitboxDeviljho = new Hitbox(
-//     /*width*/ 10,
-//     /*height*/ 1,
-//     /*depth*/ 15,
-//     /*posX*/ - 35,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 185,
-// )
-// hitboxGroup.add(hitboxDeviljho.group)
 
 const hitboxDeviljho = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxDeviljho.position.set(- 35, 0.5, - 185)
+hitboxDiablo.name = 'deviljho'
+hitboxDiablo.visible = false
 scene.add(hitboxDeviljho)
 
-// const hitboxBarroth = new Hitbox(
-//     /*width*/ 10,
-//     /*height*/ 1,
-//     /*depth*/ 15,
-//     /*posX*/ - 35,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 215,
-// )
-// hitboxGroup.add(hitboxBarroth.group)
 
 const hitboxBarroth = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxBarroth.position.set(- 35, 0.5, - 215)
+hitboxBarroth.visible = false
 scene.add(hitboxBarroth)
 
-// const hitboxKelbi2 = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ - 73,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 306,
-// )
-// hitboxGroup.add(hitboxKelbi2.group)
+
 
 const hitboxKebil2 = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxKebil2.position.set(- 73, 0.5, - 306)
+hitboxKebil2.visible = false
 scene.add(hitboxKebil2)
 
-// const hitboxBaggi = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ - 73,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 337,
-// )
-// hitboxGroup.add(hitboxBaggi.group)
 
 const hitboxBaggi = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxBaggi.position.set(- 73, 0.5, - 337)
+hitboxBaggi.visible = false
 scene.add(hitboxBaggi)
 
-// const hitboxKelbi = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ - 73,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 368,
-// )
-// hitboxGroup.add(hitboxKelbi.group)
 
 const hitboxKelbi = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxKelbi.position.set(- 73, 0.5, - 368)
+hitboxKelbi.visible = false
 scene.add(hitboxKelbi)
 
-// const hitboxPopo = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ 65,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 306,
-// )
-// hitboxGroup.add(hitboxPopo.group)
 
 const hitboxPopo = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxPopo.position.set(65, 0.5, - 305)
+hitboxPopo.visible = false
 scene.add(hitboxPopo)
 
-// const hitboxDelex = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ 65,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 337,
-// )
-// hitboxGroup.add(hitboxDelex.group)
 
 const hitboxDelex = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxDelex.position.set(65, 0.5, - 337)
+hitboxDelex.visible = false
 scene.add(hitboxDelex)
 
-// const hitboxGiggi = new Hitbox(
-//     /*width*/ 15,
-//     /*height*/ 1,
-//     /*depth*/ 10,
-//     /*posX*/ 65,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 368,
-// )
-// hitboxGroup.add(hitboxGiggi.group)
 
 const hitboxGiggi = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxGiggi.position.set(65, 0.5, - 368)
+hitboxGiggi.visible = false
 scene.add(hitboxGiggi)
 
-// const hitboxAgnaktor = new Hitbox(
-//     /*width*/ 10,
-//     /*height*/ 1,
-//     /*depth*/ 15,
-//     /*posX*/ 0,
-//     /*posY*/ 0.5,
-//     /*posZ*/ - 300,
-// )
-// hitboxGroup.add(hitboxAgnaktor.group)
 
 const hitboxAgnaktor = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
 )
 hitboxAgnaktor.position.set(0, 0.5, - 300)
+hitboxAgnaktor.visible = false
 scene.add(hitboxAgnaktor)
+
 
 /**
  * Resize
@@ -1326,6 +1391,10 @@ let onMouseMove = (_event) => {
 
 window.addEventListener("mousemove", onMouseMove, false)
 
+const infosDeviljho = document.querySelector('.infosDeviljho')
+console.log(infosDeviljho)
+
+const raycaster = new THREE.Raycaster()
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
@@ -1359,11 +1428,10 @@ const loop = () =>
 
     let targetList = []
 
-    const raycaster = new THREE.Raycaster()
     targetList.push(hitboxDiablo, hitboxRathaloss, hitboxUragaan, hitboxDeviljho, hitboxBarroth, hitboxKebil2, hitboxBaggi, hitboxKelbi, hitboxPopo, hitboxGiggi, hitboxDelex, hitboxAgnaktor)
     raycaster.setFromCamera(mouse, camera)
 
-    const intersects = raycaster.intersectObjects(targetList)
+    let intersects = raycaster.intersectObjects(targetList, true)
     if (intersects.length > 0) {
         console.log("Appuyez sur E pour interagir")
 
@@ -1371,9 +1439,27 @@ const loop = () =>
             console.log('pute')
         })
     }
-    // console.log(targetList)
     
+    document.addEventListener('keydown', (event) => {
+        if (intersects.length > 0 && event.keyCode === 69) {
+            // keys[69] = E key
+            if(infosDeviljho.classList.contains('infosDeviljho'))
+            {
+                infosDeviljho.classList.remove('infosDeviljho')
+                infosDeviljho.classList.add('infosDeviljhoVisible')
+                console.log(intersects)
+                intersects = []
+            }
+            else{
+                infosDeviljho.classList.remove('infosDeviljhoVisible')
+                infosDeviljho.classList.add('infosDeviljho')
+                console.log(intersects)
+                intersects = []
+            }
+        }
+    })
+
     // Render
     renderer.render(scene, camera)
-}    
+}
 loop()
