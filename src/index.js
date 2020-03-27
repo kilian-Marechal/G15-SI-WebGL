@@ -2,6 +2,7 @@ import './style/main.styl'
 import * as THREE from 'three'
 import Monster from './scripts/MonsterClass.js'
 import Panel from './scripts/Panel.js'
+import Hitbox from './scripts/Hitbox.js'
 import Wall from './scripts/WallsClass.js'
 import Pedestal from './scripts/PedestalsClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
@@ -890,9 +891,6 @@ firstLampFirstRoom.target = diablos.group
 firstLampFirstRoom.position.set(- 92, 6, - 70)
 scene.add(firstLampFirstRoom)
 
-const spotLightHelper = new THREE.SpotLightHelper(firstLampFirstRoom)
-scene.add(spotLightHelper)
-
 // Second Room
 const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightSecondRoom.position.set(5, 60, - 200)
@@ -932,13 +930,139 @@ document.addEventListener('click', () => {
  */
 
 
-const hitbox = new THREE.Mesh(
-    new THREE.BoxGeometry(4, 1, 8),
-    new THREE.MeshNormalMaterial
-)
-hitbox.position.set(- 40, 0.5, - 48)
-scene.add(hitbox)
+const hitboxGroup = new THREE.Group()
 
+const hitboxDiablo = new Hitbox(
+    /*width*/ 10,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*posX*/ - 40,
+    /*posY*/ 0.5,
+    /*posZ*/ - 55,
+)
+hitboxGroup.add(hitboxDiablo.group)
+scene.add(hitboxGroup)
+
+const hitboxRathaloss = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ 35,
+    /*posY*/ 0.5,
+    /*posZ*/ - 60,
+)
+hitboxGroup.add(hitboxRathaloss.group)
+scene.add(hitboxGroup)
+
+const hitboxUragaan = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ 35,
+    /*posY*/ 0.5,
+    /*posZ*/ - 200,
+)
+hitboxGroup.add(hitboxUragaan.group)
+scene.add(hitboxGroup)
+
+const hitboxDeviljho = new Hitbox(
+    /*width*/ 10,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*posX*/ - 35,
+    /*posY*/ 0.5,
+    /*posZ*/ - 185,
+)
+hitboxGroup.add(hitboxDeviljho.group)
+scene.add(hitboxGroup)
+
+const hitboxBarroth = new Hitbox(
+    /*width*/ 10,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*posX*/ - 35,
+    /*posY*/ 0.5,
+    /*posZ*/ - 215,
+)
+hitboxGroup.add(hitboxBarroth.group)
+scene.add(hitboxGroup)
+
+const hitboxKelbi2 = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ - 73,
+    /*posY*/ 0.5,
+    /*posZ*/ - 306,
+)
+hitboxGroup.add(hitboxKelbi2.group)
+scene.add(hitboxGroup)
+
+const hitboxBaggi = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ - 73,
+    /*posY*/ 0.5,
+    /*posZ*/ - 337,
+)
+hitboxGroup.add(hitboxBaggi.group)
+scene.add(hitboxGroup)
+
+const hitboxKelbi = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ - 73,
+    /*posY*/ 0.5,
+    /*posZ*/ - 368,
+)
+hitboxGroup.add(hitboxKelbi.group)
+scene.add(hitboxGroup)
+
+const hitboxPopo = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ 65,
+    /*posY*/ 0.5,
+    /*posZ*/ - 306,
+)
+hitboxGroup.add(hitboxPopo.group)
+scene.add(hitboxGroup)
+
+const hitboxDelex = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ 65,
+    /*posY*/ 0.5,
+    /*posZ*/ - 337,
+)
+hitboxGroup.add(hitboxDelex.group)
+scene.add(hitboxGroup)
+
+const hitboxGiggi = new Hitbox(
+    /*width*/ 15,
+    /*height*/ 1,
+    /*depth*/ 10,
+    /*posX*/ 65,
+    /*posY*/ 0.5,
+    /*posZ*/ - 368,
+)
+hitboxGroup.add(hitboxGiggi.group)
+scene.add(hitboxGroup)
+
+const hitboxAgnaktor = new Hitbox(
+    /*width*/ 10,
+    /*height*/ 1,
+    /*depth*/ 15,
+    /*posX*/ 0,
+    /*posY*/ 0.5,
+    /*posZ*/ - 300,
+)
+hitboxGroup.add(hitboxAgnaktor.group)
+scene.add(hitboxGroup)
 
 /**
  * Resize
@@ -962,27 +1086,30 @@ window.addEventListener('resize', () =>
  */
 
 
-let cameraPositionX = camera.position.x
-let cameraPositionZ = camera.position.z
+const mouse = new THREE.Vector2();
 
-cameraPositionX = camera.position.x
-cameraPositionZ = camera.position.z
+let onMouseMove= (event) => {
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+}
+
+window.addEventListener("mousemove", onMouseMove, false)
 
 const loop = () =>
 {
     window.requestAnimationFrame(loop)
-
+    
     // Camera control
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
-
+    
     velocity.x -= velocity.x * 1.0 * delta
     velocity.z -= velocity.z * 1.0 * delta
-
+    
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
     direction.normalize()
-
+    
     if( moveForward || moveBackward )
     {
         velocity.z -= direction.z * 100.0 * delta
@@ -991,15 +1118,26 @@ const loop = () =>
     {
         velocity.x -= direction.x * 100.0 * delta
     }
-
+    
     controls.moveRight( - velocity.x * delta )
     controls.moveForward( - velocity.z * delta )
     controls.moveRight( - velocity.x * delta )
     controls.moveForward( - velocity.z * delta )
-
+    
     prevTime = time
 
+    let targetList = []
+
+    const raycaster = new THREE.Raycaster()
+    targetList.push(hitboxGroup)
+    raycaster.setFromCamera(mouse, camera)
+
+    const intersects = raycaster.intersectObjects(targetList)
+    if (intersects.length > 0) {
+        console.log("ima fucking collapse")
+    }
+    
     // Render
     renderer.render(scene, camera)
-}
+}    
 loop()
