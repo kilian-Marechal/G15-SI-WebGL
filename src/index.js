@@ -1370,7 +1370,7 @@ window.addEventListener('resize', () =>
 /**
  * Loop
  */
-
+const h5 = document.querySelector('h5')
 
 const mouse = new THREE.Vector2();
 
@@ -1382,7 +1382,6 @@ let onMouseMove = (_event) => {
 window.addEventListener("mousemove", onMouseMove, false)
 
 const infosDeviljho = document.querySelector('.infosDeviljho')
-console.log(infosDeviljho)
 
 const raycaster = new THREE.Raycaster()
 const loop = () =>
@@ -1423,11 +1422,7 @@ const loop = () =>
 
     let intersects = raycaster.intersectObjects(targetList, true)
     if (intersects.length > 0) {
-        console.log("Appuyez sur E pour interagir")
-
-        hitboxDiablo.addEventListener('click', () => {
-            console.log('pute')
-        })
+        h5.style.display = "block"
     }
     
     document.addEventListener('keydown', (event) => {
@@ -1435,15 +1430,15 @@ const loop = () =>
             // keys[69] = E key
             if(infosDeviljho.classList.contains('infosDeviljho'))
             {
+                h5.style.display = "none"
                 infosDeviljho.classList.remove('infosDeviljho')
                 infosDeviljho.classList.add('infosDeviljhoVisible')
-                console.log(intersects)
                 intersects = []
             }
             else{
+                h5.style.display = "none"
                 infosDeviljho.classList.remove('infosDeviljhoVisible')
                 infosDeviljho.classList.add('infosDeviljho')
-                console.log(intersects)
                 intersects = []
             }
         }
