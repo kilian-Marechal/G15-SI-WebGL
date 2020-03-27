@@ -521,14 +521,6 @@ const onKeyDown = ( _event ) => {
     {
         moveRight = true
     }
-    if (_event.key === ' ' || _event.code === 'space')
-    {
-        camera.position.y += 1
-    }
-    if (_event.key === 'Control' || _event.code === 'ControlLeft')
-    {
-        camera.position.y -= 1
-    }
 }
 
 
