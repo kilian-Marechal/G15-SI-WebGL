@@ -521,14 +521,6 @@ const onKeyDown = ( _event ) => {
     {
         moveRight = true
     }
-    if (_event.key === ' ' || _event.code === 'space')
-    {
-        camera.position.y += 1
-    }
-    if (_event.key === 'Control' || _event.code === 'ControlLeft')
-    {
-        camera.position.y -= 1
-    }
 }
 
 
@@ -1283,7 +1275,7 @@ const hitboxDeviljho = new THREE.Mesh(
 )
 hitboxDeviljho.position.set(- 35, 0.5, - 185)
 hitboxDiablo.name = 'deviljho'
-hitboxDiablo.visible = false
+hitboxDeviljho.visible = false
 scene.add(hitboxDeviljho)
 
 
@@ -1403,8 +1395,8 @@ const loop = () =>
     const time = performance.now()
     const delta = ( time - prevTime ) / 1000
     
-    velocity.x -= velocity.x * 14.0 * delta
-    velocity.z -= velocity.z * 14.0 * delta
+    velocity.x -= velocity.x * 13.0 * delta
+    velocity.z -= velocity.z * 13.0 * delta
     
     direction.z = Number( moveForward ) - Number ( moveBackward )
     direction.x = Number( moveRight ) - Number ( moveLeft )
