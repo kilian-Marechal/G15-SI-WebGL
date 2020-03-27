@@ -1274,8 +1274,8 @@ const hitboxDeviljho = new THREE.Mesh(
     new THREE.MeshNormalMaterial()
 )
 hitboxDeviljho.position.set(- 35, 0.5, - 185)
-hitboxDiablo.name = 'deviljho'
-hitboxDiablo.visible = false
+hitboxDeviljho.name = 'deviljho'
+hitboxDeviljho.visible = false
 scene.add(hitboxDeviljho)
 
 
