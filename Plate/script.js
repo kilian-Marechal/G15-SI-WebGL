@@ -78,6 +78,5 @@ var name = document.querySelector('.js-name'),
     if (e.code == 'Escape') 
     {
         mapImage.classList.add('hide')
-        console.log('spaaaaaaaaaaaaaaace')
     }
 })
