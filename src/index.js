@@ -1089,139 +1089,211 @@ document.addEventListener('click', () => {
  */
 
 
-const hitboxGroup = new THREE.Group()
+// const hitboxGroup = new THREE.Group()
+// scene.add(hitboxGroup)
 
-const hitboxDiablo = new Hitbox(
-    /*width*/ 10,
-    /*height*/ 1,
-    /*depth*/ 15,
-    /*posX*/ - 40,
-    /*posY*/ 0.5,
-    /*posZ*/ - 55,
-)
-hitboxGroup.add(hitboxDiablo.group)
-scene.add(hitboxGroup)
+// const hitboxDiablo = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 40,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 55,
+// )
+// hitboxGroup.add(hitboxDiablo.group)
 
-const hitboxRathaloss = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ 35,
-    /*posY*/ 0.5,
-    /*posZ*/ - 60,
+const hitboxDiablo = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxRathaloss.group)
-scene.add(hitboxGroup)
+hitboxDiablo.position.set(- 40, 0.5, - 55)
+scene.add(hitboxDiablo)
 
-const hitboxUragaan = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ 35,
-    /*posY*/ 0.5,
-    /*posZ*/ - 200,
-)
-hitboxGroup.add(hitboxUragaan.group)
-scene.add(hitboxGroup)
+// const hitboxRathaloss = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 60,
+// )
+// hitboxGroup.add(hitboxRathaloss.group)
 
-const hitboxDeviljho = new Hitbox(
-    /*width*/ 10,
-    /*height*/ 1,
-    /*depth*/ 15,
-    /*posX*/ - 35,
-    /*posY*/ 0.5,
-    /*posZ*/ - 185,
+const hitboxRathaloss = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxDeviljho.group)
-scene.add(hitboxGroup)
+hitboxRathaloss.position.set(35, 0.5, - 60)
+scene.add(hitboxRathaloss)
 
-const hitboxBarroth = new Hitbox(
-    /*width*/ 10,
-    /*height*/ 1,
-    /*depth*/ 15,
-    /*posX*/ - 35,
-    /*posY*/ 0.5,
-    /*posZ*/ - 215,
+// const hitboxUragaan = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 200,
+// )
+// hitboxGroup.add(hitboxUragaan.group)
+const hitboxUragaan = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxBarroth.group)
-scene.add(hitboxGroup)
+hitboxUragaan.position.set(35, 0.5, - 200)
+scene.add(hitboxUragaan)
 
-const hitboxKelbi2 = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ - 73,
-    /*posY*/ 0.5,
-    /*posZ*/ - 306,
-)
-hitboxGroup.add(hitboxKelbi2.group)
-scene.add(hitboxGroup)
+// const hitboxDeviljho = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 185,
+// )
+// hitboxGroup.add(hitboxDeviljho.group)
 
-const hitboxBaggi = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ - 73,
-    /*posY*/ 0.5,
-    /*posZ*/ - 337,
+const hitboxDeviljho = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxBaggi.group)
-scene.add(hitboxGroup)
+hitboxDeviljho.position.set(- 35, 0.5, - 185)
+scene.add(hitboxDeviljho)
 
-const hitboxKelbi = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ - 73,
-    /*posY*/ 0.5,
-    /*posZ*/ - 368,
-)
-hitboxGroup.add(hitboxKelbi.group)
-scene.add(hitboxGroup)
+// const hitboxBarroth = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ - 35,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 215,
+// )
+// hitboxGroup.add(hitboxBarroth.group)
 
-const hitboxPopo = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ 65,
-    /*posY*/ 0.5,
-    /*posZ*/ - 306,
+const hitboxBarroth = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxPopo.group)
-scene.add(hitboxGroup)
+hitboxBarroth.position.set(- 35, 0.5, - 215)
+scene.add(hitboxBarroth)
 
-const hitboxDelex = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ 65,
-    /*posY*/ 0.5,
-    /*posZ*/ - 337,
-)
-hitboxGroup.add(hitboxDelex.group)
-scene.add(hitboxGroup)
+// const hitboxKelbi2 = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 306,
+// )
+// hitboxGroup.add(hitboxKelbi2.group)
 
-const hitboxGiggi = new Hitbox(
-    /*width*/ 15,
-    /*height*/ 1,
-    /*depth*/ 10,
-    /*posX*/ 65,
-    /*posY*/ 0.5,
-    /*posZ*/ - 368,
+const hitboxKebil2 = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxGiggi.group)
-scene.add(hitboxGroup)
+hitboxKebil2.position.set(- 73, 0.5, - 306)
+scene.add(hitboxKebil2)
 
-const hitboxAgnaktor = new Hitbox(
-    /*width*/ 10,
-    /*height*/ 1,
-    /*depth*/ 15,
-    /*posX*/ 0,
-    /*posY*/ 0.5,
-    /*posZ*/ - 300,
+// const hitboxBaggi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 337,
+// )
+// hitboxGroup.add(hitboxBaggi.group)
+
+const hitboxBaggi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
 )
-hitboxGroup.add(hitboxAgnaktor.group)
-scene.add(hitboxGroup)
+hitboxBaggi.position.set(- 73, 0.5, - 337)
+scene.add(hitboxBaggi)
+
+// const hitboxKelbi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ - 73,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 368,
+// )
+// hitboxGroup.add(hitboxKelbi.group)
+
+const hitboxKelbi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxKelbi.position.set(- 73, 0.5, - 368)
+scene.add(hitboxKelbi)
+
+// const hitboxPopo = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 306,
+// )
+// hitboxGroup.add(hitboxPopo.group)
+
+const hitboxPopo = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxPopo.position.set(65, 0.5, - 305)
+scene.add(hitboxPopo)
+
+// const hitboxDelex = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 337,
+// )
+// hitboxGroup.add(hitboxDelex.group)
+
+const hitboxDelex = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxDelex.position.set(65, 0.5, - 337)
+scene.add(hitboxDelex)
+
+// const hitboxGiggi = new Hitbox(
+//     /*width*/ 15,
+//     /*height*/ 1,
+//     /*depth*/ 10,
+//     /*posX*/ 65,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 368,
+// )
+// hitboxGroup.add(hitboxGiggi.group)
+
+const hitboxGiggi = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxGiggi.position.set(65, 0.5, - 368)
+scene.add(hitboxGiggi)
+
+// const hitboxAgnaktor = new Hitbox(
+//     /*width*/ 10,
+//     /*height*/ 1,
+//     /*depth*/ 15,
+//     /*posX*/ 0,
+//     /*posY*/ 0.5,
+//     /*posZ*/ - 300,
+// )
+// hitboxGroup.add(hitboxAgnaktor.group)
+
+const hitboxAgnaktor = new THREE.Mesh(
+    new THREE.BoxGeometry(10, 1, 15),
+    new THREE.MeshNormalMaterial()
+)
+hitboxAgnaktor.position.set(0, 0.5, - 300)
+scene.add(hitboxAgnaktor)
 
 /**
  * Resize
@@ -1253,6 +1325,10 @@ let onMouseMove = (_event) => {
 }
 
 window.addEventListener("mousemove", onMouseMove, false)
+
+hitboxDiablo.addEventListener('mousemove', () => {
+    console.log('pute')
+})
 
 const loop = () =>
 {
@@ -1288,12 +1364,12 @@ const loop = () =>
     let targetList = []
 
     const raycaster = new THREE.Raycaster()
-    targetList.push(hitboxGroup)
+    targetList.push(hitboxDiablo, hitboxRathaloss, hitboxUragaan, hitboxDeviljho, hitboxBarroth, hitboxKebil2, hitboxBaggi, hitboxKelbi, hitboxPopo, hitboxGiggi, hitboxDelex, hitboxAgnaktor)
     raycaster.setFromCamera(mouse, camera)
 
     const intersects = raycaster.intersectObjects(targetList)
     if (intersects.length > 0) {
-        console.log("pute")
+        console.log("Appuyez sur E pour interagir")
     }
     // console.log(targetList)
     
