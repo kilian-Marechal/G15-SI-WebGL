@@ -13,22 +13,183 @@ import audioMonsterHunter from './audio/MH-ost-min.mp3'
 import imageMap from './images/map.jpg'
 import importFelyne from './images/felyne.gif'
 import importLogo from './images/logo.png'
+import importMapDeviljho from './images/mapdeviljho.jpg'
+import importMapRathalos from './images/maprathalos.jpg'
+import importDeviljho from './images/deviljho.png'
+import importDeviljhoIcon from './images/deviljhoicon.png'
+import importRathalosIcon from './images/rathalosicon.png'
+import importRathalos from './images/rathalos.png'
+
+const placeholderRathalos = document.querySelector('.rathalos')
+const imageRathalos = new Image()
+imageRathalos.src = importRathalos
+placeholderRathalos.appendChild(imageRathalos)
+
+const placeholderRathalosIcon = document.querySelector('.rathalosIcon')
+const imageRathalosIcon = new Image()
+imageRathalosIcon.src = importRathalosIcon
+placeholderRathalosIcon.appendChild(imageRathalosIcon)
+
+const placeholderDeviljhoIcon = document.querySelector('.deviljhoIcon')
+const imageDeviljhoIcon = new Image()
+imageDeviljhoIcon.src = importDeviljhoIcon
+placeholderDeviljhoIcon.appendChild(imageDeviljhoIcon)
+
+const placeholderDeviljho = document.querySelector('.deviljho')
+const imageDeviljho = new Image()
+imageDeviljho.src = importDeviljho
+placeholderDeviljho.appendChild(imageDeviljho)
+
+const placeholderMapDeviljho = document.querySelector('.js-mapImageDeviljho')
+const placeholderMapRathalos = document.querySelector('.js-mapImageRathalos')
+const imageMapDeviljho = new Image()
+const imageMapRathalos = new Image()
+imageMapDeviljho.src = importMapDeviljho
+imageMapRathalos.src = importMapRathalos
+placeholderMapDeviljho.appendChild(imageMapDeviljho)
+placeholderMapRathalos.appendChild(imageMapRathalos)
+
+
 
 const placeholderLogo = document.querySelector('.emblem')
+const placeholderLogo2 = document.querySelector('.emblem2')
+const placeholderLogo3 = document.querySelector('.emblem3')
 const imageLogo = new Image()
+const imageLogo2 = new Image()
+const imageLogo3 = new Image()
 imageLogo.src = importLogo
+imageLogo2.src = importLogo
+imageLogo3.src = importLogo
 placeholderLogo.appendChild(imageLogo)
+placeholderLogo2.appendChild(imageLogo2)
+placeholderLogo3.appendChild(imageLogo3)
 
 const placeholderFelyne = document.querySelector('.felyne')
+const placeholderFelyne2 = document.querySelector('.felyne2')
+const placeholderFelyne3 = document.querySelector('.felyne3')
 const imageFelyne = new Image()
+const imageFelyne2 = new Image()
+const imageFelyne3 = new Image()
 imageFelyne.src = importFelyne
+imageFelyne2.src = importFelyne
+imageFelyne3.src = importFelyne
 placeholderFelyne.appendChild(imageFelyne)
+placeholderFelyne2.appendChild(imageFelyne2)
+placeholderFelyne3.appendChild(imageFelyne3)
 
 const placeholderImage = document.querySelector('.background')
 const $image = new Image()
 $image.src = imageMap
 placeholderImage.appendChild($image)
 
+/**
+ * Info Page
+ */
+
+var name = document.querySelector('.js-name'),
+    physiology = document.querySelector('.js-physiologyDeviljho'),
+    physiology = document.querySelector('.js-physiologyRathalos'),
+    capacities = document.querySelector('.js-capacitiesDeviljho'),
+    capacities = document.querySelector('.js-capacitiesRathalos'),
+    behavior = document.querySelector('.js-behaviorDeviljho'),
+    behavior = document.querySelector('.js-behaviorRathalos'),
+    habitat = document.querySelector('.js-habitatDeviljho'),
+    habitat = document.querySelector('.js-habitatRathalos'),
+    textDeviljho = document.querySelector('.js-textDeviljho'),
+    textRathalos = document.querySelector('.js-textRathalos'),
+    mapButton = document.querySelector('.js-map'),
+    mapButton2 = document.querySelector('.js-map2'),
+    mapImage = document.querySelector('.js-mapImageDeviljho'),
+    mapImage2 = document.querySelector('.js-mapImageRathalos'),
+    currentCat = 0
+
+    physiology.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#000"
+        physiology.style.backgroundColor = "#fff"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho est un très grand bipède, de la famille des Wyvernes de terre, caractérisé par sa coloration verte uniforme, couleur forêt, et par un haut de corps musclé."
+        textRathalos.innerHTML = "De taille moyenne, ils sont reconnaissables par leur couleur rouge cramoisie et leurs ailes comportant des motifs de flammes. Au delà de son apparence de Wyverne, le Rathalos évoque aussi l'aigle, autant par son museau crochu que par son statut de roi des cieux."
+        currentCat = 1
+
+    })
+
+    capacities.addEventListener('click', () => {
+
+        capacities.style.color ="#000"
+        capacities.style.backgroundColor ="#fff"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho attaque principalement à l'aide de sa mâchoire et sa queue. De par sa grande chaleur corporelle et son métabolisme le Deviljho est toujours affamé, et est en recherche permanente de nourriture."
+        textRathalos.innerHTML = "Le Rathalos passe la plupart de son temps à se battre en vol. Sa capacité à vivre dans les environnements les plus étranges et rudes participe à sa renommée de Roi des Wyvernes. Tout comme la Rathian il peut immobiliser un chasseur et le déchiqueter."
+        currentCat = 2
+
+    })
+
+    behavior.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#000"
+        behavior.style.backgroundColor = "#fff"
+        habitat.style.color ="#fff"
+        habitat.style.backgroundColor = "transparent"
+        textDeviljho.innerHTML = "Le Deviljho est un monstre nomade. Il a tendance à errer sur de longues distances à la recherche de proies. Son statut de super-prédateur lui permet de traverser le territoire de n'importe quel monstre qui se dresse sur son chemin, ce qui n'empêche pas d'entrer en conflit régulièrement avec d'autres monstres. "
+        textRathalos.innerHTML = "Il existe deux sous-espèce de Rathalos, le Rathalos azur habitant aux mêmes endroits que son cousin rouge, et une sous-espèce plus solitaire, le Rathalos d'argent, vivant dans des zones plus recluses : l'Ancienne Tour ou les Marais. "
+        currentCat = 3
+    })
+
+    habitat.addEventListener('click', () => {
+
+        capacities.style.color ="#fff"
+        capacities.style.backgroundColor ="transparent"
+        physiology.style.color ="#fff"
+        physiology.style.backgroundColor = "transparent"
+        behavior.style.color ="#fff"
+        behavior.style.backgroundColor = "transparent"
+        habitat.style.color ="#000"
+        habitat.style.backgroundColor = "#fff"
+        textDeviljho.innerHTML = "En raison de son caractère nomade, le Deviljho est connu pour habiter une grande variété d'environnements, tels que la Toundra, l'Île déserte et le Volcan. Sa présence perturbe un peu souvent l'écosystème naturel, qui est cependant adapté aux allers et venues de ce monstres. Deviljho attaque principalement à l'aide de sa mâchoire et sa queue. De par sa grande chaleur corporelle et son métabolisme le Deviljho est toujours affamé, et est en recherche permanente de nourriture."
+        textRathalos.innerHTML = "Du fait de sa suprématie dans les airs, le Rathalos vit souvent au sommet des terrains, ce qui lui permet de surveiller rapidement toute l'activité de son territoire. Cela s'illustre par le fait qu'il vit au sommet de la falaise de l'Île déserte, ou encore au sommet de l'arbre de de la forêt ancienne. "
+        currentCat = 4
+    })
+
+    mapButton.addEventListener('click', () => {
+
+        mapImage.classList.add('show')
+        mapImage.classList.remove('hide')
+        console.log("worked")
+    })
+
+    mapButton2.addEventListener('click', () => {
+
+        mapImage2.classList.add('show')
+        mapImage2.classList.remove('hide')
+        console.log("worked")
+    })
+
+    document.addEventListener('keydown', (e) => 
+{
+    if (e.code == 'Escape') 
+    {
+        mapImage.classList.remove('show')
+        mapImage.classList.add('hide')
+        mapImage2.classList.remove('show')
+        mapImage2.classList.add('hide')
+    
+    }
+})
 
 /**
  * Textures
