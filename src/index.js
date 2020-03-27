@@ -5,6 +5,7 @@ import Panel from './scripts/Panel.js'
 import Hitbox from './scripts/Hitbox.js'
 import Wall from './scripts/WallsClass.js'
 import Pedestal from './scripts/PedestalsClass.js'
+import Spot from './scripts/SpotsClass.js'
 import {PointerLockControls} from 'three/examples/jsm/controls/PointerLockControls.js'
 import marbleGroundSource from './images/StoneMarbleCalacatta004/Previews/StoneMarbleCalacatta004_Flat.jpg'
 import stoneBrickSource from './images/StoneBricksBeige015/Previews/StoneBricksBeige015_Flat.jpg'
@@ -13,7 +14,6 @@ import audioMonsterHunter from './audio/MH-ost-min.mp3'
 import imageMap from './images/map.jpg'
 import importFelyne from './images/felyne.gif'
 import importLogo from './images/logo.png'
-import { MeshNormalMaterial } from 'three'
 
 const placeholderLogo = document.querySelector('.emblem')
 const imageLogo = new Image()
@@ -416,11 +416,10 @@ scene.add(pedestalGroup)
 const ground = new Wall(
     /*width*/ 200,
     /*height*/ 400,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 2,
     /*map*/ marbleGroundTexture,
     /*posX*/ 0,
-    /*posY*/ 0,
+    /*posY*/ -1,
     /*posZ*/ - 200,
     /*rotationX*/ Math.PI * 0.5,
     /*rotationY*/ 0
@@ -432,8 +431,7 @@ wallGroup.add(ground.group)
 const roof = new Wall(
     /*width*/ 200,
     /*height*/ 400,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 3,
     /*map*/ marbleGroundTexture,
     /*posX*/ 0,
     /*posY*/ 60,
@@ -447,8 +445,7 @@ wallGroup.add(roof.group)
 const wallLeft = new Wall(
     /*width*/ 400,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 3,
     /*map*/ stoneBrickTexture,
     /*posX*/ - 100,
     /*posY*/ 30,
@@ -461,8 +458,7 @@ wallGroup.add(wallLeft.group)
 const wallRight = new Wall(
     /*width*/ 400,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 3,
     /*map*/ stoneBrickTexture,
     /*posX*/ 100,
     /*posY*/ 30,
@@ -475,8 +471,7 @@ wallGroup.add(wallRight.group)
 const wallForward = new Wall(
     /*width*/ 200,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 3,
     /*map*/ stoneBrickTexture,
     /*posX*/ 0,
     /*posY*/ 30,
@@ -489,8 +484,7 @@ wallGroup.add(wallForward.group)
 const wallBackward = new Wall(
     /*width*/ 200,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*depth*/ 3,
     /*map*/ stoneBrickTexture,
     /*posX*/ 0,
     /*posY*/ 30,
@@ -511,8 +505,7 @@ wallGroup.add(wallBackward.group)
 const wallLeftFirstRoom = new Wall(
     /*width*/ 120,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*height*/ 2,
     /*map*/ stoneBrickTexture,
     /*posX*/ - 40,
     /*posY*/ 30,
@@ -525,8 +518,7 @@ wallGroup.add(wallLeftFirstRoom.group)
 const wallRightFirstRoom = new Wall(
     /*width*/ 60,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*height*/ 2,
     /*map*/ stoneBrickTexture,
     /*posX*/ 70,
     /*posY*/ 30,
@@ -560,14 +552,42 @@ const pedestalRathalos = new Pedestal(
 pedestalGroup.add(pedestalRathalos.group)
 
 // Room 1 - Panels
-const panelDiablo = new Panel()
-scene.add(panelDiablo.group)
+const panelDiablos = new Panel()
+scene.add(panelDiablos.group)
 
 const panelRathalos = new Panel()
 panelRathalos.group.position.set(- 20, 0, - 20)
 panelRathalos.group.rotation.y = Math.PI * 1.5
 scene.add(panelRathalos.group)
 
+// Room 1 - Spots
+const spot1Diablos = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 65,
+    /*rotationY*/ Math.PI * 1.7
+)
+scene.add(spot1Diablos.group)
+
+const spot2Diablos = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 65,
+    /*rotationY*/ Math.PI * 0.35
+)
+scene.add(spot2Diablos.group)
+
+const spot1Rathalos = new Spot(
+    /*posX*/ 40,
+    /*posZ*/ - 100,
+    /*rotationY*/ Math.PI * 1.15
+)
+scene.add(spot1Rathalos.group)
+
+const spot2Rathalos = new Spot(
+    /*posX*/ 40,
+    /*posZ*/ - 20,
+    /*rotationY*/ Math.PI * 1.9
+)
+scene.add(spot2Rathalos.group)
 
 /**
  * Room 2
@@ -578,8 +598,7 @@ scene.add(panelRathalos.group)
 const wallLeftSecondRoom = new Wall(
     /*width*/ 120,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*height*/ 2,
     /*map*/ stoneBrickTexture,
     /*posX*/ - 40,
     /*posY*/ 30,
@@ -592,8 +611,7 @@ wallGroup.add(wallLeftSecondRoom.group)
 const wallRightSecondRoom = new Wall(
     /*width*/ 60,
     /*height*/ 60,
-    /*widthSegments*/ 1,
-    /*heigthSegments*/ 1,
+    /*height*/ 2,
     /*map*/ stoneBrickTexture,
     /*posX*/ 70,
     /*posY*/ 30,
@@ -653,6 +671,48 @@ panelBarroth.group.position.set(5, 0, - 160)
 panelBarroth.group.rotation.y = Math.PI * 2
 scene.add(panelBarroth.group)
 
+// Room 2 - Spots
+const spot1Uragaan = new Spot(
+    /*posX*/ 45,
+    /*posZ*/ - 160,
+    /*rotationY*/ Math.PI * 1.85
+)
+scene.add(spot1Uragaan.group)
+
+const spot2Uragaan = new Spot(
+    /*posX*/ 45,
+    /*posZ*/ - 245,
+    /*rotationY*/ Math.PI * 1.15
+)
+scene.add(spot2Uragaan.group)
+
+const spot1Deviljho = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 180,
+    /*rotationY*/ Math.PI * 1.25
+)
+scene.add(spot1Deviljho.group)
+
+const spot2Deviljho = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 180,
+    /*rotationY*/ Math.PI * 0.75
+)
+scene.add(spot2Deviljho.group)
+
+const spot1Barroth = new Spot(
+    /*posX*/ - 75,
+    /*posZ*/ - 225,
+    /*rotationY*/ Math.PI * 1.65
+)
+scene.add(spot1Barroth.group)
+
+const spot2Barroth = new Spot(
+    /*posX*/ - 5,
+    /*posZ*/ - 225,
+    /*rotationY*/ Math.PI * 0.25
+)
+scene.add(spot2Barroth.group)
 
 /**
  * Room 3
@@ -776,6 +836,34 @@ const aquarium = new THREE.Mesh(
 aquarium.position.set(0, 25.01, - 350)
 scene.add(aquarium)
 
+// Room 3 - Spots
+const spot1Aquarium = new Spot(
+    /*posX*/ - 35,
+    /*posZ*/ - 305,
+    /*rotationY*/ Math.PI * 1.75
+)
+scene.add(spot1Aquarium.group)
+
+const spot2Aquarium = new Spot(
+    /*posX*/ 35,
+    /*posZ*/ - 305,
+    /*rotationY*/ Math.PI * 0.2
+)
+scene.add(spot2Aquarium.group)
+
+const spot3Aquarium = new Spot(
+    /*posX*/ - 35,
+    /*posZ*/ - 395,
+    /*rotationY*/ Math.PI * 1.25
+)
+scene.add(spot3Aquarium.group)
+
+const spot4Aquarium = new Spot(
+    /*posX*/ 35,
+    /*posZ*/ - 395,
+    /*rotationY*/ Math.PI * 0.75
+)
+scene.add(spot4Aquarium.group)
 
 /**
  * Audio
@@ -886,21 +974,92 @@ const pointLightFirstRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightFirstRoom.position.set(5, 60, - 65)
 scene.add(pointLightFirstRoom)
 
-const firstLampFirstRoom = new THREE.SpotLight(0xc2822f, 1, 100, 100, 0)
-firstLampFirstRoom.target = diablos.group
-firstLampFirstRoom.position.set(- 92, 6, - 70)
-scene.add(firstLampFirstRoom)
+// Diablo Lights
+const spot1DiabloLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1DiabloLamp.target = diablos.group
+spot1DiabloLamp.position.set(- 75, 1.2, - 65)
+scene.add(spot1DiabloLamp)
+
+const spot2DiabloLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2DiabloLamp.target = diablos.group
+spot2DiabloLamp.position.set(- 5, 1.2, - 65)
+scene.add(spot2DiabloLamp)
+
+// Rathalos Lights
+const spot1RathalosLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1RathalosLamp.target = rathalos.group
+spot1RathalosLamp.position.set(40, 1.2, - 100)
+scene.add(spot1RathalosLamp)
+
+const spot2RathalosLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2RathalosLamp.target = rathalos.group
+spot2RathalosLamp.position.set(40, 1.2, - 20)
+scene.add(spot2RathalosLamp)
+
 
 // Second Room
 const pointLightSecondRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightSecondRoom.position.set(5, 60, - 200)
 scene.add(pointLightSecondRoom)
 
+// Uragaan
+const spot1UragaanLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1UragaanLamp.target = uragaan.group
+spot1UragaanLamp.position.set(45, 1.2, - 160)
+scene.add(spot1UragaanLamp)
+
+const spot2UragaanLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2UragaanLamp.target = uragaan.group
+spot2UragaanLamp.position.set(45, 1.2, - 245)
+scene.add(spot2UragaanLamp)
+
+// Deviljho
+const spot1DeviljhoLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1DeviljhoLamp.target = deviljho.group
+spot1DeviljhoLamp.position.set(- 75, 1.2, - 180)
+scene.add(spot1DeviljhoLamp)
+
+const spot2DeviljhoLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2DeviljhoLamp.target = deviljho.group
+spot2DeviljhoLamp.position.set(- 5, 1.2, - 180)
+scene.add(spot2DeviljhoLamp)
+
+// Barroth
+const spot1BarrothLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1BarrothLamp.target = barroth.group
+spot1BarrothLamp.position.set(- 75, 1.2, - 225)
+scene.add(spot1BarrothLamp)
+
+const spot2BarrothLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2BarrothLamp.target = barroth.group
+spot2BarrothLamp.position.set(- 5, 1.2, - 225)
+scene.add(spot2BarrothLamp)
+
 
 // Third Room
 const pointLightThirdRoom = new THREE.PointLight(0xdeffde, 0.8, 150)
 pointLightThirdRoom.position.set(5, 60, - 335)
 scene.add(pointLightThirdRoom)
+
+const spot1AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot1AquariumLamp.target = agnaktor.group
+spot1AquariumLamp.position.set(- 35, 0.8, - 305)
+scene.add(spot1AquariumLamp)
+
+const spot2AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot2AquariumLamp.target = agnaktor.group
+spot2AquariumLamp.position.set(35, 0.8, - 305)
+scene.add(spot2AquariumLamp)
+
+const spot3AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot3AquariumLamp.target = agnaktor.group
+spot3AquariumLamp.position.set(- 35, 0.8, - 395)
+scene.add(spot3AquariumLamp)
+
+const spot4AquariumLamp = new THREE.SpotLight(0xc2822f, 0.8, 100, 100, 0)
+spot4AquariumLamp.target = agnaktor.group
+spot4AquariumLamp.position.set(35, 0.8, - 395)
+scene.add(spot4AquariumLamp)
 
 
 /**
