@@ -1295,8 +1295,6 @@ hitboxBarroth.position.set(- 35, 0.5, - 215)
 hitboxBarroth.visible = false
 scene.add(hitboxBarroth)
 
-
-
 const hitboxKebil2 = new THREE.Mesh(
     new THREE.BoxGeometry(10, 1, 15),
     new THREE.MeshNormalMaterial()
